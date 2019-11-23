@@ -285,4 +285,44 @@ Cela permet de calculer les probabilités~:
 \end{align*}
 Comme $\mathbb P(G = 1) < \mathbb P(G = -1)$, on aura $\mathbb E(G) < 0$, le joueur 1 a une espérance de gain négative. Néanmoins, si le joueur 1 choisit de jouer comme le joueur 2 et ne lancer qu'un dé, alors, par la symétrie entre les joueurs dans ce cas, on aura $\mathbb P(G = 1) = \mathbb P(G = -1)$ et donc $\mathbb E(G) = 0$. Il est donc préférable dans ce cas pour le joueur 1 de jouer 1 dé que de jouer $d^\ast(10) = 6$ dés.
 
+On remarque que la situation de cet exemple n'est pas exceptionnelle~: le cas $N = 2$ est équivalant, par exemple, au cas $N = 100$ lorsque les deux joueurs sont à égalité avec $98$ points.
+
+\section{Question 4}
+
+Pour faciliter l'analyse, on représente l'état courant du jeu par un triplet $(i, j, n)$ où $i$ et $j$ sont les points cumulés des joueurs 1 et 2, respectivement, et $n \in \{1, 2\}$ indique qui est le prochain joueur à jouer. On note l'espérance de gain du joueur 1 dans l'état $(i, j, n)$ par $EG(i, j, n)$, en supposant que lui-même et son adversaire jouent toujours de façon optimale. On remarque que $EG(i, j, n)$ représente toujours l'espérance de gain du joueur 1, même lorsque $n = 2$.
+
+Dans l'état $(i, j, 1)$, si le joueur 1 décide de jouer $d$ dés et qu'il obtient $k$ points, le prochain état sera $(i+k, j, 2)$. Comme il obtient $k$ points avec probabilité $P(d, k)$, l'espérance de gain du joueur 1 lorsqu'il choisit de jouer $d$ dés (et en supposant que lui-même et le joueur 2 jouent de façon optimale dans la suite) est
+\begin{equation}
+\label{EsperanceGainDFixe}
+\sum_{k=1}^{6d} P(d, k) EG(i+k, j, 2).
+\end{equation}
+Ainsi, son choix optimal est de choisir le nombre $d$ de dés qui maximise la quantité ci-dessus, ce qui donne
+\[
+EG(i, j, 1) = \max_{d \in \{1, \dotsc, D\}} \sum_{k=1}^{6d} P(d, k) EG(i+k, j, 2).
+\]
+Comme le jeu est symétrique par rapport à la permutation des deux joueurs (en changeant le signe du gain du joueur 1), on a $EG(i+k, j, 2) = -EG(j, i+k, 1)$, et ainsi on obtient la formule
+\[
+EG(i, j, 1) = \max_{d \in \{1, \dotsc, D\}} \left(-\sum_{k=1}^{6d} P(d, k) EG(j, i+k, 1)\right).
+\]
+Comme cela ne fait intervenir que les espérances de gain lorsque c'est au joueur 1 de jouer (donc $n = 1$), on peut supprimer la troisième composante de l'état de la notation, comme à l'énoncé, pour arriver à
+\begin{equation}
+\label{EsperanceGainRec}
+EG(i, j) = \max_{d \in \{1, \dotsc, D\}} \left(-\sum_{k=1}^{6d} P(d, k) EG(j, i+k)\right),
+\end{equation}
+où $EG(i, j)$ doit se comprendre comme $EG(i, j, 1)$.
+
+On initialise la récurrence en remarquant que $EG(i, j) = 1$ si $i \geq N$ et $j < N$ et que $EG(i, j) = -1$ si $i < N$ et $j \geq N$. Comme le jeu est séquentiel, il n'est pas nécessaire d'initialiser $EG(i, j)$ pour $i \geq N$ et $j \geq N$~: il est impossible que les deux joueurs aient une quantité supérieure ou égale à $N$ points car le jeu s'arrête dès que le premier joueur atteint $N$ points ou plus.
+
+\section{Question 5}
+
+Notons $OPT(i, j)$ la stratégie optimale du joueur 1 dans l'état $(i, j, 1)$, c'est-à-dire le nombre de dés qu'il doit lancer pour maximiser l'espérance de son gain. Cela revient à maximiser \eqref{EsperanceGainDFixe} par rapport à $d$, ce qui donne
+\[
+OPT(i, j) = \argmax_{d \in \{1, \dotsc, D\}} \left(-\sum_{k=1}^{6d} P(d, k) EG(j, i+k)\right).
+\]
+Cela peut être calculé en même temps que le calcul récursif de $EG$ par la formule \eqref{EsperanceGainRec}.
+
+\section{Question 6}
+
+Dans ce cas, la somme dans \eqref{EsperanceGainRec} doit commencer à $k = 0$ à la place de $k = 1$. Le calcul de $EG(i, j)$ par \eqref{EsperanceGainRec} utilise en particulier, dans le second membre, la valeur de $EG(j, i)$. Or, le calcul de $EG(j, i)$ par \eqref{EsperanceGainRec} utilise dans son second membre la valeur de $EG(i, j)$. Ainsi, \eqref{EsperanceGainRec} ne permet pas de calculer $EG(i, j)$ de façon explicite, mais donne uniquement une relation implicite où $EG(i, j)$ dépend de lui-même. Il faudrait alors implémenter une méthode pour être capable de calculer $EG(i, j)$ à partir de cette relation implicite.
+
 \end{document}

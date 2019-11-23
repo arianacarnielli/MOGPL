@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  21 NOV 2019 20:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  23 NOV 2019 21:50
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -1700,33 +1700,33 @@ LaTeX Info: Redefining \nameref on input line 222.
 \@outlinefile=\write4
 \openout4 = `rapport.out'.
 
- [1{C:/Users/arian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 288.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 288.
+ [1{C:/Users/arian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 328.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 328.
  (rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 288.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 288.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 328.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 328.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: A816880120BECCC19E439F7FF58A2F14;149.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 288.
+(rerunfilecheck)             Checksum: 7306E8E35BD412E204E55A4A3CA4BDBE;296.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 328.
  ) 
 Here is how much of TeX's memory you used:
- 24476 strings out of 493323
- 460312 string characters out of 3139066
- 574999 words of memory out of 3000000
- 27394 multiletter control sequences out of 15000+200000
+ 24487 strings out of 493323
+ 460440 string characters out of 3139066
+ 576071 words of memory out of 3000000
+ 27399 multiletter control sequences out of 15000+200000
  53383 words of font info for 78 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 55i,12n,69p,625b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,12n,69p,671b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public
 /kpfonts/jkpbn8a.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpex.pfb><C:/Users/arian/App
 Data/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmi.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/publ
 ic/kpfonts/jkpmn8a.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmsc8a.pfb><C:/Users/aria
 n/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsy.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1
 /public/kpfonts/jkpsyb.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on rapport.pdf (2 pages, 74123 bytes).
+Output written on rapport.pdf (3 pages, 83300 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 92 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

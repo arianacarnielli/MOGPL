@@ -6,18 +6,64 @@ Created on Thu Nov 21 00:19:27 2019
 """
 import numpy as np
 
-
 class Jeu:
     """
     """
     
-    def __init__(self, D, N, jeuType = "sequentielle"):
+    def __init__(self, D, N):
         """
         """
         self.D = D
         self.N = N
-        self.jeuType = jeuType
         self.probas = self._tableProba()
+        
+        self.joueur1 = 0
+        self.joueur2 = 0
+        
+    def setStrategies(self, strategie1, strategie2):
+        """
+        """
+        self.strategie1 = strategie1
+        self.strategie2 = strategie2
+        
+    def jouer(self, verbose = True):
+        """
+        """
+        if verbose :
+            print ("La partie commence :")
+            print("Joueur 1 | Joueur 2")
+        while not self._estfini() :
+            self._tour()
+            if verbose :
+                print("{:8d} | {:8d}".format(self.joueur1, self.joueur2))
+        if verbose :
+            if self.vainqueur() == 0:
+                print("Match nul")    
+            else:
+                print("La partie est finie, le joueur", self.vainqueur(), "a gagné")
+    
+    def vainqueur(self):
+        """
+        """
+        if self.joueur1 == self.joueur2 :
+            return 0
+        return 1 if self.joueur1 > self.joueur2 else 2
+    
+    def _estfini(self):
+        """
+        """
+        return self.joueur1 >= self.N or self.joueur2 >= self.N
+    
+    def _tirageDes(self, d):
+        """
+        """
+        res = np.random.randint(1, 7, d)
+        if np.any(res == 1):
+            return 1
+        return res.sum()
+        
+    def _tour(self):
+        pass
 
     def _tableProba(self):
         """
@@ -45,20 +91,48 @@ class Jeu:
         proba[:, 2:] = q[:, 2:] * (5 / 6) ** np.arange(self.D + 1).reshape((self.D + 1, 1))
         return proba
     
+class JeuSequentiel(Jeu):
+    """
+    """
+    def __init__(self, D, N):
+        super().__init__(D, N)
+        self.joueurCourant = 1
+        
+    def _tour(self):
+        """
+        """
+        if self.joueurCourant == 1:
+            des = self.strategie1.jouerTour(self.joueur1, self.joueur2)
+            self.joueur1 += self._tirageDes(des)
+        else:
+            des = self.strategie2.jouerTour(self.joueur2, self.joueur1)
+            self.joueur2 += self._tirageDes(des)
+        self.joueurCourant = 3 - self.joueurCourant
+        
 class Strategie:
     """
     """
     def __init__(self, jeu):
         self.jeu = jeu
 
-    def jouerTour(self):
+    def jouerTour(self, moi, autre):
+        """
+        """
         pass
+
+class StrategieAleatoire(Strategie):
+    """
+    """
+    def jouerTour(self, moi, autre):
+        """
+        """
+        return np.random.randint(1, self.jeu.D + 1)
     
 class StrategieAveugle(Strategie):
     """
     """
     
-    def jouerTour(self):
+    def jouerTour(self, moi, autre):
         """
         ancienne EsperanceDes(D).
         """
@@ -70,7 +144,11 @@ class StrategieOptimaleSequentielle(Strategie):
     """
     """
     
-    def esperanceGain(self):
+    def __init__(self, jeu):
+        super().__init__(jeu)
+        _, self.opt = self._esperanceGain()
+        
+    def _esperanceGain(self):
         """
         """
         n = self.jeu.N
@@ -91,6 +169,21 @@ class StrategieOptimaleSequentielle(Strategie):
                     opt[i, j] = ed[1: ].argmax() + 1
                     eg[i, j] =  ed[opt[i, j]]
         return eg, opt
+    
+    def jouerTour(self, moi, autre):
+        """
+        """
+        return self.opt[moi, autre]
+    
+class StrategieHumaine(Strategie):
+    """
+    """
+    def jouerTour(self, moi, autre):
+        """
+        """
+        des = input("Choisissez la quantité de dés : ")
+        return int(des)
+        
         
     
     
