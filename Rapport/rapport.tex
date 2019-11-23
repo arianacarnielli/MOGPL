@@ -1,0 +1,288 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACOTES                                                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{amsart}
+
+%-----------------------------------------------------------------------------------%
+% LAYOUT DA PÁGINA                                                                  %
+%-----------------------------------------------------------------------------------%
+\usepackage[top=2.25cm, bottom=2.25cm, left=2.25cm, right=2.25cm]{geometry}
+%\usepackage{fancyhdr} % Permite controlar como são exibidos os cabeçalhos
+
+%-----------------------------------------------------------------------------------%
+% FORMATAÇÃO DO TEXTO                                                               %
+%-----------------------------------------------------------------------------------%
+%\usepackage{setspace} % Permite definir o espaçamento entre linhas
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE IMAGENS                                                                %
+%-----------------------------------------------------------------------------------%
+\usepackage[pdftex]{graphicx}
+\pdfsuppresswarningpagegroup=1 % A warning issued when several PDF images are
+% imported in the same page. Mostly harmless, can be almost always supressed.
+%\usepackage[pstarrows]{pict2e} % Amplia as funcionalidades do ambiente picture
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, arrows.meta}
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE TABELAS                                                                %
+%-----------------------------------------------------------------------------------%
+\usepackage{array} % Facilita a formatação de tabelas
+%\usepackage{multirow} % Permite criar células que ocupam várias linhas em uma tabela
+\usepackage{longtable} % Permite criar tabelas que quebram de página
+
+%-----------------------------------------------------------------------------------%
+% PACOTES MATEMÁTICOS DE BASE                                                       %
+%-----------------------------------------------------------------------------------%
+\usepackage{amsfonts,amstext,amscd,bezier,amsthm,amssymb}
+\usepackage[centertags]{amsmath}
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE SÍMBOLOS MATEMÁTICOS                                                   %
+%-----------------------------------------------------------------------------------%
+\usepackage{mathtools} % Símbolos matemáticos extras. (ex.: \xrightharpoon)
+%\usepackage[integrals]{wasysym} % Muda o estilo das integrais, além de outros
+%                                 símbolos extras
+%\usepackage[nice]{nicefrac} % Permite o uso de frações "melhores". Usar \nicefrac{}{}
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE FONTES MATEMÁTICAS                                                     %
+%-----------------------------------------------------------------------------------%
+%\usepackage{mathbbol} % Quase todos os símbolos com \mathbb
+%\usepackage{bbm} % Extensão dos símbolos de \mathbb. Usar comando \mathbbm
+%\usepackage{calrsfs} % Muda o estilo de \mathcal
+%\usepackage[mathcal]{euscript} % Muda o estilo de \mathcal
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE CODIFICAÇÃO DE FONTES                                                  %
+%-----------------------------------------------------------------------------------%
+\usepackage[utf8]{inputenc} % Permite o uso de caracteres ISO 8859-1, incluindo os
+%                               caracteres acentuados diretamente.
+\usepackage[T1]{fontenc} % Uso de fontes T1, necessário para tratar caracteres
+%                          acentuados como um único bloco.
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE LÍNGUAS                                                                %
+%-----------------------------------------------------------------------------------%
+\usepackage[french]{babel} % Seleciona a língua do documento, definindo nomes de
+%                              seções, nome do índice, da bibliografia, etc. Em caso
+%                              de documento com mais de uma língua, a padrão é a
+%                              última.
+\NoAutoSpaceBeforeFDP % Utilizar em francês se quiser evitar espaços antes de :
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE BIBLIOGRAFIA                                                           %
+%-----------------------------------------------------------------------------------%
+%\usepackage{babelbib} % Permite definir a língua das entradas da bibliografia. Usar
+%                       [fixlanguage] para uma mesma língua para todas as entradas e
+%                       \selectbiblanguage{} para definir a língua. Um estilo compa-
+%                       tível com babelbib deve ser usado (ex: babplain)
+\usepackage{cite} % Organiza os elementos citados dentro de um mesmo \cite.
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DE FONTES                                                                 %
+%-----------------------------------------------------------------------------------%
+% Computer Modern (fonte padrão)                                                    %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage{ae} % A usar com a fonte padrão do LaTeX quando forem gerados PDFs, para
+%                 corrigir erros de visualização
+
+% Computer Modern Bright (sans serif)                                               %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage{cmbright}
+
+% Times New Roman                                                                   %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage{mathptmx} % Muda texto e modo matemático
+%\usepackage{times} % Apenas texto, não muda modo matemático
+
+% Arial                                                                             %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage[scaled]{uarial} % Arial como fonte sans serif padrão
+
+% Palatino                                                                          %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage{mathpazo} % Muda texto e modo matemático
+%\usepackage{palatino} % Apenas texto, não muda modo matemático
+
+% Concrete                                                                          %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage{ccfonts} % Texto: Concrete; Matemático: Concrete Math
+%\usepackage{ccfonts, eulervm} % Texto: Concrete; Matemático: Euler
+
+% Iwona                                                                             %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage[math]{iwona} % Texto e modo matemático: Iwona
+
+% Kurier                                                                            %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage[math]{kurier} % Texto e modo matemático: Kurier
+
+% Antykwa Póltawskiego                                                              %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+%\usepackage{antpolt} % Texto: Antykwa Póltawskiego; Matemático: nenhum
+                     % Usar fontenc = QX ou OT4
+
+% Utopia                                                                            %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %                     
+%\usepackage{fourier} % Texto: Utopia; Matemático: Fourier
+
+% KP Serif                                                                          %
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+\usepackage{kpfonts}
+
+%-----------------------------------------------------------------------------------%
+% CORES                                                                             %
+%-----------------------------------------------------------------------------------%
+\usepackage{color}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkmagenta}{rgb}{0.5,0,0.5}
+\definecolor{darkgray}{rgb}{0.5,0.5,0.5}
+\definecolor{darkblue}{rgb}{0.2,0.2,0.4}
+\definecolor{darkred}{rgb}{0.6,0.15,0.15}
+\definecolor{gray}{rgb}{0.65,0.65,0.65}
+\definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+\definecolor{lightblue}{rgb}{0.5,0.5,1}
+\definecolor{lightgreen}{rgb}{0.5,1,0.5}
+\definecolor{deadred}{rgb}{0.7, 0.2, 0.2}
+\definecolor{deadblue}{rgb}{0.2, 0.2, 0.7}
+
+%-----------------------------------------------------------------------------------%
+% PACOTES DIVERSOS                                                                  %
+%-----------------------------------------------------------------------------------%
+\usepackage{icomma} % Permite uso de vírgula como separador decimal
+\usepackage{url} % Pacote para não ter problemas com URLs. Usar \url{}
+%\usepackage{randtext} % Troca a ordem de letras de uma frase (útil com e-mails em
+                      % PDFs a serem publicados on-line.
+\usepackage[hidelinks]{hyperref}
+%\usepackage{showkeys} % Para mostrar o nome dos labels
+\usepackage{enumitem} % Facilita o uso de listas, inclusive referências a itens de
+                      % listas.
+%\usepackage[absolute]{textpos} % Posição absoluta de texto na página
+%\usepackage{pdfpages} % Permite incluir documentos em PDF no arquivo
+%\usepackage{refcheck} % Verifica as referências procurando por
+%                      % labels não usados ou equações numeradas sem labels.
+%                      % Verificar o arquivo .log e procurar por RefCheck.
+\usepackage[french, onelanguage]{algorithm2e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CONFIGURAÇÕES                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-----------------------------------------------------------------------------------%
+% FORMATAÇÃO DO TEXTO                                                               %
+%-----------------------------------------------------------------------------------%
+%\onehalfspacing % Espaçamento 1 1/2 (definido no pacote setspace)
+
+%-----------------------------------------------------------------------------------%
+% DEFINIÇÃO DE AMBIENTES MATEMÁTICOS                                                %
+%-----------------------------------------------------------------------------------%
+\theoremstyle{plain}
+\newtheorem*{prop}{Proposition}
+
+%-----------------------------------------------------------------------------------%
+% DEFINIÇÃO DE COMANDOS MATEMÁTICOS                                                 %
+%-----------------------------------------------------------------------------------%
+%\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+%\newcommand{\norm}[1]{\left\lVert #1\right\lVert} % Norma
+%\newcommand{\abs}[1]{\left\lvert #1\right \rvert} % Valor absoluto
+%\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor} % Arredondar para baixo
+%\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil} % Arredondar para cima
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclareMathOperator*{\argmax}{argmax}
+
+%-----------------------------------------------------------------------------------%
+% NUMERAÇÃO DE ELEMENTOS                                                            %
+%-----------------------------------------------------------------------------------%
+%\numberwithin{table}{section}
+%\numberwithin{table}{subsection}
+%\numberwithin{figure}{section}
+%\numberwithin{figure}{subsection}
+%\numberwithin{equation}{section}
+%\numberwithin{equation}{subsection}
+%\numberwithin{theo}{chapter}
+%\numberwithin{theo}{subsection}
+
+% Maximal percentage of the page occupied by floats
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+% Maximal number of floats per page
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ESTRUTURA DO DOCUMENTO                                                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\setlist[itemize]{label=\textbullet, nosep}
+
+\pagestyle{plain}
+
+\title{Projet UE MOGPL --- MU4IN200 \\ Dice Battle}
+\author{Ariana Carnielli}
+\date{}
+
+\maketitle
+
+
+%\tableofcontents
+
+\section{Introduction}
+
+\section{Question 1}
+
+$Q(d,k)$ est la probabilité d'obtenir $k$ points en jetant $d$ dés sachant qu'aucun dé a tombé sur $1$. On numérote les dés de $1$ à $d$ et on note $j$ le résultat du dernier dé, qui est donc un nombre entre $2$ à $6$. Alors on aura $k$ points si et seulement si les $d-1$ premiers dés donnent $k-j$ points. Les valeurs possibles de $j$ étant disjointes, on peut dire que $Q(d, k)$ est la somme pour toutes les valeurs de $j$ de $Q(d-1, k-j)$ multiplié par la probabilité que le dernier dé donne $j$ sachant qu'il n'est pas $1$ (égale à $\frac{1}{5}$), ce qui donne donc~:
+\[
+Q(d, k) = \sum_{j=2}^6 \frac{Q(d-1, k-j)}{5}.
+\]
+
+Plus précisément, soient $X_1, \dotsc, X_d$ des variables aléatoires indépendantes et distribuées selon une loi uniforme sur $\{1, \dotsc, 6\}$, représentant les résultats de chaque dé. Soient $S_d = \sum_{i=1}^d X_i$ et $S_{d-1} = \sum_{i=1}^{d-1} X_i$. On peut réécrire $Q(d, k)$ comme
+\[
+Q(d, k) = \mathbb P(S_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1).
+\]
+Or $S_d = S_{d-1} + X_d$. Conditionnellement à $X_1 \neq 1, \dotsc, X_d \neq 1$, $X_d$ ne peut prendre que les valeurs $j$ allant de $2$ à $6$, et, comme les évènements $X_d = 2, \dotsc, X_d = 6$ forment une partition, on a
+\begin{align*}
+Q(d, k) & = \mathbb P(S_{d-1} + X_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
+& = \sum_{j=2}^6 \mathbb P(S_{d-1} = k-j, X_d = j \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
+& = \sum_{j=2}^6 \mathbb P(S_{d-1} = k-j \mid X_1 \neq 1, \dotsc, X_d \neq 1)\mathbb P(X_d = j \mid X_1 \neq 1, \dotsc, X_d \neq 1),
+\end{align*}
+où l'on utilise le fait que $S_{d-1}$ et $X_d$ sont indépendants. Comme $S_{d-1}$ ne dépend pas de $X_d$, on obtient, par la définition de $Q$, que
+\[\mathbb P(S_{d-1} = k-j \mid X_1 \neq 1, \dotsc, X_d \neq 1) = \mathbb P(S_{d-1} = k-j \mid X_1 \neq 1, \dotsc, X_{d-1} \neq 1) = Q(d-1, k-j),\]
+et en plus $\mathbb P(X_d = j \mid X_1 \neq 1, \dotsc, X_d \neq 1) = \mathbb P(X_d = j \mid X_d \neq 1) = \frac{1}{5}$. Donc
+\begin{equation}
+\label{RecurrenceQ}
+Q(d, k) = \sum_{j=2}^6 \frac{Q(d-1, k-j)}{5}.
+\end{equation}
+
+Les cas d'initialisation correspondent à $d = 1$ et $k \in \{2, \dotsc, 6\}$, auquel cas on a $Q(1, k) = \frac{1}{5}$. En plus, $Q(1, k) = 0$ pour $k > 6$.
+
+%\section{Question 2}
+
+% Si il reste de l'espace, on peut mettre ici le calcul du maximum par dérivée pour montrer qu'il est toujours égal à $\min(D, 6)$.
+
+\section{Question 3}
+
+On considère ici que $D = 10$ et $N = 2$, auquel cas $d^\ast(D) = 6$. On suppose que le joueur 1 choisit de jouer toujours $6$ dés alors que le joueur 2 choisit de jouer toujours un seul dé. Soient $X_i$ et $Y_i$ les gains des joueurs 1 et 2, respectivement, au $i$-ème lancer de dés. Alors $X_i \in \{1, 12, 13, \dotsc, 36\}$ et $Y_i \in \{1, 2, \dotsc, 6\}$. En particulier, on remarque que, si $X_1 > 1$, alors le joueur $1$ est sûr de gagner.
+
+Comme $N = 2$, le jeu se finira au maximum au bout de $2$ tours. Soit $G$ la variable aléatoire donnant le gain final du joueur 1~: $G = 1$ si le joueur 1 gagne, $G = 0$ si on a un match nul et $G = -1$ si le joueur 2 gagne. Les évènements $G = 1$, $G = 0$ et $G = -1$ peuvent être décrits en fonction de $X_i$ et $Y_i$ de la façon suivante~:
+\begin{align*}
+G = 1 : \quad & X_1 > 1 \cup \bigl(X_1 = 1 \cap Y_1 = 1 \cap X_2 > 1\bigr) \\
+G = 0 : \quad & X_1 = 1 \cap Y_1 = 1 \cap X_2 = 1 \cap Y_2 = 1 \\
+G = -1 : \quad & \bigl(X_1 = 1 \cap Y_1 > 1\bigr) \cup \bigl(X_1 = 1 \cap Y_1 = 1 \cap X_2 = 1 \cap Y_2 > 1\bigr)
+\end{align*}
+Cela permet de calculer les probabilités~:
+\begin{align*}
+\mathbb P(G = 1) & = \left(\frac{5}{6}\right)^6 + \left(1 - \left(\frac{5}{6}\right)^6\right)\frac{1}{6} \left(\frac{5}{6}\right)^6 \approx 0.3720\\
+\mathbb P(G = 0) & = \left(1 - \left(\frac{5}{6}\right)^6\right)^2 \left(\frac{1}{6}\right)^2 \approx 0.0123\\
+\mathbb P(G = -1) & = \left(1 - \left(\frac{5}{6}\right)^6\right) \frac{5}{6} + \left(1 - \left(\frac{5}{6}\right)^6\right)^2 \frac{1}{6} \frac{5}{6} \approx 0.6157
+\end{align*}
+Comme $\mathbb P(G = 1) < \mathbb P(G = -1)$, on aura $\mathbb E(G) < 0$, le joueur 1 a une espérance de gain négative. Néanmoins, si le joueur 1 choisit de jouer comme le joueur 2 et ne lancer qu'un dé, alors, par la symétrie entre les joueurs dans ce cas, on aura $\mathbb P(G = 1) = \mathbb P(G = -1)$ et donc $\mathbb E(G) = 0$. Il est donc préférable dans ce cas pour le joueur 1 de jouer 1 dé que de jouer $d^\ast(10) = 6$ dés.
+
+\end{document}
