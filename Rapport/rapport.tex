@@ -360,4 +360,88 @@ Cela peut être calculé en même temps que le calcul récursif de $EG$ par la f
 
 Dans ce cas, la somme dans \eqref{EsperanceGainRec} doit commencer à $k = 0$ à la place de $k = 1$. Le calcul de $EG(i, j)$ par \eqref{EsperanceGainRec} utilise en particulier, dans le second membre, la valeur de $EG(j, i)$. Or, le calcul de $EG(j, i)$ par \eqref{EsperanceGainRec} utilise dans son second membre la valeur de $EG(i, j)$. Ainsi, \eqref{EsperanceGainRec} ne permet pas de calculer $EG(i, j)$ de façon explicite, mais donne uniquement une relation implicite où $EG(i, j)$ dépend de lui-même. Il faudrait alors implémenter une méthode pour être capable de calculer $EG(i, j)$ à partir de cette relation implicite.
 
+\section{Question 10}
+
+Soit $G$ la variable aléatoire donnant le gain du joueur 1 lorsqu'il a jeté $d_1$ dés et le joueur 2 a jeté $d_2$ dés. Alors, par la définition de l'espérance,
+\[
+EG_1(d_1, d_2) = 1 \cdot \mathbb P(G = 1 \mid d_1, d_2) + 0 \cdot \mathbb P(G = 0 \mid d_1, d_2) + (-1) \cdot \mathbb P(G = -1 \mid d_1, d_2).
+\]
+Soient $K_1$ et $K_2$ les variables aléatoires représentant le nombre de points obtenus par les joueurs 1 et 2, respectivement. Les évènements $G = 1$, $G = 0$ et $G = -1$ peuvent s'écrire en termes de $K_1$ et $K_2$ comme $K_1 > K_2$, $K_1 = K_2$ et $K_1 < K_2$, respectivement. On a
+\[
+\{K_1 > K_2 \mid d_1, d_2\} = \bigcup_{j=1}^{6 d_2} \bigcup_{i = j+1}^{6 d_1} \{K_1 = i, K_2 = j \mid d_1, d_2\}.
+\]
+On remarque que certains des ensembles du membre de droite peuvent être vides, par exemple pour $1 < i < 2 d_1$ ou $1 < j < 2 d_2$. En plus, l'union sur $i$ peut être vide, par exemple dans le cas $j \geq 6 d_1$, auquel cas il n'y a aucun $i$ possible entre $j+1$ et $6 d_1$. On a donc des ensembles vides qui ne changent pas l'union finale. De la même manière, on peut facilement obtenir que
+\[
+\{K_1 < K_2 \mid d_1, d_2\} = \bigcup_{i=1}^{6 d_1} \bigcup_{j = i+1}^{6 d_2} \{K_1 = i, K_2 = j \mid d_1, d_2\}.
+\]
+Avant d'obtenir la formule de $EG_1(d_1, d_2)$, on remarque que tous les évènements dans les unions ci-dessus sont deux à deux disjoints, et donc la probabilité de leur union est la somme de leurs probabilités. En plus, comme $K_1$ et $K_2$ sont indépendantes et $K_i$ ne dépend que de $d_i$, on a $\mathbb P(K_1 = i, K_2 = j \mid d_1, d_2) = P(d_1, i) P(d_2, j)$. On peut finalement obtenir une formule pour $EG_1(d_1, d_2)$~:
+\begin{align*}
+EG_1(d_1, d_2) & = \mathbb P(G = 1 \mid d_1, d_2) - \mathbb P(G = -1 \mid d_1, d_2) \\
+& = \sum_{j=1}^{6 d_2} \sum_{i = j+1}^{6 d_1} \mathbb P(K_1 = i, K_2 = j \mid d_1, d_2) - \sum_{i=1}^{6 d_1} \sum_{j = i+1}^{6 d_2} \mathbb P(K_1 = i, K_2 = j \mid d_1, d_2) \\
+& = \sum_{j=1}^{6 d_2} \sum_{i = j+1}^{6 d_1} P(d_1, i) P(d_2, j) - \sum_{i=1}^{6 d_1} \sum_{j = i+1}^{6 d_2} P(d_1, i) P(d_2, j) \\
+& = \sum_{j=1}^{6 d_2} P(d_2, j) \sum_{i = j+1}^{6 d_1} P(d_1, i) - \sum_{i=1}^{6 d_1} P(d_1, i) \sum_{j = i+1}^{6 d_2} P(d_2, j)
+\end{align*}
+
+En utilisant cette formule, on calcule, pour $D = 3$, la matrice de gains
+\[
+\begin{array}{|c|ccc|}
+\hline
+d_1 \backslash d_2 & 1 & 2 & 3 \\
+\hline
+1 & 0     & -0.375 & -0.227 \\
+2 & 0.375 &  0     & -0.199 \\
+3 & 0.227 &  0.199 &  0 \\
+\hline
+\end{array}
+\]
+Comme le jeu est à somme nulle, la matrice est anti-symétrique.
+
+\section{Question 11}
+
+Si on suppose que le joueur 2 connait la probabilité $p_1(i)$, $i = 1, 2, \dotsc, D$, alors il peut calculer le gain espéré du joueur 1. En fait, quand le joueur 2 joue $j$ dés ($j = 1, 2, \dotsc, D$), le joueur 1 gagne en espérance $EG_1(1, j)$ avec probabilité $p_1(1)$, $EG_1(2, j)$ avec probabilité $p_1(2)$, $\dotsc$, $EG_1(D, j)$ avec probabilité $p_1(D)$. L'espérance du gain du joueur 1 est donc donnée par la formule suivante~:
+\[\sum_{i=1}^D p_1(i) EG_1(i, j),\]
+quand le joueur 2 joue $j$ dés. Par conséquent, il ne reste au joueur 2 qu'à minimiser cette espérance de gain. On suppose qu'il choisit une stratégie mixte $p_2(1), p_2(2), \dotsc, p_2(D)$ (on remarque que les stratégies mixtes contiennent les pures). Le joueur 2 perdra ainsi $\sum_{i=1}^D p_1(i) EG_1(i, 1)$ avec probabilité $p_2(1)$, $\sum_{i=1}^D p_1(i) EG_1(i, 2)$ avec probabilité $p_2(2)$, $\dotsc$, $\sum_{i=1}^D p_1(i) EG_1(i, D)$ avec probabilité $p_2(D)$. Ainsi, l'espérance de sa perte est
+\[
+\sum_{j=1}^D p_2(j) \sum_{i=1}^D p_1(i) EG_1(i, j) = \sum_{i=1}^D \sum_{j=1}^D p_1(i) EG_1(i, j) p_2(j).
+\]
+Notons $p_1 = \bigl(p_1(1), p_1(2), \dotsc, p_1(D)\bigr)$, $p_2 = \bigl(p_2(1), p_2(2), \dotsc, p_2(D)\bigr)$, et $EG_1$ la matrice dont l'élément à la ligne $i$ et colonne $j$ est $EG_1(i, j)$, $i, j = 1, 2, \dotsc, D$. La perte moyenne du joueur 2 s'écrit donc~:
+\[
+p_1^\top EG_1 p_2,
+\]
+où on a supposé que $p_1$ et $p_2$ sont des vecteurs colonne.
+
+Pour le joueur 2, il faut donc minimiser son espérance de perte. C'est pourquoi il prendra une stratégie mixte $p_2^\ast = \bigl(p_2^\ast(1), p_2^\ast(2), \dotsc, p_2^\ast(D)\bigr)$ telle que
+\begin{equation}
+\label{OptimalJ2}
+p_1^\top EG_1 p_2^\ast = \min_{p_2} p_1^\top EG_1 p_2.
+\end{equation}
+
+\section{Question 12}
+
+Le joueur 1 veut maximiser de son côté son espérance de gain. Supposant que le joueur 2 joue optimalement, le joueur 1 peut déduire que, pour toute stratégie $p_1$ qu'il choisit, son adversaire jouera selon \eqref{OptimalJ2}. Sachant ce fait, il doit donc maximiser \eqref{OptimalJ2} de son côté, c'est-à-dire, il doit choisir une stratégie mixte $p_1^\ast = \bigl(p_1^\ast(1), p_1^\ast(2), \dotsc, p_1^\ast(D)\bigr)$ telle que
+\begin{equation}
+\label{OptimalJ1}
+\min_{p_2} {p_1^\ast}^\top EG_1 p_2 = \max_{p_1} \min_{p_2} p_1^\top EG_1 p_2.
+\end{equation}
+Le joueur 1 doit donc résoudre le problème de maximisation à droite dans \eqref{OptimalJ1} pour déterminer une stratégie $p_1^\ast$ qui maximisera son espérance de gain sachant que son adversaire joue optimalement.
+
+Pour trouver une solution du problème \eqref{OptimalJ1}, on remarque que, comme vu en cours (Lemme~1 du Cours~4),
+\[
+\max_{p_1} \min_{p_2} p_1^\top EG_1 p_2 = \max_{p_1} \min_{j} p_1^\top EG_1^j,
+\]
+où $EG_1^j$ est la colonne d'indice $j$ de la matrice $EG_1$ ($j = 1, 2, \dotsc, D$). En plus, d'après les propriétés vues en cours de ce type de problème linéaire, le problème $\max_{p_1} \min_{j} p_1^\top EG_1^j$ peut être résolu en résolvant
+\begin{equation}
+\label{ProblemeLineaire}
+\begin{aligned}
+& \max\; z^\prime - z^{\prime\prime} \\
+& \begin{aligned}
+- p_1^\top EG_1^j + z^\prime - z^{\prime\prime} & \leq 0 & \quad & \forall j \in \{1, \dotsc, D\}, \\
+\textstyle\sum_{i=1}^D p_1(i) & \leq 1 \\
+\textstyle-\sum_{i=1}^D p_1(i) & \leq -1 \\
+z^\prime \geq 0,\; z^{\prime\prime}\geq 0,\; p_1(i) & \geq 0 & & \forall i \in \{1, \dotsc, D\}
+\end{aligned}
+\end{aligned}
+\end{equation}
+Donc, en résolvant le problème \eqref{ProblemeLineaire} on peut obtenir un vecteur $p_1^\ast$ qui sera aussi une solution du problème \eqref{OptimalJ1}. Finalement, le joueur 1 prend donc $p_1^\ast$ comme sa stratégie optimale.
+
 \end{document}

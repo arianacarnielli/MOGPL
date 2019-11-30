@@ -109,6 +109,11 @@ class JeuSequentiel(Jeu):
             self.joueur2 += self._tirageDes(des)
         self.joueurCourant = 3 - self.joueurCourant
         
+class JeuSimultane(Jeu):
+    """
+    """
+
+        
 class Strategie:
     """
     """
@@ -183,8 +188,19 @@ class StrategieHumaine(Strategie):
         return int(des)
         
         
+def EGunCoup(D):
+    jeu = Jeu(D, 1)
+    p = jeu.probas
     
+    res = np.zeros((D, D))
     
+    for d1 in range(D):
+        for d2 in range(D):
+            for j in range(1, (d2 + 1) * 6 + 1):
+                res[d1, d2] += p[d2 + 1, j] * p[d1 + 1, j + 1 : (d1 + 1) * 6 + 1].sum()
+            for i in range(1, (d1 + 1) * 6 + 1):
+                res[d1, d2] -= p[d1 + 1, i] * p[d2 + 1, i + 1 : (d2 + 1) * 6 + 1].sum()
+    return res
     
     
     
