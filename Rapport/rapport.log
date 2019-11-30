@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  30 NOV 2019 20:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  30 NOV 2019 20:37
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -1713,7 +1713,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 447.
 Here is how much of TeX's memory you used:
  24510 strings out of 493323
  460671 string characters out of 3139066
- 577220 words of memory out of 3000000
+ 578220 words of memory out of 3000000
  27409 multiletter control sequences out of 15000+200000
  54154 words of font info for 80 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -1724,7 +1724,7 @@ Data/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmi.pfb><C:/Users/arian/App
 ic/kpfonts/jkpmn8a.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmsc8a.pfb><C:/Users/aria
 n/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsy.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1
 /public/kpfonts/jkpsyb.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on rapport.pdf (6 pages, 100963 bytes).
+Output written on rapport.pdf (6 pages, 101502 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  24 named destinations out of 1000 (max. 500000)
