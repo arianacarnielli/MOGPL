@@ -239,15 +239,24 @@
 \section{Question 1}
 
 $Q(d,k)$ est la probabilité d'obtenir $k$ points en jetant $d$ dés sachant qu'aucun dé a tombé sur $1$. On numérote les dés de $1$ à $d$ et on note $j$ le résultat du dernier dé, qui est donc un nombre entre $2$ à $6$. Alors on aura $k$ points si et seulement si les $d-1$ premiers dés donnent $k-j$ points. Les valeurs possibles de $j$ étant disjointes, on peut dire que $Q(d, k)$ est la somme pour toutes les valeurs de $j$ de $Q(d-1, k-j)$ multiplié par la probabilité que le dernier dé donne $j$ sachant qu'il n'est pas $1$ (égale à $\frac{1}{5}$), ce qui donne donc~:
-\[
+\begin{equation}
+\label{RecurrenceQ}
 Q(d, k) = \sum_{j=2}^6 \frac{Q(d-1, k-j)}{5}.
-\]
+\end{equation}
 
 Plus précisément, soient $X_1, \dotsc, X_d$ des variables aléatoires indépendantes et distribuées selon une loi uniforme sur $\{1, \dotsc, 6\}$, représentant les résultats de chaque dé. Soient $S_d = \sum_{i=1}^d X_i$ et $S_{d-1} = \sum_{i=1}^{d-1} X_i$. On peut réécrire $Q(d, k)$ comme
 \[
 Q(d, k) = \mathbb P(S_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1).
 \]
-Or $S_d = S_{d-1} + X_d$. Conditionnellement à $X_1 \neq 1, \dotsc, X_d \neq 1$, $X_d$ ne peut prendre que les valeurs $j$ allant de $2$ à $6$, et, comme les évènements $X_d = 2, \dotsc, X_d = 6$ forment une partition, on a
+
+Montrons d'abord que $P(d, k) = \left(\frac{5}{6}\right)^d Q(d, k)$ pour $2d \leq k \leq 6d$. On a
+\begin{align*}
+P(d, k) & = \mathbb P(S_d = k, X_1 \neq 1, \dotsc, X_d \neq 1) \\
+& = \mathbb P(S_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1) \mathbb P(X_1 \neq 1, \dotsc, X_d \neq 1) \\
+& = Q(d, k) \mathbb P(X_1 \neq 1) \dotsm \mathbb P(X_d \neq 1) = Q(d, k) \left(\tfrac{5}{6}\right)^d.
+\end{align*}
+
+On montre maintenant la relation \eqref{RecurrenceQ} pour $d \geq 2$ et $2d \leq k \leq 6d$. On a $S_d = S_{d-1} + X_d$. Conditionnellement à $X_1 \neq 1, \dotsc, X_d \neq 1$, $X_d$ ne peut prendre que les valeurs $j$ allant de $2$ à $6$, et, comme les évènements $X_d = 2, \dotsc, X_d = 6$ forment une partition, on a
 \begin{align*}
 Q(d, k) & = \mathbb P(S_{d-1} + X_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
 & = \sum_{j=2}^6 \mathbb P(S_{d-1} = k-j, X_d = j \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
@@ -256,34 +265,60 @@ Q(d, k) & = \mathbb P(S_{d-1} + X_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
 où l'on utilise le fait que $S_{d-1}$ et $X_d$ sont indépendants. Comme $S_{d-1}$ ne dépend pas de $X_d$, on obtient, par la définition de $Q$, que
 \[\mathbb P(S_{d-1} = k-j \mid X_1 \neq 1, \dotsc, X_d \neq 1) = \mathbb P(S_{d-1} = k-j \mid X_1 \neq 1, \dotsc, X_{d-1} \neq 1) = Q(d-1, k-j),\]
 et en plus $\mathbb P(X_d = j \mid X_1 \neq 1, \dotsc, X_d \neq 1) = \mathbb P(X_d = j \mid X_d \neq 1) = \frac{1}{5}$. Donc
-\begin{equation}
-\label{RecurrenceQ}
+\begin{equation*}
+%\label{RecurrenceQ}
 Q(d, k) = \sum_{j=2}^6 \frac{Q(d-1, k-j)}{5}.
-\end{equation}
+\end{equation*}
 
 Les cas d'initialisation correspondent à $d = 1$ et $k \in \{2, \dotsc, 6\}$, auquel cas on a $Q(1, k) = \frac{1}{5}$. En plus, $Q(1, k) = 0$ pour $k > 6$.
 
-%\section{Question 2}
+\section{Question 2}
 
-% Si il reste de l'espace, on peut mettre ici le calcul du maximum par dérivée pour montrer qu'il est toujours égal à $\min(D, 6)$.
+Remarquons que la formule 
+\begin{equation}
+\label{EPd}
+EP(d) = 4 d \left(\frac{5}{6}\right)^d + 1 - \left(\frac{5}{6}\right)^d
+\end{equation}
+provient du fait qu'on a une probabilité de $1 - \left(\frac{5}{6}\right)^d$ de ne marquer qu'un seul point et une probabilité de $\left(\frac{5}{6}\right)^d$ de marquer entre $2d$ et $6d$ points, et l'espérance du nombre de points marqué dans ce dernier cas est égale à $4d$.
+
+On veut maximiser $EP(d)$ pour $d \in \{1, \dotsc, D\}$. Pour éviter de faire une recherche exhaustive, on peut faire une étude de la fonction $EP(d)$ en relaxant d'abord $d$ à une variable réelle. Dans ce cas, on calcule
+\[
+EP^\prime(d) = 4 \left(\frac{5}{6}\right)^d + 4 d \left(\frac{5}{6}\right)^d \ln \frac{5}{6} - \left(\frac{5}{6}\right)^d \ln \frac{5}{6} = \left(\frac{5}{6}\right)^d \left(4 + 4 d \ln \frac{5}{6} - \ln\frac{5}{6}\right).
+\]
+On cherche les valeurs $d^\ast$ telles que $EP^\prime(d^\ast) = 0$. Cela arrive si et seulement si
+\[
+4 + 4 d^\ast \ln \frac{5}{6} - \ln\frac{5}{6} = 0
+\]
+et on calcule alors
+\[
+d^\ast = \frac{\ln \frac{5}{6} - 4}{4 \ln \frac{5}{6}} = \frac{\ln \frac{6}{5} + 4}{4 \ln \frac{6}{5}} \approx 5,735.
+\]
+On remarque aussi que $EP^\prime(d) > 0$ pour $d < d^\ast$ et $EP^\prime(d) < 0$ pour $d > d^\ast$, donc $EP$ est strictement croissante sur $\left]-\infty, d^\ast\right[$ et strictement décroissante pour $\left]d^\ast, +\infty\right[$, et atteint ainsi son maximum global à $d = d^\ast$.
+
+On revient maintenant à une variable discrète $d \in \{1, \dotsc, D\}$. Grâce à l'étude précédente, $EP(1) < EP(2) < \dotsb <EP(5)$ et $EP(6) > EP(7) > \dotsb$, ainsi les candidats à maximum global de $EP$ dans les entiers sont $5$ et $6$. On calcule $EP(5) \approx 8,636$ et $EP(6) \approx 8.703$, donc le maximum global est atteint en $d = 6$. Comme $d \in \{1, \dotsc, D\}$, cela n'arrive que lorsque $D \geq 6$~; dans le cas contraire, $EP$ est croissante sur $\{1, \dotsc, D\}$ et le maximum est atteint en $D$. On a donc $d^\ast(D) = \min(D, 6)$. La méthode implémentée retourne donc cette valeur.
+
+ %Si il reste de l'espace, on peut mettre ici le calcul du maximum par dérivée pour montrer qu'il est toujours égal à $\min(D, 6)$.
 
 \section{Question 3}
 
-On considère ici que $D = 10$ et $N = 2$, auquel cas $d^\ast(D) = 6$. On suppose que le joueur 1 choisit de jouer toujours $6$ dés alors que le joueur 2 choisit de jouer toujours un seul dé. Soient $X_i$ et $Y_i$ les gains des joueurs 1 et 2, respectivement, au $i$-ème lancer de dés. Alors $X_i \in \{1, 12, 13, \dotsc, 36\}$ et $Y_i \in \{1, 2, \dotsc, 6\}$. En particulier, on remarque que, si $X_1 > 1$, alors le joueur $1$ est sûr de gagner.
+On considère ici que $D = 3$ et $N = 2$, auquel cas $d^\ast(D) = 3$. On suppose que le joueur 1 choisit de jouer toujours $3$ dés alors que le joueur 2 choisit de jouer toujours un seul dé. Soient $X_i$ et $Y_i$ les gains des joueurs 1 et 2, respectivement, au $i$-ème lancer de dés. Alors $X_i \in \{1, 6, 7, \dotsc, 18\}$ et $Y_i \in \{1, 2, \dotsc, 6\}$. En particulier, on remarque que, si $X_1 > 1$, alors le joueur $1$ est sûr de gagner.
 
-Comme $N = 2$, le jeu se finira au maximum au bout de $2$ tours. Soit $G$ la variable aléatoire donnant le gain final du joueur 1~: $G = 1$ si le joueur 1 gagne, $G = 0$ si on a un match nul et $G = -1$ si le joueur 2 gagne. Les évènements $G = 1$, $G = 0$ et $G = -1$ peuvent être décrits en fonction de $X_i$ et $Y_i$ de la façon suivante~:
+Comme $N = 2$, le jeu se finira au maximum au bout de $2$ tours. Soit $G$ la variable aléatoire donnant le gain final du joueur 1~: $G = 1$ si le joueur 1 gagne et $G = -1$ si le joueur 2 gagne (il est impossible d'avoir un match nul dans la variante séquentielle). Les évènements $G = 1$ et $G = -1$ peuvent être décrits en fonction de $X_i$ et $Y_i$ de la façon suivante~:
 \begin{align*}
-G = 1 : \quad & X_1 > 1 \cup \bigl(X_1 = 1 \cap Y_1 = 1 \cap X_2 > 1\bigr) \\
-G = 0 : \quad & X_1 = 1 \cap Y_1 = 1 \cap X_2 = 1 \cap Y_2 = 1 \\
-G = -1 : \quad & \bigl(X_1 = 1 \cap Y_1 > 1\bigr) \cup \bigl(X_1 = 1 \cap Y_1 = 1 \cap X_2 = 1 \cap Y_2 > 1\bigr)
+G = 1 : \quad & X_1 > 1 \cup \bigl(X_1 = 1 \cap Y_1 = 1\bigr) \\
+G = -1 : \quad & X_1 = 1 \cap Y_1 > 1
 \end{align*}
 Cela permet de calculer les probabilités~:
 \begin{align*}
-\mathbb P(G = 1) & = \left(\frac{5}{6}\right)^6 + \left(1 - \left(\frac{5}{6}\right)^6\right)\frac{1}{6} \left(\frac{5}{6}\right)^6 \approx 0.3720\\
-\mathbb P(G = 0) & = \left(1 - \left(\frac{5}{6}\right)^6\right)^2 \left(\frac{1}{6}\right)^2 \approx 0.0123\\
-\mathbb P(G = -1) & = \left(1 - \left(\frac{5}{6}\right)^6\right) \frac{5}{6} + \left(1 - \left(\frac{5}{6}\right)^6\right)^2 \frac{1}{6} \frac{5}{6} \approx 0.6157
+\mathbb P(G = 1) & = \left(\frac{5}{6}\right)^3 + \left(1 - \left(\frac{5}{6}\right)^3\right)\frac{1}{6} \approx 0,6489\\
+\mathbb P(G = -1) & = \left(1 - \left(\frac{5}{6}\right)^3\right) \frac{5}{6} \approx 0,3511
 \end{align*}
-Comme $\mathbb P(G = 1) < \mathbb P(G = -1)$, on aura $\mathbb E(G) < 0$, le joueur 1 a une espérance de gain négative. Néanmoins, si le joueur 1 choisit de jouer comme le joueur 2 et ne lancer qu'un dé, alors, par la symétrie entre les joueurs dans ce cas, on aura $\mathbb P(G = 1) = \mathbb P(G = -1)$ et donc $\mathbb E(G) = 0$. Il est donc préférable dans ce cas pour le joueur 1 de jouer 1 dé que de jouer $d^\ast(10) = 6$ dés.
+On a donc $\mathbb E(G) \approx 0,2978$. Si, à la place de $d^\ast(D) = 3$, le joueur 1 avait choisit de jouer $1$ dé comme le joueur 2, les probabilités de $G = 1$ et $G = -1$ auraient été
+\begin{align*}
+\mathbb P(G = 1) & = \frac{5}{6} + \left(\frac{1}{6}\right)^2 \approx 0,8611\\
+\mathbb P(G = -1) & = \frac{1}{6} \frac{5}{6} \approx 0,1389
+\end{align*}
+Cela donne $\mathbb E(G) \approx 0,7222$. Ainsi, l'espérance de gain du joueur 1 est plus grande s'il ne choisit de joueur qu'un seul dé dans ce cas.
 
 On remarque que la situation de cet exemple n'est pas exceptionnelle~: le cas $N = 2$ est équivalant, par exemple, au cas $N = 100$ lorsque les deux joueurs sont à égalité avec $98$ points.
 

@@ -136,9 +136,7 @@ class StrategieAveugle(Strategie):
         """
         ancienne EsperanceDes(D).
         """
-        d = np.arange(self.jeu.D + 1)
-        esperance = 4 * d * (5 / 6) ** d + 1 - (5 / 6) ** d 
-        return esperance.argmax()
+        return min(6, self.jeu.D)
     
 class StrategieOptimaleSequentielle(Strategie):
     """
