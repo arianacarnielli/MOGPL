@@ -5,6 +5,8 @@ Created on Thu Nov 21 00:19:27 2019
 @author: arian
 """
 import numpy as np
+from scipy.optimize import linprog
+from tqdm import tqdm
 
 class Jeu:
     """
@@ -108,6 +110,37 @@ class JeuSequentiel(Jeu):
             des = self.strategie2.jouerTour(self.joueur2, self.joueur1)
             self.joueur2 += self._tirageDes(des)
         self.joueurCourant = 3 - self.joueurCourant
+
+class JeuSimultanee(Jeu):
+    """
+    """
+    def __init__(self, D, N):
+        super().__init__(D, N)
+
+    def _tour(self):
+        """
+        """
+        des_proba = self.strategie1.jouerTour(self.joueur1, self.joueur2)
+        rand_val = np.random.rand()
+        des = np.arange(self.D+1)[des_proba.cumsum() > rand_val][0]
+        self.joueur1 += self._tirageDes(des)
+
+        des_proba = self.strategie2.jouerTour(self.joueur2, self.joueur1)
+        rand_val = np.random.rand()
+        des = np.arange(self.D+1)[des_proba.cumsum() > rand_val][0]
+        self.joueur2 += self._tirageDes(des)
+
+    def comparerStrategies(self, nbs=1000):
+        """
+        """
+        res = np.array([0, 0, 0], dtype=int)
+        for _ in tqdm(range(nbs)):
+            self.joueur1 = 0
+            self.joueur2 = 0
+            while not self._estfini():
+                self._tour()
+            res[self.vainqueur()] += 1
+        return res / nbs
         
 class Strategie:
     """
@@ -183,10 +216,73 @@ class StrategieHumaine(Strategie):
         """
         des = input("Choisissez la quantité de dés : ")
         return int(des)
-        
-        
-    
-    
-    
-    
-    
+
+
+class StrategieOptimaleSimultaneeTour(Strategie):
+
+    def __init__(self, jeu):
+        super().__init__(jeu)
+        self._EG1 = self._esperanceGainPremier()
+
+    def _esperanceGainPremier(self):
+        D = self.jeu.D
+        probas = self.jeu.probas.copy()
+
+        EG1 = np.zeros((D + 1, D + 1))
+        EG1[1:, 0] = 1
+        EG1[0, 1:] = -1
+        for d1 in range(1, D + 1):
+            for d2 in range(1, D + 1):
+                for j in range(1, 6 * d2 + 1):
+                    EG1[d1, d2] += probas[d2, j] * np.sum(probas[d1, j + 1:6 * d1 + 1])
+                for i in range(1, 6 * d1 + 1):
+                    EG1[d1, d2] -= probas[d1, i] * np.sum(probas[d2, i + 1:6 * d2 + 1])
+
+        return EG1
+
+    def _matriceContrainte(self):
+        D = self.jeu.D
+        mres = np.zeros((D+2, D+2))
+        for j in range(1, D+1):
+            mres[j-1] = np.concatenate((
+                [1.0, -1.0],
+                -(self._EG1[:, j])[1:]
+            ))
+        mres[-2] = np.concatenate((
+            [0.0, 0.0],
+            np.ones(D)
+        ))
+        mres[-1] = -mres[-2].copy()
+
+        return mres
+
+    def jouerTour(self, moi, autre):
+        D = self.jeu.D
+        strategie_mixte = np.zeros(D+1)
+
+        A_ub = self._matriceContrainte()
+
+        b_ub = np.zeros(D+2)
+        b_ub[-2] = 1.0
+        b_ub[-1] = -1.0
+
+        obj = np.zeros(D+2)
+        obj[0] = 1.0
+        obj[1] = -1.0
+
+        opt_res = linprog(-obj, method='simplex', A_ub=A_ub, b_ub=b_ub)
+        strategie_mixte[1:] = opt_res.x[2:]
+
+        return strategie_mixte
+
+class StrategieAveugleAdapte(Strategie):
+    """
+    """
+
+    def jouerTour(self, moi, autre):
+        """
+        """
+        d = self.jeu.D if self.jeu.D <= 6 else 6
+        strategie_mixte = np.zeros(self.jeu.D+1)
+        strategie_mixte[d] = 1.0
+        return strategie_mixte
