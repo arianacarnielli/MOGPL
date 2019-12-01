@@ -226,7 +226,7 @@
 \pagestyle{plain}
 
 \title{Projet UE MOGPL --- MU4IN200 \\ Dice Battle}
-\author{Ariana Carnielli}
+\author{Ariana Carnielli \\ Ivan Kachaikin}
 \date{}
 
 \maketitle
@@ -239,15 +239,24 @@
 \section{Question 1}
 
 $Q(d,k)$ est la probabilité d'obtenir $k$ points en jetant $d$ dés sachant qu'aucun dé a tombé sur $1$. On numérote les dés de $1$ à $d$ et on note $j$ le résultat du dernier dé, qui est donc un nombre entre $2$ à $6$. Alors on aura $k$ points si et seulement si les $d-1$ premiers dés donnent $k-j$ points. Les valeurs possibles de $j$ étant disjointes, on peut dire que $Q(d, k)$ est la somme pour toutes les valeurs de $j$ de $Q(d-1, k-j)$ multiplié par la probabilité que le dernier dé donne $j$ sachant qu'il n'est pas $1$ (égale à $\frac{1}{5}$), ce qui donne donc~:
-\[
+\begin{equation}
+\label{RecurrenceQ}
 Q(d, k) = \sum_{j=2}^6 \frac{Q(d-1, k-j)}{5}.
-\]
+\end{equation}
 
 Plus précisément, soient $X_1, \dotsc, X_d$ des variables aléatoires indépendantes et distribuées selon une loi uniforme sur $\{1, \dotsc, 6\}$, représentant les résultats de chaque dé. Soient $S_d = \sum_{i=1}^d X_i$ et $S_{d-1} = \sum_{i=1}^{d-1} X_i$. On peut réécrire $Q(d, k)$ comme
 \[
 Q(d, k) = \mathbb P(S_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1).
 \]
-Or $S_d = S_{d-1} + X_d$. Conditionnellement à $X_1 \neq 1, \dotsc, X_d \neq 1$, $X_d$ ne peut prendre que les valeurs $j$ allant de $2$ à $6$, et, comme les évènements $X_d = 2, \dotsc, X_d = 6$ forment une partition, on a
+
+Montrons d'abord que $P(d, k) = \left(\frac{5}{6}\right)^d Q(d, k)$ pour $2d \leq k \leq 6d$. On a
+\begin{align*}
+P(d, k) & = \mathbb P(S_d = k, X_1 \neq 1, \dotsc, X_d \neq 1) \\
+& = \mathbb P(S_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1) \mathbb P(X_1 \neq 1, \dotsc, X_d \neq 1) \\
+& = Q(d, k) \mathbb P(X_1 \neq 1) \dotsm \mathbb P(X_d \neq 1) = Q(d, k) \left(\tfrac{5}{6}\right)^d.
+\end{align*}
+
+On montre maintenant la relation \eqref{RecurrenceQ} pour $d \geq 2$ et $2d \leq k \leq 6d$. On a $S_d = S_{d-1} + X_d$. Conditionnellement à $X_1 \neq 1, \dotsc, X_d \neq 1$, $X_d$ ne peut prendre que les valeurs $j$ allant de $2$ à $6$, et, comme les évènements $X_d = 2, \dotsc, X_d = 6$ forment une partition, on a
 \begin{align*}
 Q(d, k) & = \mathbb P(S_{d-1} + X_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
 & = \sum_{j=2}^6 \mathbb P(S_{d-1} = k-j, X_d = j \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
@@ -256,34 +265,60 @@ Q(d, k) & = \mathbb P(S_{d-1} + X_d = k \mid X_1 \neq 1, \dotsc, X_d \neq 1) \\
 où l'on utilise le fait que $S_{d-1}$ et $X_d$ sont indépendants. Comme $S_{d-1}$ ne dépend pas de $X_d$, on obtient, par la définition de $Q$, que
 \[\mathbb P(S_{d-1} = k-j \mid X_1 \neq 1, \dotsc, X_d \neq 1) = \mathbb P(S_{d-1} = k-j \mid X_1 \neq 1, \dotsc, X_{d-1} \neq 1) = Q(d-1, k-j),\]
 et en plus $\mathbb P(X_d = j \mid X_1 \neq 1, \dotsc, X_d \neq 1) = \mathbb P(X_d = j \mid X_d \neq 1) = \frac{1}{5}$. Donc
-\begin{equation}
-\label{RecurrenceQ}
+\begin{equation*}
+%\label{RecurrenceQ}
 Q(d, k) = \sum_{j=2}^6 \frac{Q(d-1, k-j)}{5}.
-\end{equation}
+\end{equation*}
 
 Les cas d'initialisation correspondent à $d = 1$ et $k \in \{2, \dotsc, 6\}$, auquel cas on a $Q(1, k) = \frac{1}{5}$. En plus, $Q(1, k) = 0$ pour $k > 6$.
 
-%\section{Question 2}
+\section{Question 2}
 
-% Si il reste de l'espace, on peut mettre ici le calcul du maximum par dérivée pour montrer qu'il est toujours égal à $\min(D, 6)$.
+Remarquons que la formule 
+\begin{equation}
+\label{EPd}
+EP(d) = 4 d \left(\frac{5}{6}\right)^d + 1 - \left(\frac{5}{6}\right)^d
+\end{equation}
+provient du fait qu'on a une probabilité de $1 - \left(\frac{5}{6}\right)^d$ de ne marquer qu'un seul point et une probabilité de $\left(\frac{5}{6}\right)^d$ de marquer entre $2d$ et $6d$ points, et l'espérance du nombre de points marqué dans ce dernier cas est égale à $4d$.
+
+On veut maximiser $EP(d)$ pour $d \in \{1, \dotsc, D\}$. Pour éviter de faire une recherche exhaustive, on peut faire une étude de la fonction $EP(d)$ en relaxant d'abord $d$ à une variable réelle. Dans ce cas, on calcule
+\[
+EP^\prime(d) = 4 \left(\frac{5}{6}\right)^d + 4 d \left(\frac{5}{6}\right)^d \ln \frac{5}{6} - \left(\frac{5}{6}\right)^d \ln \frac{5}{6} = \left(\frac{5}{6}\right)^d \left(4 + 4 d \ln \frac{5}{6} - \ln\frac{5}{6}\right).
+\]
+On cherche les valeurs $d^\ast$ telles que $EP^\prime(d^\ast) = 0$. Cela arrive si et seulement si
+\[
+4 + 4 d^\ast \ln \frac{5}{6} - \ln\frac{5}{6} = 0
+\]
+et on calcule alors
+\[
+d^\ast = \frac{\ln \frac{5}{6} - 4}{4 \ln \frac{5}{6}} = \frac{\ln \frac{6}{5} + 4}{4 \ln \frac{6}{5}} \approx 5,735.
+\]
+On remarque aussi que $EP^\prime(d) > 0$ pour $d < d^\ast$ et $EP^\prime(d) < 0$ pour $d > d^\ast$, donc $EP$ est strictement croissante sur $\left]-\infty, d^\ast\right[$ et strictement décroissante pour $\left]d^\ast, +\infty\right[$, et atteint ainsi son maximum global à $d = d^\ast$.
+
+On revient maintenant à une variable discrète $d \in \{1, \dotsc, D\}$. Grâce à l'étude précédente, $EP(1) < EP(2) < \dotsb <EP(5)$ et $EP(6) > EP(7) > \dotsb$, ainsi les candidats à maximum global de $EP$ dans les entiers sont $5$ et $6$. On calcule $EP(5) \approx 8,636$ et $EP(6) \approx 8.703$, donc le maximum global est atteint en $d = 6$. Comme $d \in \{1, \dotsc, D\}$, cela n'arrive que lorsque $D \geq 6$~; dans le cas contraire, $EP$ est croissante sur $\{1, \dotsc, D\}$ et le maximum est atteint en $D$. On a donc $d^\ast(D) = \min(D, 6)$. La méthode implémentée retourne donc cette valeur.
+
+ %Si il reste de l'espace, on peut mettre ici le calcul du maximum par dérivée pour montrer qu'il est toujours égal à $\min(D, 6)$.
 
 \section{Question 3}
 
-On considère ici que $D = 10$ et $N = 2$, auquel cas $d^\ast(D) = 6$. On suppose que le joueur 1 choisit de jouer toujours $6$ dés alors que le joueur 2 choisit de jouer toujours un seul dé. Soient $X_i$ et $Y_i$ les gains des joueurs 1 et 2, respectivement, au $i$-ème lancer de dés. Alors $X_i \in \{1, 12, 13, \dotsc, 36\}$ et $Y_i \in \{1, 2, \dotsc, 6\}$. En particulier, on remarque que, si $X_1 > 1$, alors le joueur $1$ est sûr de gagner.
+On considère ici que $D = 3$ et $N = 2$, auquel cas $d^\ast(D) = 3$. On suppose que le joueur 1 choisit de jouer toujours $3$ dés alors que le joueur 2 choisit de jouer toujours un seul dé. Soient $X_i$ et $Y_i$ les gains des joueurs 1 et 2, respectivement, au $i$-ème lancer de dés. Alors $X_i \in \{1, 6, 7, \dotsc, 18\}$ et $Y_i \in \{1, 2, \dotsc, 6\}$. En particulier, on remarque que, si $X_1 > 1$, alors le joueur $1$ est sûr de gagner.
 
-Comme $N = 2$, le jeu se finira au maximum au bout de $2$ tours. Soit $G$ la variable aléatoire donnant le gain final du joueur 1~: $G = 1$ si le joueur 1 gagne, $G = 0$ si on a un match nul et $G = -1$ si le joueur 2 gagne. Les évènements $G = 1$, $G = 0$ et $G = -1$ peuvent être décrits en fonction de $X_i$ et $Y_i$ de la façon suivante~:
+Comme $N = 2$, le jeu se finira au maximum au bout de $2$ tours. Soit $G$ la variable aléatoire donnant le gain final du joueur 1~: $G = 1$ si le joueur 1 gagne et $G = -1$ si le joueur 2 gagne (il est impossible d'avoir un match nul dans la variante séquentielle). Les évènements $G = 1$ et $G = -1$ peuvent être décrits en fonction de $X_i$ et $Y_i$ de la façon suivante~:
 \begin{align*}
-G = 1 : \quad & X_1 > 1 \cup \bigl(X_1 = 1 \cap Y_1 = 1 \cap X_2 > 1\bigr) \\
-G = 0 : \quad & X_1 = 1 \cap Y_1 = 1 \cap X_2 = 1 \cap Y_2 = 1 \\
-G = -1 : \quad & \bigl(X_1 = 1 \cap Y_1 > 1\bigr) \cup \bigl(X_1 = 1 \cap Y_1 = 1 \cap X_2 = 1 \cap Y_2 > 1\bigr)
+G = 1 : \quad & X_1 > 1 \cup \bigl(X_1 = 1 \cap Y_1 = 1\bigr) \\
+G = -1 : \quad & X_1 = 1 \cap Y_1 > 1
 \end{align*}
 Cela permet de calculer les probabilités~:
 \begin{align*}
-\mathbb P(G = 1) & = \left(\frac{5}{6}\right)^6 + \left(1 - \left(\frac{5}{6}\right)^6\right)\frac{1}{6} \left(\frac{5}{6}\right)^6 \approx 0.3720\\
-\mathbb P(G = 0) & = \left(1 - \left(\frac{5}{6}\right)^6\right)^2 \left(\frac{1}{6}\right)^2 \approx 0.0123\\
-\mathbb P(G = -1) & = \left(1 - \left(\frac{5}{6}\right)^6\right) \frac{5}{6} + \left(1 - \left(\frac{5}{6}\right)^6\right)^2 \frac{1}{6} \frac{5}{6} \approx 0.6157
+\mathbb P(G = 1) & = \left(\frac{5}{6}\right)^3 + \left(1 - \left(\frac{5}{6}\right)^3\right)\frac{1}{6} \approx 0,6489\\
+\mathbb P(G = -1) & = \left(1 - \left(\frac{5}{6}\right)^3\right) \frac{5}{6} \approx 0,3511
 \end{align*}
-Comme $\mathbb P(G = 1) < \mathbb P(G = -1)$, on aura $\mathbb E(G) < 0$, le joueur 1 a une espérance de gain négative. Néanmoins, si le joueur 1 choisit de jouer comme le joueur 2 et ne lancer qu'un dé, alors, par la symétrie entre les joueurs dans ce cas, on aura $\mathbb P(G = 1) = \mathbb P(G = -1)$ et donc $\mathbb E(G) = 0$. Il est donc préférable dans ce cas pour le joueur 1 de jouer 1 dé que de jouer $d^\ast(10) = 6$ dés.
+On a donc $\mathbb E(G) \approx 0,2978$. Si, à la place de $d^\ast(D) = 3$, le joueur 1 avait choisit de jouer $1$ dé comme le joueur 2, les probabilités de $G = 1$ et $G = -1$ auraient été
+\begin{align*}
+\mathbb P(G = 1) & = \frac{5}{6} + \left(\frac{1}{6}\right)^2 \approx 0,8611\\
+\mathbb P(G = -1) & = \frac{1}{6} \frac{5}{6} \approx 0,1389
+\end{align*}
+Cela donne $\mathbb E(G) \approx 0,7222$. Ainsi, l'espérance de gain du joueur 1 est plus grande s'il ne choisit de joueur qu'un seul dé dans ce cas.
 
 On remarque que la situation de cet exemple n'est pas exceptionnelle~: le cas $N = 2$ est équivalant, par exemple, au cas $N = 100$ lorsque les deux joueurs sont à égalité avec $98$ points.
 
@@ -324,5 +359,89 @@ Cela peut être calculé en même temps que le calcul récursif de $EG$ par la f
 \section{Question 6}
 
 Dans ce cas, la somme dans \eqref{EsperanceGainRec} doit commencer à $k = 0$ à la place de $k = 1$. Le calcul de $EG(i, j)$ par \eqref{EsperanceGainRec} utilise en particulier, dans le second membre, la valeur de $EG(j, i)$. Or, le calcul de $EG(j, i)$ par \eqref{EsperanceGainRec} utilise dans son second membre la valeur de $EG(i, j)$. Ainsi, \eqref{EsperanceGainRec} ne permet pas de calculer $EG(i, j)$ de façon explicite, mais donne uniquement une relation implicite où $EG(i, j)$ dépend de lui-même. Il faudrait alors implémenter une méthode pour être capable de calculer $EG(i, j)$ à partir de cette relation implicite.
+
+\section{Question 10}
+
+Soit $G$ la variable aléatoire donnant le gain du joueur 1 lorsqu'il a jeté $d_1$ dés et le joueur 2 a jeté $d_2$ dés. Alors, par la définition de l'espérance,
+\[
+EG_1(d_1, d_2) = 1 \cdot \mathbb P(G = 1 \mid d_1, d_2) + 0 \cdot \mathbb P(G = 0 \mid d_1, d_2) + (-1) \cdot \mathbb P(G = -1 \mid d_1, d_2).
+\]
+Soient $K_1$ et $K_2$ les variables aléatoires représentant le nombre de points obtenus par les joueurs 1 et 2, respectivement. Les évènements $G = 1$, $G = 0$ et $G = -1$ peuvent s'écrire en termes de $K_1$ et $K_2$ comme $K_1 > K_2$, $K_1 = K_2$ et $K_1 < K_2$, respectivement. On a
+\[
+\{K_1 > K_2 \mid d_1, d_2\} = \bigcup_{j=1}^{6 d_2} \bigcup_{i = j+1}^{6 d_1} \{K_1 = i, K_2 = j \mid d_1, d_2\}.
+\]
+On remarque que certains des ensembles du membre de droite peuvent être vides, par exemple pour $1 < i < 2 d_1$ ou $1 < j < 2 d_2$. En plus, l'union sur $i$ peut être vide, par exemple dans le cas $j \geq 6 d_1$, auquel cas il n'y a aucun $i$ possible entre $j+1$ et $6 d_1$. On a donc des ensembles vides qui ne changent pas l'union finale. De la même manière, on peut facilement obtenir que
+\[
+\{K_1 < K_2 \mid d_1, d_2\} = \bigcup_{i=1}^{6 d_1} \bigcup_{j = i+1}^{6 d_2} \{K_1 = i, K_2 = j \mid d_1, d_2\}.
+\]
+Avant d'obtenir la formule de $EG_1(d_1, d_2)$, on remarque que tous les évènements dans les unions ci-dessus sont deux à deux disjoints, et donc la probabilité de leur union est la somme de leurs probabilités. En plus, comme $K_1$ et $K_2$ sont indépendantes et $K_i$ ne dépend que de $d_i$, on a $\mathbb P(K_1 = i, K_2 = j \mid d_1, d_2) = P(d_1, i) P(d_2, j)$. On peut finalement obtenir une formule pour $EG_1(d_1, d_2)$~:
+\begin{align*}
+EG_1(d_1, d_2) & = \mathbb P(G = 1 \mid d_1, d_2) - \mathbb P(G = -1 \mid d_1, d_2) \\
+& = \sum_{j=1}^{6 d_2} \sum_{i = j+1}^{6 d_1} \mathbb P(K_1 = i, K_2 = j \mid d_1, d_2) - \sum_{i=1}^{6 d_1} \sum_{j = i+1}^{6 d_2} \mathbb P(K_1 = i, K_2 = j \mid d_1, d_2) \\
+& = \sum_{j=1}^{6 d_2} \sum_{i = j+1}^{6 d_1} P(d_1, i) P(d_2, j) - \sum_{i=1}^{6 d_1} \sum_{j = i+1}^{6 d_2} P(d_1, i) P(d_2, j) \\
+& = \sum_{j=1}^{6 d_2} P(d_2, j) \sum_{i = j+1}^{6 d_1} P(d_1, i) - \sum_{i=1}^{6 d_1} P(d_1, i) \sum_{j = i+1}^{6 d_2} P(d_2, j)
+\end{align*}
+
+En utilisant cette formule, on calcule, pour $D = 3$, la matrice de gains
+\[
+\begin{array}{|c|ccc|}
+\hline
+d_1 \backslash d_2 & 1 & 2 & 3 \\
+\hline
+1 & 0     & -0.375 & -0.227 \\
+2 & 0.375 &  0     & -0.199 \\
+3 & 0.227 &  0.199 &  0 \\
+\hline
+\end{array}
+\]
+Comme le jeu est à somme nulle, la matrice est anti-symétrique.
+
+\section{Question 11}
+
+Si on suppose que le joueur 2 connait la probabilité $p_1(i)$, $i = 1, 2, \dotsc, D$, alors il peut calculer le gain espéré du joueur 1. En fait, quand le joueur 2 joue $j$ dés ($j = 1, 2, \dotsc, D$), le joueur 1 gagne en espérance $EG_1(1, j)$ avec probabilité $p_1(1)$, $EG_1(2, j)$ avec probabilité $p_1(2)$, $\dotsc$, $EG_1(D, j)$ avec probabilité $p_1(D)$. L'espérance du gain du joueur 1 est donc donnée par la formule suivante~:
+\[\sum_{i=1}^D p_1(i) EG_1(i, j),\]
+quand le joueur 2 joue $j$ dés. Par conséquent, il ne reste au joueur 2 qu'à minimiser cette espérance de gain. On suppose qu'il choisit une stratégie mixte $p_2(1), p_2(2), \dotsc, p_2(D)$ (on remarque que les stratégies mixtes contiennent les pures). Le joueur 2 perdra ainsi $\sum_{i=1}^D p_1(i) EG_1(i, 1)$ avec probabilité $p_2(1)$, $\sum_{i=1}^D p_1(i) EG_1(i, 2)$ avec probabilité $p_2(2)$, $\dotsc$, $\sum_{i=1}^D p_1(i) EG_1(i, D)$ avec probabilité $p_2(D)$. Ainsi, l'espérance de sa perte est
+\[
+\sum_{j=1}^D p_2(j) \sum_{i=1}^D p_1(i) EG_1(i, j) = \sum_{i=1}^D \sum_{j=1}^D p_1(i) EG_1(i, j) p_2(j).
+\]
+Notons $p_1 = \bigl(p_1(1), p_1(2), \dotsc, p_1(D)\bigr)$, $p_2 = \bigl(p_2(1), p_2(2), \dotsc, p_2(D)\bigr)$, et $EG_1$ la matrice dont l'élément à la ligne $i$ et colonne $j$ est $EG_1(i, j)$, $i, j = 1, 2, \dotsc, D$. La perte moyenne du joueur 2 s'écrit donc~:
+\[
+p_1^\top EG_1 p_2,
+\]
+où on a supposé que $p_1$ et $p_2$ sont des vecteurs colonne.
+
+Pour le joueur 2, il faut donc minimiser son espérance de perte. C'est pourquoi il prendra une stratégie mixte $p_2^\ast = \bigl(p_2^\ast(1), p_2^\ast(2), \dotsc, p_2^\ast(D)\bigr)$ telle que
+\begin{equation}
+\label{OptimalJ2}
+p_1^\top EG_1 p_2^\ast = \min_{p_2} p_1^\top EG_1 p_2.
+\end{equation}
+
+\section{Question 12}
+
+Le joueur 1 veut maximiser de son côté son espérance de gain. Supposant que le joueur 2 joue optimalement, le joueur 1 peut déduire que, pour toute stratégie $p_1$ qu'il choisit, son adversaire jouera selon \eqref{OptimalJ2}. Sachant ce fait, il doit donc maximiser \eqref{OptimalJ2} de son côté, c'est-à-dire, il doit choisir une stratégie mixte $p_1^\ast = \bigl(p_1^\ast(1), p_1^\ast(2), \dotsc, p_1^\ast(D)\bigr)$ telle que
+\begin{equation}
+\label{OptimalJ1}
+\min_{p_2} {p_1^\ast}^\top EG_1 p_2 = \max_{p_1} \min_{p_2} p_1^\top EG_1 p_2.
+\end{equation}
+Le joueur 1 doit donc résoudre le problème de maximisation à droite dans \eqref{OptimalJ1} pour déterminer une stratégie $p_1^\ast$ qui maximisera son espérance de gain sachant que son adversaire joue optimalement.
+
+Pour trouver une solution du problème \eqref{OptimalJ1}, on remarque que, comme vu en cours (Lemme~1 du Cours~4),
+\[
+\max_{p_1} \min_{p_2} p_1^\top EG_1 p_2 = \max_{p_1} \min_{j} p_1^\top EG_1^j,
+\]
+où $EG_1^j$ est la colonne d'indice $j$ de la matrice $EG_1$ ($j = 1, 2, \dotsc, D$). En plus, d'après les propriétés vues en cours de ce type de problème linéaire, le problème $\max_{p_1} \min_{j} p_1^\top EG_1^j$ peut être résolu en résolvant
+\begin{equation}
+\label{ProblemeLineaire}
+\begin{aligned}
+& \max\; z^\prime - z^{\prime\prime} \\
+& \begin{aligned}
+- p_1^\top EG_1^j + z^\prime - z^{\prime\prime} & \leq 0 & \quad & \forall j \in \{1, \dotsc, D\}, \\
+\textstyle\sum_{i=1}^D p_1(i) & \leq 1 \\
+\textstyle-\sum_{i=1}^D p_1(i) & \leq -1 \\
+z^\prime \geq 0,\; z^{\prime\prime}\geq 0,\; p_1(i) & \geq 0 & & \forall i \in \{1, \dotsc, D\}
+\end{aligned}
+\end{aligned}
+\end{equation}
+Donc, en résolvant le problème \eqref{ProblemeLineaire} on peut obtenir un vecteur $p_1^\ast$ qui sera aussi une solution du problème \eqref{OptimalJ1}. Finalement, le joueur 1 prend donc $p_1^\ast$ comme sa stratégie optimale.
 
 \end{document}

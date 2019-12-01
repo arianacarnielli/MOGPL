@@ -142,6 +142,11 @@ class JeuSimultanee(Jeu):
             res[self.vainqueur()] += 1
         return res / nbs
         
+class JeuSimultane(Jeu):
+    """
+    """
+
+        
 class Strategie:
     """
     """
@@ -169,9 +174,7 @@ class StrategieAveugle(Strategie):
         """
         ancienne EsperanceDes(D).
         """
-        d = np.arange(self.jeu.D + 1)
-        esperance = 4 * d * (5 / 6) ** d + 1 - (5 / 6) ** d 
-        return esperance.argmax()
+        return min(6, self.jeu.D)
     
 class StrategieOptimaleSequentielle(Strategie):
     """
@@ -216,6 +219,7 @@ class StrategieHumaine(Strategie):
         """
         des = input("Choisissez la quantité de dés : ")
         return int(des)
+
 
 
 class StrategieOptimaleSimultaneeTour(Strategie):
@@ -286,3 +290,22 @@ class StrategieAveugleAdapte(Strategie):
         strategie_mixte = np.zeros(self.jeu.D+1)
         strategie_mixte[d] = 1.0
         return strategie_mixte
+        
+        
+def EGunCoup(D):
+    jeu = Jeu(D, 1)
+    p = jeu.probas
+    
+    res = np.zeros((D, D))
+    
+    for d1 in range(D):
+        for d2 in range(D):
+            for j in range(1, (d2 + 1) * 6 + 1):
+                res[d1, d2] += p[d2 + 1, j] * p[d1 + 1, j + 1 : (d1 + 1) * 6 + 1].sum()
+            for i in range(1, (d1 + 1) * 6 + 1):
+                res[d1, d2] -= p[d1 + 1, i] * p[d2 + 1, i + 1 : (d2 + 1) * 6 + 1].sum()
+    return res
+    
+    
+    
+
