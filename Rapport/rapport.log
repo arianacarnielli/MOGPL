@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  30 NOV 2019 20:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  3 DEC 2019 00:37
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -485,30 +485,35 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \NC@list=\toks39
 \extratabsurround=\skip51
 \backup@length=\skip52
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip53
+\multirow@cntb=\count122
+\multirow@dima=\skip54
+\bigstrutjot=\dimen177
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip53
-\LTright=\skip54
-\LTpre=\skip55
-\LTpost=\skip56
-\LTchunksize=\count122
-\LTcapwidth=\dimen177
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count123
+\LTcapwidth=\dimen178
 \LT@head=\box60
 \LT@firsthead=\box61
 \LT@foot=\box62
 \LT@lastfoot=\box63
-\LT@cols=\count123
-\LT@rows=\count124
-\c@LT@tables=\count125
-\c@LT@chunks=\count126
+\LT@cols=\count124
+\LT@rows=\count125
+\c@LT@tables=\count126
+\c@LT@chunks=\count127
 \LT@p@ftn=\toks40
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amscd.sty"
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amscd.sty"
 Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
 \athelp@=\toks41
-\minaw@=\dimen178
-\bigaw@=\dimen179
-\minCDarrowwidth=\dimen180
+\minaw@=\dimen179
+\bigaw@=\dimen180
+\minCDarrowwidth=\dimen181
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\bezier.sty")
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -518,16 +523,16 @@ Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count127
-\calc@Bcount=\count128
-\calc@Adimen=\dimen181
-\calc@Bdimen=\dimen182
-\calc@Askip=\skip57
-\calc@Bskip=\skip58
+\calc@Acount=\count128
+\calc@Bcount=\count129
+\calc@Adimen=\dimen182
+\calc@Bdimen=\dimen183
+\calc@Askip=\skip59
+\calc@Bskip=\skip60
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count129
-\calc@Cskip=\skip59
+\calc@Ccount=\count130
+\calc@Cskip=\skip61
 )
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\mathtools\mhsetup.sty
 Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
@@ -536,15 +541,15 @@ LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count130
-\l_MT_multwidth_dim=\dimen183
-\origjot=\skip60
-\l_MT_shortvdotswithinadjustabove_dim=\dimen184
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen185
-\l_MT_above_intertext_sep=\dimen186
-\l_MT_below_intertext_sep=\dimen187
-\l_MT_above_shortintertext_sep=\dimen188
-\l_MT_below_shortintertext_sep=\dimen189
+\g_MT_multlinerow_int=\count131
+\l_MT_multwidth_dim=\dimen184
+\origjot=\skip62
+\l_MT_shortvdotswithinadjustabove_dim=\dimen185
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen186
+\l_MT_above_intertext_sep=\dimen187
+\l_MT_below_intertext_sep=\dimen188
+\l_MT_above_shortintertext_sep=\dimen189
+\l_MT_below_shortintertext_sep=\dimen190
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
@@ -881,12 +886,12 @@ Language: frenchb 2017/04/30 v3.3a French support from the babel system
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2017/05/19 3.10 Babel common definitions
-\babel@savecnt=\count131
-\U@D=\dimen190
+\babel@savecnt=\count132
+\U@D=\dimen191
 )
 \l@acadian = a dialect from \language\l@french 
 \l@canadien = a dialect from \language\l@french 
-\FB@nonchar=\count132
+\FB@nonchar=\count133
 \FBcolonsp=\toks44
 \FBthinsp=\toks45
 Package babel Info: Making : an active character on input line 362.
@@ -894,20 +899,20 @@ Package babel Info: Making ; an active character on input line 363.
 Package babel Info: Making ! an active character on input line 364.
 Package babel Info: Making ? an active character on input line 365.
 \FBguillsp=\toks46
-\FBguill@level=\count133
+\FBguill@level=\count134
 \FB@everypar=\toks47
-\FB@Mht=\dimen191
-\mc@charclass=\count134
-\mc@charfam=\count135
-\mc@charslot=\count136
-\std@mcc=\count137
-\dec@mcc=\count138
-\listindentFB=\skip61
-\descindentFB=\skip62
-\labelwidthFB=\skip63
-\leftmarginFB=\skip64
-\parindentFFN=\dimen192
-\FBfnindent=\skip65
+\FB@Mht=\dimen192
+\mc@charclass=\count135
+\mc@charfam=\count136
+\mc@charslot=\count137
+\std@mcc=\count138
+\dec@mcc=\count139
+\listindentFB=\skip63
+\descindentFB=\skip64
+\labelwidthFB=\skip65
+\leftmarginFB=\skip66
+\parindentFFN=\dimen193
+\FBfnindent=\skip67
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\carlisle\scalefnt.sty")
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
@@ -1073,10 +1078,10 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-\c@mv@rm=\count139
-\c@mv@boldrm=\count140
-\c@mv@sf=\count141
-\c@mv@boldsf=\count142
+\c@mv@rm=\count140
+\c@mv@boldrm=\count141
+\c@mv@sf=\count142
+\c@mv@boldsf=\count143
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 354.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/jkp/m/n on input line 354.
@@ -1420,16 +1425,16 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen193
-\Hy@linkcounter=\count143
-\Hy@pagecounter=\count144
+\@linkdim=\dimen194
+\Hy@linkcounter=\count144
+\Hy@pagecounter=\count145
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count145
+\Hy@SavedSpaceFactor=\count146
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -1441,12 +1446,12 @@ Package hyperref Info: Plain pages OFF on input line 4513.
 Package hyperref Info: Backreferencing OFF on input line 4518.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4751.
-\c@Hy@tempcnt=\count146
+\c@Hy@tempcnt=\count147
 LaTeX Info: Redefining \url on input line 5104.
-\XeTeXLinkMargin=\dimen194
-\Fld@menulength=\count147
-\Field@Width=\dimen195
-\Fld@charsize=\dimen196
+\XeTeXLinkMargin=\dimen195
+\Fld@menulength=\count148
+\Field@Width=\dimen196
+\Fld@charsize=\dimen197
 Package hyperref Info: Hyper figures OFF on input line 6358.
 Package hyperref Info: Link nesting OFF on input line 6363.
 Package hyperref Info: Hyper index ON on input line 6366.
@@ -1456,44 +1461,44 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6383.
 Package hyperref Info: PDF/A mode OFF on input line 6388.
 LaTeX Info: Redefining \ref on input line 6428.
 LaTeX Info: Redefining \pageref on input line 6432.
-\Hy@abspage=\count148
-\c@Item=\count149
-\c@Hfootnote=\count150
+\Hy@abspage=\count149
+\c@Item=\count150
+\c@Hfootnote=\count151
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
-\Fld@listcount=\count151
-\c@bookmark@seq@number=\count152
+\Fld@listcount=\count152
+\c@bookmark@seq@number=\count153
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 282.
 )
-\Hy@SectionHShift=\skip66
+\Hy@SectionHShift=\skip68
 )
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\enumitem\enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\labelindent=\skip67
-\enit@outerparindent=\dimen197
+\labelindent=\skip69
+\enit@outerparindent=\dimen198
 \enit@toks=\toks48
 \enit@inbox=\box64
-\enitdp@description=\count153
+\enitdp@description=\count154
 )
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithm2e\algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count154
+\c@AlgoLine=\count155
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\algocf@hangindent=\skip68
+\algocf@hangindent=\skip70
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\ifoddpage\ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count155
+\c@checkoddpage=\count156
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -1507,110 +1512,110 @@ Package relsize Warning: Failed to get list of font sizes.
 LaTeX Info: Redefining \larger on input line 218.
 LaTeX Info: Redefining \smaller on input line 219.
 )
-\skiptotal=\skip69
-\skiplinenumber=\skip70
-\skiprule=\skip71
-\skiphlne=\skip72
-\skiptext=\skip73
-\skiplength=\skip74
-\algomargin=\skip75
-\skipalgocfslide=\skip76
-\algowidth=\dimen198
-\inoutsize=\dimen256
-\inoutindent=\dimen257
-\interspacetitleruled=\dimen258
-\interspacealgoruled=\dimen259
-\interspacetitleboxruled=\dimen260
-\algocf@ruledwidth=\skip77
+\skiptotal=\skip71
+\skiplinenumber=\skip72
+\skiprule=\skip73
+\skiphlne=\skip74
+\skiptext=\skip75
+\skiplength=\skip76
+\algomargin=\skip77
+\skipalgocfslide=\skip78
+\algowidth=\dimen256
+\inoutsize=\dimen257
+\inoutindent=\dimen258
+\interspacetitleruled=\dimen259
+\interspacealgoruled=\dimen260
+\interspacetitleboxruled=\dimen261
+\algocf@ruledwidth=\skip79
 \algocf@inoutbox=\box65
 \algocf@inputbox=\box66
-\AlCapSkip=\skip78
-\AlCapHSkip=\skip79
-\algoskipindent=\skip80
+\AlCapSkip=\skip80
+\AlCapHSkip=\skip81
+\algoskipindent=\skip82
 \algocf@nlbox=\box67
 \algocf@hangingbox=\box68
 \algocf@untilbox=\box69
-\algocf@skipuntil=\skip81
+\algocf@skipuntil=\skip83
 \algocf@capbox=\box70
-\algocf@lcaptionbox=\skip82
-\algoheightruledefault=\skip83
-\algoheightrule=\skip84
-\algotitleheightruledefault=\skip85
-\algotitleheightrule=\skip86
-\c@algocfline=\count156
-\c@algocfproc=\count157
-\c@algocf=\count158
+\algocf@lcaptionbox=\skip84
+\algoheightruledefault=\skip85
+\algoheightrule=\skip86
+\algotitleheightruledefault=\skip87
+\algotitleheightrule=\skip88
+\c@algocfline=\count157
+\c@algocfproc=\count158
+\c@algocf=\count159
 \algocf@algoframe=\box71
 \algocf@algobox=\box72
 ) (rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 222.
-LaTeX Font Info:    Try loading font information for OML+jkp on input line 222.
+LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 224.
+LaTeX Font Info:    Try loading font information for OML+jkp on input line 224.
  (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\omljkp.fd
 File: omljkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 222.
-LaTeX Font Info:    Try loading font information for OMS+jkp on input line 222.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 224.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 224.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 224.
+LaTeX Font Info:    Try loading font information for OMS+jkp on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\omsjkp.fd
 File: omsjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 222.
-LaTeX Font Info:    Try loading font information for OMX+jkp on input line 222.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 224.
+LaTeX Font Info:    Try loading font information for OMX+jkp on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\omxjkp.fd
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 222.
-LaTeX Font Info:    Try loading font information for U+jkpexa on input line 222.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 224.
+LaTeX Font Info:    Try loading font information for U+jkpexa on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\ujkpexa.fd
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 222.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 222.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 224.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 224.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Try loading font information for T1+jkp on input line 222.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 224.
+LaTeX Font Info:    ... okay on input line 224.
+LaTeX Font Info:    Try loading font information for T1+jkp on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\t1jkp.fd
 File: t1jkp.fd 2007/01/24 Fontinst v1.928 font definitions for T1/jkp.
 )
-LaTeX Font Info:    Try loading font information for OT1+jkp on input line 222.
+LaTeX Font Info:    Try loading font information for OT1+jkp on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\ot1jkp.fd
 File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 )
-LaTeX Font Info:    Try loading font information for U+jkpsya on input line 222.
+LaTeX Font Info:    Try loading font information for U+jkpsya on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\ujkpsya.fd
 File: ujkpsya.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+jkpsyb on input line 222.
+LaTeX Font Info:    Try loading font information for U+jkpsyb on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\ujkpsyb.fd
 File: ujkpsyb.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+jkpmia on input line 222.
+LaTeX Font Info:    Try loading font information for U+jkpmia on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\ujkpmia.fd
 File: ujkpmia.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 222.
+LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 224.
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\ujkpsyc.fd
 File: ujkpsyc.fd 2006/08/15 v1.0
@@ -1651,16 +1656,16 @@ File: ujkpsyc.fd 2006/08/15 v1.0
 
 (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count159
-\scratchdimen=\dimen261
+\scratchcounter=\count160
+\scratchdimen=\dimen262
 \scratchbox=\box73
-\nofMPsegments=\count160
-\nofMParguments=\count161
+\nofMPsegments=\count161
+\nofMParguments=\count162
 \everyMPshowfont=\toks49
-\MPscratchCnt=\count162
-\MPscratchDim=\dimen262
-\MPnumerator=\count163
-\makeMPintoPDFobject=\count164
+\MPscratchCnt=\count163
+\MPscratchDim=\dimen263
+\MPnumerator=\count164
+\makeMPintoPDFobject=\count165
 \everyMPtoPDFconversion=\toks50
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1673,17 +1678,17 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 ) ABD: EveryShipout initializing macros
-LaTeX Info: Redefining \degres on input line 222.
-LaTeX Info: Redefining \dots on input line 222.
+LaTeX Info: Redefining \degres on input line 224.
+LaTeX Info: Redefining \dots on input line 224.
 Package frenchb.ldf Info: Setting StandardItemizeEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)             reported on input line 222.
+(frenchb.ldf)             reported on input line 224.
 Package frenchb.ldf Info: Setting StandardEnumerateEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)             reported on input line 222.
-LaTeX Info: Redefining \up on input line 222.
+(frenchb.ldf)             reported on input line 224.
+LaTeX Info: Redefining \up on input line 224.
 \AtBeginShipoutBox=\box74
-Package hyperref Info: Link coloring OFF on input line 222.
+Package hyperref Info: Link coloring OFF on input line 224.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1691,42 +1696,47 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count165
+\c@section@level=\count166
 )
-LaTeX Info: Redefining \ref on input line 222.
-LaTeX Info: Redefining \pageref on input line 222.
-LaTeX Info: Redefining \nameref on input line 222.
+LaTeX Info: Redefining \ref on input line 224.
+LaTeX Info: Redefining \pageref on input line 224.
+LaTeX Info: Redefining \nameref on input line 224.
  (rapport.out) (rapport.out)
 \@outlinefile=\write4
 \openout4 = `rapport.out'.
 
- [1{C:/Users/arian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4] [5] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 447.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 447.
+ [1{C:/Users/arian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] (Figures/EGSequentielle.pgf) (Figures/OPT
+Sequentielle.pgf)
+[4] [5 <./Figures/EGSequentielle-img0.png> <./Figures/EGSequentielle-img1.png> <./Figures/OPTSequentielle-img0.png> <./F
+igures/OPTSequentielle-img1.png>] [6] [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 503.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 503.
  (rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 447.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 447.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 503.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 503.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 967D7C1D76243E610C0561F969CAF8CD;498.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 447.
+(rerunfilecheck)             Checksum: A2B1D4972A57A1980DC6150DABF8248D;922.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 503.
  ) 
 Here is how much of TeX's memory you used:
- 24510 strings out of 493323
- 460671 string characters out of 3139066
- 578220 words of memory out of 3000000
- 27409 multiletter control sequences out of 15000+200000
- 54154 words of font info for 80 fonts, out of 3000000 for 9000
+ 24636 strings out of 493323
+ 462888 string characters out of 3139066
+ 584053 words of memory out of 3000000
+ 27502 multiletter control sequences out of 15000+200000
+ 63564 words of font info for 92 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 55i,13n,69p,671b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public
-/kpfonts/jkpbn8a.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpex.pfb><C:/Users/arian/App
-Data/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmi.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/publ
-ic/kpfonts/jkpmn8a.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmsc8a.pfb><C:/Users/aria
-n/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsy.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1
-/public/kpfonts/jkpsyb.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on rapport.pdf (6 pages, 101502 bytes).
+ 55i,15n,69p,1025b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}{C:/Program Files/MiKTeX 2.9/fon
+ts/enc/dvips/base/8r.enc}<C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpbn8a.pfb><C:/Users/ari
+an/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpex.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type
+1/public/kpfonts/jkpmi.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmn8a.pfb><C:/Users/a
+rian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmne.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/t
+ype1/public/kpfonts/jkpmsc8a.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsy.pfb><C:/Use
+rs/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsyb.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fon
+ts/type1/public/kpfonts/jkpsyc.pfb>
+Output written on rapport.pdf (7 pages, 137542 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 178 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 

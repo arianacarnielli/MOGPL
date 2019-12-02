@@ -28,7 +28,7 @@
 % PACOTES DE TABELAS                                                                %
 %-----------------------------------------------------------------------------------%
 \usepackage{array} % Facilita a formatação de tabelas
-%\usepackage{multirow} % Permite criar células que ocupam várias linhas em uma tabela
+\usepackage{multirow} % Permite criar células que ocupam várias linhas em uma tabela
 \usepackage{longtable} % Permite criar tabelas que quebram de página
 
 %-----------------------------------------------------------------------------------%
@@ -216,6 +216,8 @@
 \setcounter{topnumber}{50}
 \setcounter{bottomnumber}{50}
 
+\setcounter{secnumdepth}{0}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ESTRUTURA DO DOCUMENTO                                                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -236,7 +238,9 @@
 
 \section{Introduction}
 
-\section{Question 1}
+\section{Probabilités}
+
+\subsection{Question 1}
 
 $Q(d,k)$ est la probabilité d'obtenir $k$ points en jetant $d$ dés sachant qu'aucun dé a tombé sur $1$. On numérote les dés de $1$ à $d$ et on note $j$ le résultat du dernier dé, qui est donc un nombre entre $2$ à $6$. Alors on aura $k$ points si et seulement si les $d-1$ premiers dés donnent $k-j$ points. Les valeurs possibles de $j$ étant disjointes, on peut dire que $Q(d, k)$ est la somme pour toutes les valeurs de $j$ de $Q(d-1, k-j)$ multiplié par la probabilité que le dernier dé donne $j$ sachant qu'il n'est pas $1$ (égale à $\frac{1}{5}$), ce qui donne donc~:
 \begin{equation}
@@ -272,7 +276,9 @@ Q(d, k) = \sum_{j=2}^6 \frac{Q(d-1, k-j)}{5}.
 
 Les cas d'initialisation correspondent à $d = 1$ et $k \in \{2, \dotsc, 6\}$, auquel cas on a $Q(1, k) = \frac{1}{5}$. En plus, $Q(1, k) = 0$ pour $k > 6$.
 
-\section{Question 2}
+\section{Variante séquentielle}
+
+\subsection{Question 2}
 
 Remarquons que la formule 
 \begin{equation}
@@ -299,7 +305,7 @@ On revient maintenant à une variable discrète $d \in \{1, \dotsc, D\}$. Grâce
 
  %Si il reste de l'espace, on peut mettre ici le calcul du maximum par dérivée pour montrer qu'il est toujours égal à $\min(D, 6)$.
 
-\section{Question 3}
+\subsection{Question 3}
 
 On considère ici que $D = 3$ et $N = 2$, auquel cas $d^\ast(D) = 3$. On suppose que le joueur 1 choisit de jouer toujours $3$ dés alors que le joueur 2 choisit de jouer toujours un seul dé. Soient $X_i$ et $Y_i$ les gains des joueurs 1 et 2, respectivement, au $i$-ème lancer de dés. Alors $X_i \in \{1, 6, 7, \dotsc, 18\}$ et $Y_i \in \{1, 2, \dotsc, 6\}$. En particulier, on remarque que, si $X_1 > 1$, alors le joueur $1$ est sûr de gagner.
 
@@ -322,7 +328,7 @@ Cela donne $\mathbb E(G) \approx 0,7222$. Ainsi, l'espérance de gain du joueur 
 
 On remarque que la situation de cet exemple n'est pas exceptionnelle~: le cas $N = 2$ est équivalant, par exemple, au cas $N = 100$ lorsque les deux joueurs sont à égalité avec $98$ points.
 
-\section{Question 4}
+\subsection{Question 4}
 
 Pour faciliter l'analyse, on représente l'état courant du jeu par un triplet $(i, j, n)$ où $i$ et $j$ sont les points cumulés des joueurs 1 et 2, respectivement, et $n \in \{1, 2\}$ indique qui est le prochain joueur à jouer. On note l'espérance de gain du joueur 1 dans l'état $(i, j, n)$ par $EG(i, j, n)$, en supposant que lui-même et son adversaire jouent toujours de façon optimale. On remarque que $EG(i, j, n)$ représente toujours l'espérance de gain du joueur 1, même lorsque $n = 2$.
 
@@ -348,7 +354,7 @@ où $EG(i, j)$ doit se comprendre comme $EG(i, j, 1)$.
 
 On initialise la récurrence en remarquant que $EG(i, j) = 1$ si $i \geq N$ et $j < N$ et que $EG(i, j) = -1$ si $i < N$ et $j \geq N$. Comme le jeu est séquentiel, il n'est pas nécessaire d'initialiser $EG(i, j)$ pour $i \geq N$ et $j \geq N$~: il est impossible que les deux joueurs aient une quantité supérieure ou égale à $N$ points car le jeu s'arrête dès que le premier joueur atteint $N$ points ou plus.
 
-\section{Question 5}
+\subsection{Question 5}
 
 Notons $OPT(i, j)$ la stratégie optimale du joueur 1 dans l'état $(i, j, 1)$, c'est-à-dire le nombre de dés qu'il doit lancer pour maximiser l'espérance de son gain. Cela revient à maximiser \eqref{EsperanceGainDFixe} par rapport à $d$, ce qui donne
 \[
@@ -356,11 +362,57 @@ OPT(i, j) = \argmax_{d \in \{1, \dotsc, D\}} \left(-\sum_{k=1}^{6d} P(d, k) EG(j
 \]
 Cela peut être calculé en même temps que le calcul récursif de $EG$ par la formule \eqref{EsperanceGainRec}.
 
-\section{Question 6}
+\subsection{Question 6}
 
 Dans ce cas, la somme dans \eqref{EsperanceGainRec} doit commencer à $k = 0$ à la place de $k = 1$. Le calcul de $EG(i, j)$ par \eqref{EsperanceGainRec} utilise en particulier, dans le second membre, la valeur de $EG(j, i)$. Or, le calcul de $EG(j, i)$ par \eqref{EsperanceGainRec} utilise dans son second membre la valeur de $EG(i, j)$. Ainsi, \eqref{EsperanceGainRec} ne permet pas de calculer $EG(i, j)$ de façon explicite, mais donne uniquement une relation implicite où $EG(i, j)$ dépend de lui-même. Il faudrait alors implémenter une méthode pour être capable de calculer $EG(i, j)$ à partir de cette relation implicite.
 
-\section{Question 10}
+\subsection{Mise en \oe{}uvre~: questions 7, 8 et 9}
+
+On a implémenté une stratégie aveugle qui retourne, comme nombre de dés à joueur, toujours le minimum entre $D$ et $6$. La stratégie optimale implémentée calcule au début les tableaux contenant les espérances de gain $EG(i, j)$ et les choix optimaux $OPT(i, j)$ et ainsi, à chaque tour de jeu, elle ne fait que consulter le tableau $OPT$ dans la case correspondante aux nombres des points des deux joueurs et retourner le nombre de dés correspondant. Outre ces deux stratégies, on a implémenté une stratégie aléatoire qui choisit à chaque tour un nombre de dés selon une loi uniforme dans $\{1, \dotsc, D\}$ et une stratégie qui permet à l'utilisateur de jouer en lui demandant à chaque tour le nombre de dés souhaité.
+
+\begin{table}[ht]
+\begin{tabular}{cc|ccc|}
+\cline{3-5}
+& & \multicolumn{3}{c|}{Joueur 2} \tabularnewline
+& & Aveugle & Optimale & Aléatoire \tabularnewline
+\hline
+\multicolumn{1}{|c}{\multirow{3}{*}{\rotatebox{45}{Joueur 1}}} & Aveugle & 0,0672 & -0,0316 & 0,3199 \tabularnewline
+\multicolumn{1}{|c}{} & Optimale & 0,1684 & 0,0688 & 0,3988 \tabularnewline
+\multicolumn{1}{|c}{} & Aléatoire & -0,2038 & -0,2866 & 0,0558 \tabularnewline
+\hline
+\end{tabular}
+\caption{Espérance de gain du joueur 1 pour différentes stratégies}
+\label{TabSequentiel}
+\end{table}
+
+La Table~\ref{TabSequentiel} présente une estimée de l'espérance de gain du joueur 1 lorsque les joueurs 1 et 2 utilisent les trois différentes stratégies implémentées, aveugle, aléatoire et optimale. Chaque espérance de gain a été estimée comme la moyenne empirique du gain de $10^6$ jeux. On y remarque que l'espérance de gain est très petite quand une stratégie joue contre elle-même~: en effet, on s'attend intuitivement à ce que deux stratégies identiques s'équilibrent, mais le jeu séquentiel donne un léger avantage au premier joueur. Parmi les trois stratégies, c'est la stratégie optimale qui a la plus grande espérance de gain lorsqu'elle joue contre elle-même, même si cette espérance est du même ordre que dans le cas de la stratégie aveugle.
+
+Lorsqu'on fait jouer deux stratégies différentes, la stratégie optimale montre plus clairement sa supériorité, avec une espérance de gain de presque $0,40$ contre la stratégie aléatoire et $0,17$ contre la stratégie aveugle lorsqu'elle est le joueur 1. Lorsqu'elle est le joueur 2, la stratégie optimale arrive aussi à gagner en moyenne des stratégies aveugle et aléatoire~: son avantage est très léger contre l'aveugle (espérance de gain de $-0,03$ pour l'aveugle), mais beaucoup plus important contre l'aléatoire (espérance de gain de $-0,29$ de l'aléatoire). Entre l'aveugle et l'aléatoire, l'aveugle a un avantage important.
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{@{} c @{} c @{}}
+\resizebox{0.5\textwidth}{!}{\input{Figures/EGSequentielle.pgf}} & \resizebox{0.5\textwidth}{!}{\input{Figures/OPTSequentielle.pgf}} \tabularnewline
+(a) & (b) \tabularnewline
+\end{tabular}
+\caption{(a) Espérance de gain et (b) nombre de dés optimal à joueur en fonction du nombre de points du joueur 1 (ordonnée) et du joueur 2 (abscisse) lorsque c'est au joueur 1 de jouer.}
+\label{FigEG-OPTSequentielle}
+\end{figure}
+
+La Figure~\ref{FigEG-OPTSequentielle} représente les matrices $EG$ et $OPT$ utilisées par la stratégie optimale dans le cas $D = 10$ et $N = 100$. La matrice $EG$ contient les cas d'initialisation et la partie en blanc au coin inférieur gauche correspond aux cases non-initialisées. On y remarque une structure presque symétrique, même si, en regardant en détail, on observe qu'elle n'est pas symétrique~: sur la diagonale, par exemple, l'espérance de gain est toujours strictement positive et augmente lorsque le nombre de points déjà obtenus augmente, à cause de l'avantage que le jeu donne au joueur 1. La visualisation de la matrice $OPT$ montre la complexité des frontières de décision entre les différents choix possibles de nombre de dés. Elle démontre que, lorsque le joueur 1 a un avantage important, il est plus intéressant de jouer moins de dés, et, lorsque le joueur 1 perd d'une différence importante, il est plus intéressant de joueur plus de dés.
+
+On remarque aussi quelques lignes horizontales et verticales de couleur assez différente, comme la ligne bleue foncée verticale à la dernière colonne. L'explication que l'on donne à cette ligne est que, lorsque le joueur 1 a moins de $40$ poins et le joueur 2 en a $99$, même si c'est au tour du joueur 1, il n'a aucune chance de gagner~: peu importe le nombre de dés qu'il choisit de joueur, sa probabilité de gagner sera 0. Le choix du nombre de dés ne lui a aucune importance et la méthode que nous avons implémentée prend le premier nombre de dés correspondant au maximum de la probabilité, qui est donc 1 dé.
+
+
+
+
+
+
+
+
+\section{Variante simultanée}
+
+\subsection{Question 10}
 
 Soit $G$ la variable aléatoire donnant le gain du joueur 1 lorsqu'il a jeté $d_1$ dés et le joueur 2 a jeté $d_2$ dés. Alors, par la définition de l'espérance,
 \[
@@ -388,15 +440,15 @@ En utilisant cette formule, on calcule, pour $D = 3$, la matrice de gains
 \hline
 d_1 \backslash d_2 & 1 & 2 & 3 \\
 \hline
-1 & 0     & -0.375 & -0.227 \\
-2 & 0.375 &  0     & -0.199 \\
-3 & 0.227 &  0.199 &  0 \\
+1 & 0     & -0,375 & -0,227 \\
+2 & 0,375 &  0     & -0,199 \\
+3 & 0,227 &  0,199 &  0 \\
 \hline
 \end{array}
 \]
 Comme le jeu est à somme nulle, la matrice est anti-symétrique.
 
-\section{Question 11}
+\subsection{Question 11}
 
 Si on suppose que le joueur 2 connait la probabilité $p_1(i)$, $i = 1, 2, \dotsc, D$, alors il peut calculer le gain espéré du joueur 1. En fait, quand le joueur 2 joue $j$ dés ($j = 1, 2, \dotsc, D$), le joueur 1 gagne en espérance $EG_1(1, j)$ avec probabilité $p_1(1)$, $EG_1(2, j)$ avec probabilité $p_1(2)$, $\dotsc$, $EG_1(D, j)$ avec probabilité $p_1(D)$. L'espérance du gain du joueur 1 est donc donnée par la formule suivante~:
 \[\sum_{i=1}^D p_1(i) EG_1(i, j),\]
@@ -416,7 +468,7 @@ Pour le joueur 2, il faut donc minimiser son espérance de perte. C'est pourquoi
 p_1^\top EG_1 p_2^\ast = \min_{p_2} p_1^\top EG_1 p_2.
 \end{equation}
 
-\section{Question 12}
+\subsection{Question 12}
 
 Le joueur 1 veut maximiser de son côté son espérance de gain. Supposant que le joueur 2 joue optimalement, le joueur 1 peut déduire que, pour toute stratégie $p_1$ qu'il choisit, son adversaire jouera selon \eqref{OptimalJ2}. Sachant ce fait, il doit donc maximiser \eqref{OptimalJ2} de son côté, c'est-à-dire, il doit choisir une stratégie mixte $p_1^\ast = \bigl(p_1^\ast(1), p_1^\ast(2), \dotsc, p_1^\ast(D)\bigr)$ telle que
 \begin{equation}
@@ -443,5 +495,9 @@ z^\prime \geq 0,\; z^{\prime\prime}\geq 0,\; p_1(i) & \geq 0 & & \forall i \in \
 \end{aligned}
 \end{equation}
 Donc, en résolvant le problème \eqref{ProblemeLineaire} on peut obtenir un vecteur $p_1^\ast$ qui sera aussi une solution du problème \eqref{OptimalJ1}. Finalement, le joueur 1 prend donc $p_1^\ast$ comme sa stratégie optimale.
+
+\subsection{Mise en \oe{}uvre~: questions 13 et 14}
+
+Pour l'implémentation du jeu simultané, on considère qu'une stratégie retourne toujours le vecteur $p = \bigl(p(1), \dotsc, p(D)\bigr)$ des probabilités de choisir chaque quantité de dés possible. La stratégie aveugle pour le jeu séquentiel a ainsi été implémentée en retournant un vecteur $p$ avec $p(d^\ast(D)) = 1$, où $d^\ast(D) = \min(D, 6)$ comme à la Question~2. La stratégie optimale calcule au début la résolution du programme linéaire de la question précédente, en utilisant pour cela la ..., et ne fait que renvoyer cette même solution à chaque appel.
 
 \end{document}

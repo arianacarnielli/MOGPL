@@ -22,6 +22,26 @@ class Jeu:
         self.joueur1 = 0
         self.joueur2 = 0
         
+    def comparerStrategies(self, strategie1, strategie2, nbFois = 10000):
+        """
+        """
+        self.setStrategies(strategie1, strategie2)
+        self._reset()  
+        nbVic1 = 0
+        nbVic2 = 0
+        nbNul = 0
+        for _ in tqdm(range(nbFois)):
+            self.jouer(verbose = False)
+            if self.vainqueur() == 1:
+                nbVic1 += 1
+            elif self.vainqueur() == 2:
+                nbVic2 += 1
+            else:
+                nbNul += 1
+            self._reset()
+        return nbVic1, nbVic2, nbNul
+            
+        
     def setStrategies(self, strategie1, strategie2):
         """
         """
@@ -50,6 +70,12 @@ class Jeu:
         if self.joueur1 == self.joueur2 :
             return 0
         return 1 if self.joueur1 > self.joueur2 else 2
+   
+    def _reset(self):
+        """
+        """
+        self.joueur1 = 0
+        self.joueur2 = 0
     
     def _estfini(self):
         """
@@ -100,6 +126,12 @@ class JeuSequentiel(Jeu):
         super().__init__(D, N)
         self.joueurCourant = 1
         
+    def _reset(self):
+        """
+        """
+        super()._reset()
+        self.joueurCourant = 1
+        
     def _tour(self):
         """
         """
@@ -142,10 +174,6 @@ class JeuSimultanee(Jeu):
             res[self.vainqueur()] += 1
         return res / nbs
         
-class JeuSimultane(Jeu):
-    """
-    """
-
         
 class Strategie:
     """
@@ -227,10 +255,11 @@ class StrategieOptimaleSimultaneeTour(Strategie):
     def __init__(self, jeu):
         super().__init__(jeu)
         self._EG1 = self._esperanceGainPremier()
+        self.strategie = self._resoudrePL()
 
     def _esperanceGainPremier(self):
         D = self.jeu.D
-        probas = self.jeu.probas.copy()
+        probas = self.jeu.probas
 
         EG1 = np.zeros((D + 1, D + 1))
         EG1[1:, 0] = 1
@@ -243,7 +272,7 @@ class StrategieOptimaleSimultaneeTour(Strategie):
                     EG1[d1, d2] -= probas[d1, i] * np.sum(probas[d2, i + 1:6 * d2 + 1])
 
         return EG1
-
+    
     def _matriceContrainte(self):
         D = self.jeu.D
         mres = np.zeros((D+2, D+2))
@@ -260,7 +289,7 @@ class StrategieOptimaleSimultaneeTour(Strategie):
 
         return mres
 
-    def jouerTour(self, moi, autre):
+    def _resoudrePL(self):
         D = self.jeu.D
         strategie_mixte = np.zeros(D+1)
 
@@ -278,6 +307,9 @@ class StrategieOptimaleSimultaneeTour(Strategie):
         strategie_mixte[1:] = opt_res.x[2:]
 
         return strategie_mixte
+    
+    def jouerTour(self, moi, autre):
+        return self.strategie
 
 class StrategieAveugleAdapte(Strategie):
     """
@@ -293,6 +325,8 @@ class StrategieAveugleAdapte(Strategie):
         
         
 def EGunCoup(D):
+    """
+    """
     jeu = Jeu(D, 1)
     p = jeu.probas
     
