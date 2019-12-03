@@ -162,17 +162,17 @@ class JeuSimultanee(Jeu):
         des = np.arange(self.D+1)[des_proba.cumsum() > rand_val][0]
         self.joueur2 += self._tirageDes(des)
 
-    def comparerStrategies(self, nbs=1000):
-        """
-        """
-        res = np.array([0, 0, 0], dtype=int)
-        for _ in tqdm(range(nbs)):
-            self.joueur1 = 0
-            self.joueur2 = 0
-            while not self._estfini():
-                self._tour()
-            res[self.vainqueur()] += 1
-        return res / nbs
+#    def comparerStrategies(self, nbs=1000):
+#        """
+#        """
+#        res = np.array([0, 0, 0], dtype=int)
+#        for _ in tqdm(range(nbs)):
+#            self.joueur1 = 0
+#            self.joueur2 = 0
+#            while not self._estfini():
+#                self._tour()
+#            res[self.vainqueur()] += 1
+#        return res / nbs
         
         
 class Strategie:
@@ -322,6 +322,16 @@ class StrategieAveugleAdapte(Strategie):
         strategie_mixte = np.zeros(self.jeu.D+1)
         strategie_mixte[d] = 1.0
         return strategie_mixte
+    
+class StrategieAleatoireAdapte(Strategie):
+    """
+    """
+    def jouerTour(self, moi, autre):
+        """
+        """
+        strategie = np.full(self.jeu.D + 1, 1/self.jeu.D)
+        strategie[0] = 0
+        return strategie
         
         
 def EGunCoup(D):

@@ -381,13 +381,25 @@ On a implémenté une stratégie aveugle qui retourne, comme nombre de dés à j
 \multicolumn{1}{|c}{} & Aléatoire & -0,2038 & -0,2866 & 0,0558 \tabularnewline
 \hline
 \end{tabular}
-\caption{Espérance de gain du joueur 1 pour différentes stratégies}
+\caption{Gain moyen du joueur 1 pour différentes stratégies dans le jeu séquentiel.}
 \label{TabSequentiel}
 \end{table}
 
-La Table~\ref{TabSequentiel} présente une estimée de l'espérance de gain du joueur 1 lorsque les joueurs 1 et 2 utilisent les trois différentes stratégies implémentées, aveugle, aléatoire et optimale. Chaque espérance de gain a été estimée comme la moyenne empirique du gain de $10^6$ jeux. On y remarque que l'espérance de gain est très petite quand une stratégie joue contre elle-même~: en effet, on s'attend intuitivement à ce que deux stratégies identiques s'équilibrent, mais le jeu séquentiel donne un léger avantage au premier joueur. Parmi les trois stratégies, c'est la stratégie optimale qui a la plus grande espérance de gain lorsqu'elle joue contre elle-même, même si cette espérance est du même ordre que dans le cas de la stratégie aveugle.
+La Table~\ref{TabSequentiel} présente une estimée de l'espérance de gain du joueur 1 lorsque les joueurs 1 et 2 utilisent les trois différentes stratégies implémentées, aveugle, aléatoire et optimale. Chaque espérance de gain a été estimée comme la moyenne empirique du gain de $10^6$ jeux avec $D = 10$ et $N = 100$. On y remarque que l'espérance de gain est très petite quand une stratégie joue contre elle-même~: en effet, on s'attend intuitivement à ce que deux stratégies identiques s'équilibrent, mais le jeu séquentiel donne un léger avantage au premier joueur. Parmi les trois stratégies, c'est la stratégie optimale qui a la plus grande espérance de gain lorsqu'elle joue contre elle-même, même si cette espérance est du même ordre que dans le cas de la stratégie aveugle.
 
 Lorsqu'on fait jouer deux stratégies différentes, la stratégie optimale montre plus clairement sa supériorité, avec une espérance de gain de presque $0,40$ contre la stratégie aléatoire et $0,17$ contre la stratégie aveugle lorsqu'elle est le joueur 1. Lorsqu'elle est le joueur 2, la stratégie optimale arrive aussi à gagner en moyenne des stratégies aveugle et aléatoire~: son avantage est très léger contre l'aveugle (espérance de gain de $-0,03$ pour l'aveugle), mais beaucoup plus important contre l'aléatoire (espérance de gain de $-0,29$ de l'aléatoire). Entre l'aveugle et l'aléatoire, l'aveugle a un avantage important.
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{@{} c @{} c @{}}
+\resizebox{0.5\textwidth}{!}{\input{Figures/VictoiresSequentielFonctionD.pgf}} & \resizebox{0.5\textwidth}{!}{\input{Figures/VictoiresSequentielFonctionN.pgf}} \tabularnewline
+(a) & (b) \tabularnewline
+\end{tabular}
+\caption{Gain moyen de la stratégie optimale (joueur 1) contre la stratégie aveugle (joueur 2) dans le jeu séquentiel (a) en fonction de $D$ à $N = 100$ fixé et (b) en fonction de $N$ à $D = 10$ fixé. Moyennes sur $10^5$ simulations.}
+\label{FigVictoiresSequentielle}
+\end{figure}
+
+Pour voir comme les gains du joueur 1 dépendent des paramètres $D$ et $N$, on a fixé un des cas de la Table~\ref{TabSequentiel}, celui où le joueur 1 joue avec la stratégie optimale et le joueur 2 avec la stratégie aveugle, et fait varier $D$ à $N = 100$ fixé et ensuite fait varier $N$ à $D = 10$ fixé. Les résultats sont donnés dans la Figure~\ref{FigVictoiresSequentielle}, dans laquelle chaque point a été obtenu avec une moyenne de $10^5$ simulations. On y remarque que, à $N$ fixé, l'augmentation du nombre de dés a tendance à faire légèrement augmenter le gain, ce que l'on peut interpréter en remarquant qu'avoir un plus grand $D$ implique avoir plus de choix par rapport au choix des $6$ dés la stratégie aveugle. À $D$ fixé, l'augmentation de $N$ fait diminuer le gain et, à $N = 2000$, le gain n'est que de l'ordre de $0,06$, soit le même ordre que la diagonale de la Table~\ref{TabSequentiel}, et qui peut donc être imputé à l'avantage que le jeu séquentiel donne au joueur 1. L'augmentation de $N$ accentue ainsi les effets aléatoires du jeu et rend les choix stratégiques moins efficaces.
 
 \begin{figure}[ht]
 \centering
@@ -402,13 +414,6 @@ Lorsqu'on fait jouer deux stratégies différentes, la stratégie optimale montr
 La Figure~\ref{FigEG-OPTSequentielle} représente les matrices $EG$ et $OPT$ utilisées par la stratégie optimale dans le cas $D = 10$ et $N = 100$. La matrice $EG$ contient les cas d'initialisation et la partie en blanc au coin inférieur gauche correspond aux cases non-initialisées. On y remarque une structure presque symétrique, même si, en regardant en détail, on observe qu'elle n'est pas symétrique~: sur la diagonale, par exemple, l'espérance de gain est toujours strictement positive et augmente lorsque le nombre de points déjà obtenus augmente, à cause de l'avantage que le jeu donne au joueur 1. La visualisation de la matrice $OPT$ montre la complexité des frontières de décision entre les différents choix possibles de nombre de dés. Elle démontre que, lorsque le joueur 1 a un avantage important, il est plus intéressant de jouer moins de dés, et, lorsque le joueur 1 perd d'une différence importante, il est plus intéressant de joueur plus de dés.
 
 On remarque aussi quelques lignes horizontales et verticales de couleur assez différente, comme la ligne bleue foncée verticale à la dernière colonne. L'explication que l'on donne à cette ligne est que, lorsque le joueur 1 a moins de $40$ poins et le joueur 2 en a $99$, même si c'est au tour du joueur 1, il n'a aucune chance de gagner~: peu importe le nombre de dés qu'il choisit de joueur, sa probabilité de gagner sera 0. Le choix du nombre de dés ne lui a aucune importance et la méthode que nous avons implémentée prend le premier nombre de dés correspondant au maximum de la probabilité, qui est donc 1 dé.
-
-
-
-
-
-
-
 
 \section{Variante simultanée}
 
@@ -498,6 +503,53 @@ Donc, en résolvant le problème \eqref{ProblemeLineaire} on peut obtenir un vec
 
 \subsection{Mise en \oe{}uvre~: questions 13 et 14}
 
-Pour l'implémentation du jeu simultané, on considère qu'une stratégie retourne toujours le vecteur $p = \bigl(p(1), \dotsc, p(D)\bigr)$ des probabilités de choisir chaque quantité de dés possible. La stratégie aveugle pour le jeu séquentiel a ainsi été implémentée en retournant un vecteur $p$ avec $p(d^\ast(D)) = 1$, où $d^\ast(D) = \min(D, 6)$ comme à la Question~2. La stratégie optimale calcule au début la résolution du programme linéaire de la question précédente, en utilisant pour cela la ..., et ne fait que renvoyer cette même solution à chaque appel.
+Pour l'implémentation du jeu simultané, on considère qu'une stratégie retourne toujours le vecteur $p = \bigl(p(1), \dotsc, p(D)\bigr)$ des probabilités de choisir chaque quantité de dés possible. La stratégie aveugle pour le jeu séquentiel a ainsi été implémentée en retournant un vecteur $p$ avec $p(d^\ast(D)) = 1$ (et $0$ ailleurs), où $d^\ast(D) = \min(D, 6)$ comme à la Question~2. La stratégie optimale calcule au début la résolution du programme linéaire de la question précédente, en utilisant pour cela la fonction \texttt{linprog} de la bibliothèque d'optimisation \texttt{optimize} de \emph{SciPy}, et ne fait que renvoyer cette même solution à chaque appel. Nous avons aussi implémenté une version de la stratégie aléatoire qui retourne une loi uniforme sur $\{1, \dotsc, D\}$.
 
+\begin{table}[ht]
+\begin{tabular}{|c|cccccc|}
+\hline
+$D$ & $p(1)$ & $p(2)$ & $p(3)$ & $p(4)$ & $p(5)$ & $p(6)$ \tabularnewline
+\hline
+2 &  0.000 &  1.000 &        &        &        &        \tabularnewline
+3 &  0.000 &  0.000 &  1.000 &        &        &        \tabularnewline
+4 &  0.000 &  0.000 &  0.000 &  1.000 &        &        \tabularnewline
+5 &  0.000 &  0.176 &  0.053 &  0.000 &  0.771 &        \tabularnewline
+6 &  0.000 &  0.176 &  0.053 &  0.000 &  0.771 &  0.000 \tabularnewline
+\hline
+\end{tabular}
+\caption{Stratégie mixte optimale pour le jeu simultané à un tour en fonction de la valeur de $D$.}
+\label{TabStratOptSimultUnTour}
+\end{table}
+
+La stratégie optimale retournée par la fonction pour les valeurs de $D$ allant de $2$ à $6$ est donnée dans la Table~\ref{TabStratOptSimultUnTour}. On y remarque que, pour $D$ entre $2$ et $4$, la stratégie optimale est pure et consiste à joueur le maximum de dés possible. Pour $D$ à partir de $5$, on a une stratégie mixte avec une grande probabilité de joueur 5 dés mais aussi une probabilité de jouer 2 ou 3 dés. On a pu constater que, pour les valeurs de $D \geq 5$ que nous avons testé, cette stratégie reste toujours la stratégie optimale. Augmenter la quantité maximale de dés possibles au-delà de $5$ n'a donc pas d'effet sur la stratégie optimale, ce qui rappelle le résultat correspondant pour la stratégie aveugle montré à la Question 2 (mais avec $D = 6$).
+
+\begin{table}[ht]
+\begin{tabular}{cc|ccc|}
+\cline{3-5}
+& & \multicolumn{3}{c|}{Joueur 2} \tabularnewline
+& & Aveugle & Optimale & Aléatoire \tabularnewline
+\hline
+\multicolumn{1}{|c}{\multirow{3}{*}{\rotatebox{45}{Joueur 1}}} & Aveugle & $5,0 \cdot 10^{-5}$ & & \tabularnewline
+\multicolumn{1}{|c}{} & Optimale & $0,0152$ & $-2,7 \cdot 10^{-4}$ & \tabularnewline
+\multicolumn{1}{|c}{} & Aléatoire & $0,0138$ & $-0.0626$ & $-4,7 \cdot 10^{-4}$ \tabularnewline
+\hline
+\end{tabular}
+\caption{Espérance de gain du joueur 1 pour différentes stratégies dans le jeu simultané à un tour.}
+\label{TabSimultTour}
+\end{table}
+
+La Table~\ref{TabSimultTour} présente une estimée de l'espérance de gain du joueur 1 lorsque les joueurs 1 et 2 utilisent les trois différentes stratégies implémentées. Chaque espérance de gain a été estimée comme la moyenne empirique du gain de $10^6$ jeux avec $D = 10$ (et $N = 1$ pour ne faire qu'un seul tour). Comme attendu pour un jeu à somme nulle, la diagonale est essentiellement nulle. On remarque que la stratégie optimale a un avantage sur les deux autres, même si celui-ci est assez petit. La stratégie aléatoire semble aussi avoir un avantage sur la stratégie aveugle.
+
+\begin{figure}[ht]
+\begin{tabular}{@{} c @{} c @{}}
+\resizebox{0.5\textwidth}{!}{\input{Figures/VictoiresSimultaneTourFonctionD.pgf}} & \resizebox{0.5\textwidth}{!}{\input{Figures/VictoiresSimultaneTourFonctionDPourc.pgf}} \tabularnewline
+(a) & (b)
+\end{tabular}
+\caption{(a) Gain moyen et (b) pourcentages de victoire de la stratégie optimale (joueur 1) contre la stratégie aveugle (joueur 2) dans le jeu simultané à un tour en fonction de $D$. Moyennes sur $10^6$ simulations.}
+\label{FigVictoiresSimultTour}
+\end{figure}
+
+Pour voir comme les gains dépendent de $D$, on a fixé le cas d'une stratégie optimale (joueur 1) contre une stratégie aveugle (joueur 2) et fait varier $D$. Les résultats sont donnés dans la Figure~\ref{FigVictoiresSimultTour}, dans laquelle chaque point a été obtenu avec une moyenne de $10^6$ simulations. On voit que la stratégie optimale gagne plus souvent que la stratégie aveugle dès que $D \geq 6$, mais son espérance de gain est essentiellement nulle pour $D \leq 5$  car, comme vu à la Table~\ref{TabStratOptSimultUnTour}, ces deux stratégies sont identiques pour $D \leq 4$ et très proches pour $D = 5$. La probabilité d'avoir un match nul augmente avec $D$ et dépasse les probabilités des victoires des deux joueurs lorsque $D = 5$. Toutes les quantités se stabilisent pour $D \geq 6$ car les stratégies ne changent plus. On peut en déduire que la stratégie optimale est plus efficace qu'une stratégie aveugle si on joue un seul tour et $D \geq 6$.
+
+Par contre, il semble intéressant de tester et comparer ces stratégies si on joue plus qu'un seul tour. En prenant $N = 100$, $D = 10$ et en faisant une moyenne sur $10^5$ parties, on obtient $0,4\%$ de matchs nuls, $42,9\%$ de victoires de la stratégie optimale et $56,7\%$ de victoires de la stratégie aveugle. La stratégie ``optimale'' est donc moins efficace ici qu'une stratégie aveugle. Pour l'améliorer, il faut donc considérer aussi dans l'optimisation combien de points les joueurs ont déjà accumulé.
 \end{document}
