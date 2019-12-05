@@ -501,6 +501,8 @@ z^\prime \geq 0,\; z^{\prime\prime}\geq 0,\; p_1(i) & \geq 0 & & \forall i \in \
 \end{equation}
 Donc, en résolvant le problème \eqref{ProblemeLineaire} on peut obtenir un vecteur $p_1^\ast$ qui sera aussi une solution du problème \eqref{OptimalJ1}. Finalement, le joueur 1 prend donc $p_1^\ast$ comme sa stratégie optimale.
 
+On remarque que, comme ce jeu est à somme nulle, la stratégie $p_1^\ast$ est aussi la stratégie optimale du joueur 2.
+
 \subsection{Mise en \oe{}uvre~: questions 13 et 14}
 
 Pour l'implémentation du jeu simultané, on considère qu'une stratégie retourne toujours le vecteur $p = \bigl(p(1), \dotsc, p(D)\bigr)$ des probabilités de choisir chaque quantité de dés possible. La stratégie aveugle pour le jeu séquentiel a ainsi été implémentée en retournant un vecteur $p$ avec $p(d^\ast(D)) = 1$ (et $0$ ailleurs), où $d^\ast(D) = \min(D, 6)$ comme à la Question~2. La stratégie optimale calcule au début la résolution du programme linéaire de la question précédente, en utilisant pour cela la fonction \texttt{linprog} de la bibliothèque d'optimisation \texttt{optimize} de \emph{SciPy}, et ne fait que renvoyer cette même solution à chaque appel. Nous avons aussi implémenté une version de la stratégie aléatoire qui retourne une loi uniforme sur $\{1, \dotsc, D\}$.
@@ -552,4 +554,79 @@ La Table~\ref{TabSimultTour} présente une estimée de l'espérance de gain du j
 Pour voir comme les gains dépendent de $D$, on a fixé le cas d'une stratégie optimale (joueur 1) contre une stratégie aveugle (joueur 2) et fait varier $D$. Les résultats sont donnés dans la Figure~\ref{FigVictoiresSimultTour}, dans laquelle chaque point a été obtenu avec une moyenne de $10^6$ simulations. On voit que la stratégie optimale gagne plus souvent que la stratégie aveugle dès que $D \geq 6$, mais son espérance de gain est essentiellement nulle pour $D \leq 5$  car, comme vu à la Table~\ref{TabStratOptSimultUnTour}, ces deux stratégies sont identiques pour $D \leq 4$ et très proches pour $D = 5$. La probabilité d'avoir un match nul augmente avec $D$ et dépasse les probabilités des victoires des deux joueurs lorsque $D = 5$. Toutes les quantités se stabilisent pour $D \geq 6$ car les stratégies ne changent plus. On peut en déduire que la stratégie optimale est plus efficace qu'une stratégie aveugle si on joue un seul tour et $D \geq 6$.
 
 Par contre, il semble intéressant de tester et comparer ces stratégies si on joue plus qu'un seul tour. En prenant $N = 100$, $D = 10$ et en faisant une moyenne sur $10^5$ parties, on obtient $0,4\%$ de matchs nuls, $42,9\%$ de victoires de la stratégie optimale et $56,7\%$ de victoires de la stratégie aveugle. La stratégie ``optimale'' est donc moins efficace ici qu'une stratégie aveugle. Pour l'améliorer, il faut donc considérer aussi dans l'optimisation combien de points les joueurs ont déjà accumulé.
+
+\subsection{Question 15}
+
+Si $i \geq N$ ou $j \geq N$, alors le jeu est déjà fini, et on aura
+\[
+EG_1(i, j) = \begin{dcases*}
+1 & si $i \geq N$ et $i > j$, \\
+0 & si $i = j \geq N$, \\
+-1 & si $j \geq N$ et $j > i$.
+\end{dcases*}
+\]
+
+\subsection{Question 16}
+
+À partir de l'état $(i, j)$ avec $i < N$ et $j < N$, en jetant $d_1$ dés, le joueur 1 a une probabilité $P(d_1, k)$ de se retrouver avec $i+k$ points au prochain état et, en jetant $d_2$ dés, le joueur 2 a une probabilité $P(d_2, \ell)$ de se retrouver avec $j + \ell$ points au prochain état. Comme les deux lancés sont indépendants, la probabilité que le prochain état soit $(i+k, j+\ell)$ est donc $P(d_1, k) P(d_2, \ell)$ et, comme le joueur 1 a une espérance de gain de $EG_1(i+k, j+\ell)$ dans ce prochain état, son espérance de gain à l'état $(i, j)$ est donc
+\begin{equation}
+\label{E1D1D2IJ}
+E_1^{d_1, d_2}(i, j) = \sum_{k = 1}^{6 d_1} \sum_{\ell = 1}^{6 d_2} EG_1(i+k, j+\ell) P(d_1, k), P(d_2, \ell).
+\end{equation}
+
+\subsection{Question 17}
+
+Cette méthode a été implémentée à l'intérieur d'une classe dédiée à la stratégie optimale pour le jeu séquentiel et remplit le tableau $E_1(i, j)$ à l'aide de \eqref{E1D1D2IJ} en utilisant, pour chaque valeur de $d_1$ et $d_2$, des produits matriciels pour faire le calcul du membre de droite de \eqref{E1D1D2IJ}.
+
+\subsection{Question 18}
+
+Soient $p_1^{i, j}$ et $p_2^{i, j}$ les stratégies mixtes des joueurs 1 et 2 dans l'état $(i, j)$, c'est-à-dire, $p_1^{i, j}(d)$ est la probabilité avec laquelle le joueur 1 choisit de lancer $d \in \{1, \dotsc, D\}$ dés et de même pour le joueur 2. On simplifie leurs notations à $p_1$ et $p_2$ dans cette question car on raisonne à état $(i, j)$ fixé. En procédant comme à la Question 11, on en déduit que le gain du joueur 1 dans ce cas sera, sous écriture matricielle,
+\[
+p_1^\top E_1(i, j) p_2.
+\]
+Toujours comme à la Question 11, on considère que le joueur 2 choisit sa stratégie mixte $p_2$ de façon à minimiser la valeur ci-dessus, c'est-à-dire, il va résoudre $\min_{p_2} p_1^\top E_1(i, j) p_2$. Le joueur 1, anticipant ce comportement de son adversaire, joue selon le problème de maximisation
+\[\max_{p_1} \min_{p_2} p_1^\top E_1(i, j) p_2.\]
+Si les joueurs jouent de cette façon, on a donc
+\[
+EG_1(i, j) = \max_{p_1} \min_{p_2} p_1^\top E_1(i, j) p_2.
+\]
+
+Par conséquent, pour calculer $EG_1(i, j)$ si $i < N$ et $j < N$ il faut:
+\begin{enumerate}[label={\arabic*.}, ref={\arabic*}, nosep]
+\item Calculer la matrice $E_1(i, j)$ à partir des valeurs de $EG_1(k, \ell)$ ($k > i$, $\ell > j$) et de $P(d, k)$ par \eqref{E1D1D2IJ}.
+\item Résoudre le programme linéaire correspondant, identique à \eqref{ProblemeLineaire} mais avec la matrice $EG_1$ remplacée par $E_1(i, j)$.
+\end{enumerate}
+
+\subsection{Question 19}
+
+Dans l'état $(i, j)$ on prend comme stratégie optimale pour le joueur 1 la valeur
+\[
+p_1^\ast = \argmax_{p_1} \min_{p_2} p_1^\top E_1(i, j) p_2,
+\]
+qui est une solution du problème linéaire de la Question 18. La stratégie optimale peut donc être calculée en même temps que $EG_1(i, j)$ et stockée dans un tableau.
+
+\begin{figure}[ht]
+\centering
+\resizebox{0.5\textwidth}{!}{\input{Figures/EGSimultanee.pgf}}
+\caption{Espérance de gain du joueur 1 en fonction du nombre de points du joueur 1 (ordonnée) et du nombre de points du joueur 2 (abscisse).}
+\label{FigEGSimultanee}
+\end{figure}
+
+On a implémenté la méthode calculant le tableau $EG_1$ et les stratégies optimales dans la classe dédiée à la stratégie optimale pour le jeu simultané. La matrice $EG_1$ pour $D = 10$ et $N = 100$ est représentée sur la Figure~\ref{FigEGSimultanee}, où l'on représente la matrice jusqu'à la ligne et la colonne $N + 6D - 1$. On y remarque que, même si elle ressemble à la Figure~\ref{FigEG-OPTSequentielle}(a), il y a maintenant une différence importante~: elle est symétrique, ce que l'on peut vérifier numériquement en faisant la somme $EG_1 + EG_1^\top$ et constatant que le plus grand élément en valeur absolue de cette somme est de l'ordre de $10^{-16}$.
+
+\section{Question 20}
+
+La Table~\ref{TabSimultanee} présente le gain moyen obtenu par la stratégie optimale simultanée contre quatre stratégies. On remarque qu'elle a un avantage, même si petit, contre les autres stratégies, et fait en moyenne match nul contre elle-même, comme attendu.
+
+\begin{table}[ht]
+\begin{tabular}{|cccc|}
+\hline
+Aveugle & Aléatoire & Optimale séquentielle & Optimale simultanée \tabularnewline
+\hline
+0,0142 & 0,0606 & 0,0144 & 0,000882 \tabularnewline
+\hline
+\end{tabular}
+\caption{Gain moyen du joueur 1 pour la stratégie optimale simultanée (joueur 1) jouant contre différentes stratégies (joueur 2).}
+\label{TabSimultanee}
+\end{table}
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  3 DEC 2019 23:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  5 DEC 2019 02:21
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -1710,25 +1710,26 @@ LaTeX Info: Redefining \nameref on input line 224.
 (Figures/VictoiresSequentielFonctionN.pgf) (Figures/EGSequentielle.pgf) (Figures/OPTSequentielle.pgf) [4] [5 <./Figures/
 EGSequentielle-img0.png> <./Figures/EGSequentielle-img1.png> <./Figures/OPTSequentielle-img0.png> <./Figures/OPTSequenti
 elle-img1.png>] [6]
-LaTeX Font Info:    Try loading font information for T1+jkptt on input line 506.
+LaTeX Font Info:    Try loading font information for T1+jkptt on input line 508.
  (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\t1jkptt.fd
 File: t1jkptt.fd 2007/01/26 Fontinst v1.928 font definitions for T1/jkptt.
 ) [7]
 (Figures/VictoiresSimultaneTourFonctionD.pgf) (Figures/VictoiresSimultaneTourFonctionDPourc.pgf) [8] [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 555.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 555.
+(Figures/EGSimultanee.pgf) [10 <./Figures/EGSimultanee-img0.png> <./Figures/EGSimultanee-img1.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 632.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 632.
  (rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 555.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 555.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 632.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 632.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: A2B1D4972A57A1980DC6150DABF8248D;922.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 555.
+(rerunfilecheck)             Checksum: 74611612EB83FBEC0E80E54B9123EBF7;1277.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 632.
  ) 
 Here is how much of TeX's memory you used:
- 24714 strings out of 493323
- 464335 string characters out of 3139066
- 603388 words of memory out of 3000000
- 27549 multiletter control sequences out of 15000+200000
+ 24754 strings out of 493323
+ 464955 string characters out of 3139066
+ 603725 words of memory out of 3000000
+ 27570 multiletter control sequences out of 15000+200000
  83624 words of font info for 121 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
  55i,15n,69p,1178b,500s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1741,9 +1742,9 @@ arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmn8a.pfb><C:/User
 Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsy.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/f
 onts/type1/public/kpfonts/jkpsyb.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsyc.pfb><C
 :/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on rapport.pdf (9 pages, 164841 bytes).
+Output written on rapport.pdf (10 pages, 190736 bytes).
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 

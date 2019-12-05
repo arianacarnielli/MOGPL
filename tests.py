@@ -2,7 +2,8 @@
 """
 Created on Sat Nov 23 22:49:37 2019
 
-@author: arian
+@author:Ariana Carnielli \\ Ivan Kachaikin
+Tests pour le projet de MOGPL 2019-2020
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,9 +11,10 @@ plt.rcParams.update({"pgf.texsystem": "pdflatex"})
 
 from tqdm import tqdm
 
-from projet import JeuSequentiel, JeuSimultanee, StrategieAveugle, StrategieOptimaleSequentielle,\
- StrategieAleatoire, StrategieHumaine, StrategieAveugleAdapte, StrategieOptimaleSimultaneeTour,\
- StrategieAleatoireAdapte
+from jeu import JeuSequentiel, JeuSimultane
+from strategie import StrategieAveugle, StrategieOptimaleSequentielle,\
+ StrategieAleatoire, StrategieHumaine, StrategieOptimaleSimultaneeTour,\
+ StrategieOptimaleSimultanee
 
 def EvaluationGainSequentiel(listeStrat, D, N, nbFois):
     """
@@ -29,7 +31,7 @@ def EvaluationGainSequentiel(listeStrat, D, N, nbFois):
 def EvaluationGainSimultane(listeStrat, D, N, nbFois):
     """
     """
-    jeu = JeuSimultanee(D, N)
+    jeu = JeuSimultane(D, N)
     res = np.zeros((len(listeStrat), len(listeStrat)))
     strats = [S(jeu) for S in listeStrat]
     for i in range(len(strats)):
@@ -165,39 +167,50 @@ if __name__ == "__main__":
 #    nbVic1, nbVic2 = EvaluationVictoiresFonctionD(JeuSimultanee, \
 #        StrategieOptimaleSimultaneeTour, StrategieAveugleAdapte, D, N, nbFois)
 #    np.savez("VictoiresSimultaneUnTourFonctionD", D = D, N = N, nbFois = nbFois, nbVic1 = nbVic1, nbVic2 = nbVic2)
-    data = np.load("VictoiresSimultaneUnTourFonctionD.npz")
-    D = data["D"]
-    N = data["N"]
-    nbFois = data["nbFois"]
-    nbVic1 = data["nbVic1"]
-    nbVic2 = data["nbVic2"]
+#    data = np.load("VictoiresSimultaneUnTourFonctionD.npz")
+#    D = data["D"]
+#    N = data["N"]
+#    nbFois = data["nbFois"]
+#    nbVic1 = data["nbVic1"]
+#    nbVic2 = data["nbVic2"]
+#    
+#    fig, ax = plt.subplots(figsize=(5, 5))
+#    ax.grid(True)
+#    ax.set_axisbelow(True)
+#    ax.plot(D, (nbVic1 - nbVic2)/nbFois)
+#    ax.set_xlabel("D")
+#    ax.set_ylabel("Gain du joueur 1")
+#    ax.set_title("Gain en fonction de $D$")
+#    #ax.set_ylim([0, 0.25])
+#    #ax.set_yticks(np.linspace(0, 0.25, 6))
+#    fig.show()
+#
+#    fig, ax = plt.subplots(figsize = (5, 5))
+#    ax.grid(True)
+#    ax.set_axisbelow(True)
+#    ax.plot(D, nbVic1/nbFois*100, label="Joueur 1")
+#    ax.plot(D, nbVic2/nbFois*100, label="Joueur 2")
+#    ax.plot(D, (nbFois - nbVic1 - nbVic2)/nbFois*100, label="Match nul")
+#    ax.set_xlabel("D")
+#    ax.set_ylabel("Pourcentage de victoire")
+#    ax.set_title("Pourcentage de victoire en fonction de $D$")
+#    ax.set_ylim([10, 50])
+#    #ax.set_yticks(np.linspace(0, 0.25, 6))
+#    ax.legend()
+#    fig.show()
     
-    fig, ax = plt.subplots(figsize=(5, 5))
-    ax.grid(True)
-    ax.set_axisbelow(True)
-    ax.plot(D, (nbVic1 - nbVic2)/nbFois)
-    ax.set_xlabel("D")
-    ax.set_ylabel("Gain du joueur 1")
-    ax.set_title("Gain en fonction de $D$")
-    #ax.set_ylim([0, 0.25])
-    #ax.set_yticks(np.linspace(0, 0.25, 6))
-    fig.show()
+#    jeu = JeuSequentiel(10, 100)
+#    s = StrategieOptimaleSimultanee(jeu)
+#    eg, opt = s._esperanceGain()
+#    
+#    fig, ax = plt.subplots()
+#    egColors = ax.imshow(eg)
+#    fig.colorbar(egColors)
 
-    fig, ax = plt.subplots(figsize = (5, 5))
-    ax.grid(True)
-    ax.set_axisbelow(True)
-    ax.plot(D, nbVic1/nbFois*100, label="Joueur 1")
-    ax.plot(D, nbVic2/nbFois*100, label="Joueur 2")
-    ax.plot(D, (nbFois - nbVic1 - nbVic2)/nbFois*100, label="Match nul")
-    ax.set_xlabel("D")
-    ax.set_ylabel("Pourcentage de victoire")
-    ax.set_title("Pourcentage de victoire en fonction de $D$")
-    ax.set_ylim([10, 50])
-    #ax.set_yticks(np.linspace(0, 0.25, 6))
-    ax.legend()
-    fig.show()
-    
-
+    D = 10
+    N = 1
+    nbFois = 1000000
+    EG1 = EvaluationGainSimultane([StrategieAveugle, StrategieAleatoire, StrategieOptimaleSequentielle, StrategieOptimaleSimultanee], D, N, nbFois)
     
 
 #==============================================================================

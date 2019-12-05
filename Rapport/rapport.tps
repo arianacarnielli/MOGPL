@@ -14,11 +14,11 @@ NormalPos.top=26
 NormalPos.right=1181
 NormalPos.bottom=581
 Class=LaTeXView
-Document=rapport.tex
+Document=Figures\VictoiresSimultaneTourFonctionDPourc.pgf
 
 [Frame0_View0,0]
-TopLine=590
-Cursor=27672
+TopLine=907
+Cursor=35153
 
 [Frame1]
 Flags=0
@@ -32,11 +32,11 @@ NormalPos.top=26
 NormalPos.right=1181
 NormalPos.bottom=581
 Class=LaTeXView
-Document=Figures\EGSequentielle.pgf
+Document=rapport.tex
 
 [Frame1_View0,0]
-TopLine=726
-Cursor=28595
+TopLine=0
+Cursor=0
 
 [Frame2]
 Flags=0
@@ -50,11 +50,11 @@ NormalPos.top=26
 NormalPos.right=1181
 NormalPos.bottom=581
 Class=LaTeXView
-Document=C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty
+Document=Figures\OPTSequentielle.pgf
 
 [Frame2_View0,0]
-TopLine=75
-Cursor=2766
+TopLine=601
+Cursor=23793
 
 [Frame3]
 Flags=0
@@ -68,13 +68,13 @@ NormalPos.top=26
 NormalPos.right=1181
 NormalPos.bottom=581
 Class=LaTeXView
-Document=Figures\OPTSequentielle.pgf
+Document=Figures\VictoiresSimultaneTourFonctionD.pgf
 
 [Frame3_View0,0]
-TopLine=601
-Cursor=23793
+TopLine=755
+Cursor=29101
 
 [SessionInfo]
 FrameCount=4
-ActiveFrame=0
+ActiveFrame=1
 
