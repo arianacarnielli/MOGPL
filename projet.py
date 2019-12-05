@@ -9,6 +9,8 @@ import numpy as np
 from scipy.optimize import linprog
 from tqdm import tqdm
 
+eps = 1e-3
+
 class Jeu:
     """
     Classe générale pour représenter le jeu Dice Battle.
@@ -44,7 +46,7 @@ class Jeu:
         
         self.joueur1 = 0
         self.joueur2 = 0
-        
+
     def comparerStrategies(self, strategie1, strategie2, nbFois = 10000):
         """
         Joue nbFois parties avec les stratégies passées en argument et renvoie 
@@ -60,7 +62,7 @@ class Jeu:
             quantité de victoires du joueur 2 et la quantité de parties nulles.
         """
         self.setStrategies(strategie1, strategie2)
-        self._reset()  
+        self._reset()
         nbVic1 = 0
         nbVic2 = 0
         nbNul = 0
@@ -73,7 +75,7 @@ class Jeu:
             else:
                 nbNul += 1
             self._reset()
-        return nbVic1, nbVic2, nbNul         
+        return nbVic1, nbVic2, nbNul
         
     def setStrategies(self, strategie1, strategie2):
         """
@@ -123,7 +125,7 @@ class Jeu:
         if self.joueur1 == self.joueur2 :
             return 0
         return 1 if self.joueur1 > self.joueur2 else 2
-   
+
     def _reset(self):
         """
         Réinitialise les scores des joueurs pour qu'une nouvelle partie puisse
@@ -216,7 +218,7 @@ class JeuSequentiel(Jeu):
     def __init__(self, D, N):
         super().__init__(D, N)
         self.joueurCourant = 1
-        
+
     def _reset(self):
         """
         """
@@ -243,28 +245,29 @@ class JeuSimultanee(Jeu):
     def _tour(self):
         """
         """
-        des_proba = self.strategie1.jouerTour(self.joueur1, self.joueur2)
+        des_proba = self.strategie1.jouerTour(self.joueur1, self.joueur2)[0]
         rand_val = np.random.rand()
         des = np.arange(self.D+1)[des_proba.cumsum() > rand_val][0]
+
+        des_proba = self.strategie2.jouerTour(self.joueur2, self.joueur1)[1]
+
         self.joueur1 += self._tirageDes(des)
 
-        des_proba = self.strategie2.jouerTour(self.joueur2, self.joueur1)
         rand_val = np.random.rand()
         des = np.arange(self.D+1)[des_proba.cumsum() > rand_val][0]
         self.joueur2 += self._tirageDes(des)
 
-#    def comparerStrategies(self, nbs=1000):
-#        """
-#        """
-#        res = np.array([0, 0, 0], dtype=int)
-#        for _ in tqdm(range(nbs)):
-#            self.joueur1 = 0
-#            self.joueur2 = 0
-#            while not self._estfini():
-#                self._tour()
-#            res[self.vainqueur()] += 1
-#        return res / nbs
-        
+    def comparerStrategiesPourcentage(self, nbs=1000):
+        """
+        """
+        res = np.array([0, 0, 0], dtype=int)
+        for _ in tqdm(range(nbs)):
+            self.joueur1 = 0
+            self.joueur2 = 0
+            while not self._estfini():
+                self._tour()
+            res[self.vainqueur()] += 1
+        return res / nbs
         
 class Strategie:
     """
@@ -340,18 +343,16 @@ class StrategieHumaine(Strategie):
         return int(des)
 
 
-
 class StrategieOptimaleSimultaneeTour(Strategie):
 
     def __init__(self, jeu):
         super().__init__(jeu)
         self._EG1 = self._esperanceGainPremier()
-        self.strategie = self._resoudrePL()
+        self._strategies = self._calculerStrategies()
 
     def _esperanceGainPremier(self):
         D = self.jeu.D
-        probas = self.jeu.probas
-
+        probas = self.jeu.probas.copy()
         EG1 = np.zeros((D + 1, D + 1))
         EG1[1:, 0] = 1
         EG1[0, 1:] = -1
@@ -363,8 +364,8 @@ class StrategieOptimaleSimultaneeTour(Strategie):
                     EG1[d1, d2] -= probas[d1, i] * np.sum(probas[d2, i + 1:6 * d2 + 1])
 
         return EG1
-    
-    def _matriceContrainte(self):
+
+    def _matriceContraintePremier(self):
         D = self.jeu.D
         mres = np.zeros((D+2, D+2))
         for j in range(1, D+1):
@@ -380,11 +381,27 @@ class StrategieOptimaleSimultaneeTour(Strategie):
 
         return mres
 
-    def _resoudrePL(self):
+    def _matriceContrainteDeuxieme(self):
         D = self.jeu.D
-        strategie_mixte = np.zeros(D+1)
+        mres = np.zeros((D+2, D+2))
+        for i in range(1, D+1):
+            mres[i-1] = np.concatenate((
+                [-1.0, 1.0],
+                self._EG1[i][1:]
+            ))
+        mres[-2] = np.concatenate((
+            [0.0, 0.0],
+            np.ones(D)
+        ))
+        mres[-1] = -mres[-2].copy()
 
-        A_ub = self._matriceContrainte()
+        return mres
+
+    def _calculerStrategies(self):
+        D = self.jeu.D
+        strategies = np.zeros((2, D+1))
+
+        A_ub = self._matriceContraintePremier()
 
         b_ub = np.zeros(D+2)
         b_ub[-2] = 1.0
@@ -395,12 +412,133 @@ class StrategieOptimaleSimultaneeTour(Strategie):
         obj[1] = -1.0
 
         opt_res = linprog(-obj, method='simplex', A_ub=A_ub, b_ub=b_ub)
-        strategie_mixte[1:] = opt_res.x[2:]
+        strategies[0, 1:] = opt_res.x[2:]
 
-        return strategie_mixte
-    
+        A_ub = self._matriceContrainteDeuxieme()
+
+        b_ub = np.zeros(D+2)
+        b_ub[-2] = 1.0
+        b_ub[-1] = -1.0
+
+        obj = np.zeros(D+2)
+        obj[0] = 1.0
+        obj[1] = -1.0
+
+        opt_res = linprog(obj, method='simplex', A_ub=A_ub, b_ub=b_ub)
+        strategies[1, 1:] = opt_res.x[2:]
+
+        return strategies
+
     def jouerTour(self, moi, autre):
-        return self.strategie
+        return self._strategies
+
+class StrategieOptimaleSimultanee(Strategie):
+
+    def __init__(self, jeu):
+        super().__init__(jeu)
+        self._EG1, self._strategies = self._esperanceGainPremierEtStrategies()
+
+    def _matriceContraintePremier(self, E1_ij):
+        D = self.jeu.D
+        mres = np.zeros((D+2, D+2))
+        for j in range(D):
+            mres[j] = np.concatenate((
+                [1.0, -1.0],
+                -(E1_ij[:, j])
+            ))
+        mres[-2] = np.concatenate((
+            [0.0, 0.0],
+            np.ones(D)
+        ))
+        mres[-1] = -mres[-2].copy()
+
+        return mres
+
+    def _matriceContrainteDeuxieme(self, E1_ij):
+        D = self.jeu.D
+        mres = np.zeros((D+2, D+2))
+        for i in range(D):
+            mres[i] = np.concatenate((
+                [-1.0, 1.0],
+                E1_ij[i]
+            ))
+        mres[-2] = np.concatenate((
+            [0.0, 0.0],
+            np.ones(D)
+        ))
+        mres[-1] = -mres[-2].copy()
+
+        return mres
+
+    def _esperanceGainPremierEtStrategies(self):
+        D, N = self.jeu.D, self.jeu.N
+        EG1 = np.zeros((N - 1 + 6 * D + 1, N - 1 + 6 * D + 1))
+        strategies = np.zeros((N - 1 + 6 * D + 1, N - 1 + 6 * D + 1, 2, D+1))
+        strategies[:, :, :, 0] = 1.0
+        probas = self.jeu.probas.copy()
+
+        EG1[N:, :N] = 1
+        EG1[:N, N:] = -1
+
+        j, i = np.arange(6*D), np.arange(6*D)
+        jj, ii = np.meshgrid(j, i)
+        EG1[N:, N:][ii > jj] = 1
+        EG1[N:, N:][ii < jj] = -1
+        E1_ij = np.zeros((D, D))
+
+        for i in tqdm(range(N-1, -1, -1)):
+            for j in range(N-1, -1, -1):
+                for d1 in range(1, D+1):
+                    for d2 in range(1, D+1):
+                        k, l = np.arange(1, 6*d1+1), np.arange(1, 6*d2+1)
+                        kk, ll = np.meshgrid(k, l)
+                        E1_ij[d1-1, d2-1] = np.sum(EG1[i+kk, j+ll] * probas[d1, kk] * probas[d2, ll])
+
+                        # Pour vétifier qu'une expression NumPy est valide, on peut recalculer élément E1_ij[d1-1, d2-1]
+                        # par boucles en décommentant le code ci-dessous
+                        # s = 0.0
+                        # for k1 in range(1, 6*d1+1):
+                        #     for l1 in range(1, 6*d2+1):
+                        #         s += _EG1[i + k1, j + l1] * probas[d1, k1] * probas[d2, l1]
+                        # print(E1_ij[d1-1, d2-1] - s)
+
+                A_ub = self._matriceContraintePremier(E1_ij)
+
+                b_ub = np.zeros(D + 2)
+                b_ub[-2] = 1.0
+                b_ub[-1] = -1.0
+
+                obj = np.zeros(D + 2)
+                obj[0] = 1.0
+                obj[1] = -1.0
+
+                opt_res = linprog(-obj, method='simplex', A_ub=A_ub, b_ub=b_ub, options={'tol': eps})
+                strategies[i, j, 0, 1:] = opt_res.x[2:]
+                strategies[i, j, 0, 0] = 0.0
+
+                A_ub = self._matriceContrainteDeuxieme(E1_ij)
+
+                b_ub = np.zeros(D + 2)
+                b_ub[-2] = 1.0
+                b_ub[-1] = -1.0
+
+                obj = np.zeros(D + 2)
+                obj[0] = 1.0
+                obj[1] = -1.0
+
+                opt_res = linprog(obj, method='simplex', A_ub=A_ub, b_ub=b_ub, options={'tol': eps})
+                strategies[i, j, 1, 1:] = opt_res.x[2:]
+                strategies[i, j, 1, 0] = 0.0
+
+                EG1[i, j] = np.dot(np.dot(strategies[i, j, 0, 1:], E1_ij), strategies[i, j, 1, 1:])
+
+        return EG1, strategies
+
+    def jouerTour(self, moi, autre):
+        return np.concatenate((
+            self._strategies[moi, autre, 0],
+            self._strategies[autre, moi, 1]
+        )).reshape(2, -1)
 
 class StrategieAveugleAdapte(Strategie):
     """
@@ -410,37 +548,34 @@ class StrategieAveugleAdapte(Strategie):
         """
         """
         d = self.jeu.D if self.jeu.D <= 6 else 6
-        strategie_mixte = np.zeros(self.jeu.D+1)
-        strategie_mixte[d] = 1.0
+        strategie_mixte = np.zeros((2, self.jeu.D+1))
+        strategie_mixte[:, d] = 1.0
         return strategie_mixte
-    
+
 class StrategieAleatoireAdapte(Strategie):
     """
     """
+
     def jouerTour(self, moi, autre):
         """
         """
-        strategie = np.full(self.jeu.D + 1, 1/self.jeu.D)
+        strategie = np.full(self.jeu.D + 1, 1 / self.jeu.D)
         strategie[0] = 0
         return strategie
-        
-        
+
+
 def EGunCoup(D):
     """
     """
     jeu = Jeu(D, 1)
     p = jeu.probas
-    
+
     res = np.zeros((D, D))
-    
+
     for d1 in range(D):
         for d2 in range(D):
             for j in range(1, (d2 + 1) * 6 + 1):
-                res[d1, d2] += p[d2 + 1, j] * p[d1 + 1, j + 1 : (d1 + 1) * 6 + 1].sum()
+                res[d1, d2] += p[d2 + 1, j] * p[d1 + 1, j + 1: (d1 + 1) * 6 + 1].sum()
             for i in range(1, (d1 + 1) * 6 + 1):
-                res[d1, d2] -= p[d1 + 1, i] * p[d2 + 1, i + 1 : (d2 + 1) * 6 + 1].sum()
+                res[d1, d2] -= p[d1 + 1, i] * p[d2 + 1, i + 1: (d2 + 1) * 6 + 1].sum()
     return res
-    
-    
-    
-
