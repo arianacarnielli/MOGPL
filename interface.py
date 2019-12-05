@@ -7,10 +7,17 @@ Created on Thu Dec  5 18:28:00 2019
 
 import PySimpleGUI as sg  
 
-from Jeu import JeuSequentiel, JeuSimultane
+from jeu import JeuSequentiel, JeuSimultane
 from strategie import StrategieAveugle, StrategieOptimaleSequentielle,\
  StrategieAleatoire, StrategieHumaine, StrategieOptimaleSimultaneeTour,\
  StrategieOptimaleSimultanee
+
+strats = {'Aléatoire': StrategieAleatoire,\
+          'Aveugle': StrategieAveugle,\
+          'Humaine': StrategieHumaine,\
+          'Optimale Séq': StrategieOptimaleSequentielle,\
+          'Optimale 1 tour': StrategieOptimaleSimultaneeTour,\
+          'Optimale': StrategieOptimaleSimultanee}
 
 sg.change_look_and_feel('BluePurple')
 
@@ -29,7 +36,8 @@ col2 = [[sg.Text('D'), sg.Spin(values=[i for i in range(1, 100)],\
                              'Optimale 1 tour', 'Optimale'))],
         [sg.Button('Jeu Séquentiel')]]
         
-layout = [[sg.Column(col1, element_justification = 'center'), sg.Column(col2, element_justification = 'center')]]  
+layout = [[sg.Column(col1, element_justification = 'center'), \
+           sg.Column(col2, element_justification = 'center')]]  
 
 win1 = sg.Window('Dice Battle', layout, finalize = True)  
 
@@ -41,11 +49,28 @@ while True:
         break  
 
     if ev1 == 'Jeu Simultané' and not win2_active:  
-        win2_active = True  
-        win1.Hide()  
-        layout2 = [[sg.Text('Jeu')], [sg.Output(size=(88, 20))]]  
-
-        win2 = sg.Window('Window 2', layout2, finalize = True)  
+        win2_active = True
+        jeu = JeuSimultane(vals1[2], vals1[0])
+        if vals1[1] != 'Humaine' and vals1[3] != 'Humaine':   
+            
+            layout2 = [[sg.Text('Jeu :')], [sg.Output(size=(88, 20))]]  
+            strat1 = strats[vals1[1]](jeu)
+            strat2 = strats[vals1[3]](jeu)
+            jeu.setStrategies(strat1, strat2)
+            win1.Hide()
+            win2 = sg.Window('Dice Battle', layout2, finalize = True)  
+            jeu.jouer()
+        elif vals1[1] == 'Humaine' and vals1[3] != 'Humaine':
+            layout2 = [[sg.Text('Jeu :')], [sg.Output(size=(88, 20))], \
+                        [sg.Spin(values=[i for i in range(1, jeu.D + 1)])]]
+            
+            strat2 = strats[vals1[3]](jeu)
+            strat2 = strats[vals1[3]](jeu)
+            jeu.setStrategies(strat1, strat2)
+            win1.Hide()
+            win2 = sg.Window('Dice Battle', layout2, finalize = True)  
+            jeu.jouer()
+            
         while True:  
             ev2, vals2 = win2.Read()  
             if ev2 is None or ev2 == 'Exit':  
@@ -54,14 +79,17 @@ while True:
                 win1.UnHide()  
                 break
             
-            
-            
     elif ev1 == 'Jeu Séquentiel' and not win2_active:  
         win2_active = True  
+        layout2 = [[sg.Text('Jeu :')], [sg.Output(size=(88, 20))]]  
+        jeu = JeuSequentiel(vals1[2], vals1[0])
+        strat1 = strats[vals1[1]](jeu)
+        strat2 = strats[vals1[3]](jeu)
+        jeu.setStrategies(strat1, strat2)
         win1.Hide()  
-        layout2 = [[sg.Text('Jeu')], [sg.Output(size=(88, 20))]]  
-
-        win2 = sg.Window('Window 2', layout2)  
+        win2 = sg.Window('Dice Battle', layout2, finalize = True)  
+        jeu.jouer()
+        
         while True:  
             ev2, vals2 = win2.Read()  
             if ev2 is None or ev2 == 'Exit':  

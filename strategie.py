@@ -150,7 +150,7 @@ class StrategieOptimaleSequentielle(Strategie):
         Returns :
             La quantité de dés à jouer.
         """
-        return self.opt[moi, autre]
+        return self.OPT[moi, autre]
     
 class StrategieHumaine(Strategie):
     """
@@ -203,7 +203,7 @@ class StrategieOptimaleSimultaneeTour(Strategie):
         """ 
         super().__init__(jeu)
         self._EG1 = self._esperanceGainPremier()
-        self._strategie = ResolutionPL.resoudrePL(self._EG1)
+        _, self._strategie = ResolutionPL.resoudrePL(self._EG1)
 
     def _esperanceGainPremier(self):
         """

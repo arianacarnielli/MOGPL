@@ -82,7 +82,7 @@ def EvaluationVictoiresFonctionN(TypeJeu, S1, S2, D, Nvect, nbFois):
             jeu._reset()
     return nbVic1, nbVic2
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # Calcul du gain dans le jeu séquentiel pour différentes stratégies
 #    D = 10
 #    N = 100
@@ -207,12 +207,14 @@ if __name__ == "__main__":
 #    egColors = ax.imshow(eg)
 #    fig.colorbar(egColors)
 
-    D = 10
-    N = 1
-    nbFois = 1000000
-    EG1 = EvaluationGainSimultane([StrategieAveugle, StrategieAleatoire, StrategieOptimaleSequentielle, StrategieOptimaleSimultanee], D, N, nbFois)
-    
-
+#==============================================================================
+#     D = 10
+#     N = 1
+#     nbFois = 1000000
+#     EG1 = EvaluationGainSimultane([StrategieAveugle, StrategieAleatoire, StrategieOptimaleSequentielle, StrategieOptimaleSimultanee], D, N, nbFois)
+#     
+# 
+#==============================================================================
 #==============================================================================
 #     
 #     jeu = JeuSequentiel(D, N)
