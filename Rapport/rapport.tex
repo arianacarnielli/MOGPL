@@ -238,6 +238,8 @@
 
 \section{Introduction}
 
+Ce rapport présente les résultats théoriques et quelques résultats de simulations numériques pour le projet de MOGPL concernant le jeu «~Dice Battle~». On suit la division en questions de l'énoncé du projet.
+
 \section{Probabilités}
 
 \subsection{Question 1}
@@ -314,7 +316,7 @@ Comme $N = 2$, le jeu se finira au maximum au bout de $2$ tours. Soit $G$ la var
 G = 1 : \quad & X_1 > 1 \cup \bigl(X_1 = 1 \cap Y_1 = 1\bigr) \\
 G = -1 : \quad & X_1 = 1 \cap Y_1 > 1
 \end{align*}
-Cela permet de calculer les probabilités~:
+Cela permet de calculer les probabilités
 \begin{align*}
 \mathbb P(G = 1) & = \left(\frac{5}{6}\right)^3 + \left(1 - \left(\frac{5}{6}\right)^3\right)\frac{1}{6} \approx 0,6489\\
 \mathbb P(G = -1) & = \left(1 - \left(\frac{5}{6}\right)^3\right) \frac{5}{6} \approx 0,3511
@@ -505,7 +507,7 @@ On remarque que, comme ce jeu est à somme nulle, la stratégie $p_1^\ast$ est a
 
 \subsection{Mise en \oe{}uvre~: questions 13 et 14}
 
-Pour l'implémentation du jeu simultané, on considère qu'une stratégie retourne toujours le vecteur $p = \bigl(p(1), \dotsc, p(D)\bigr)$ des probabilités de choisir chaque quantité de dés possible. La stratégie aveugle pour le jeu séquentiel a ainsi été implémentée en retournant un vecteur $p$ avec $p(d^\ast(D)) = 1$ (et $0$ ailleurs), où $d^\ast(D) = \min(D, 6)$ comme à la Question~2. La stratégie optimale calcule au début la résolution du programme linéaire de la question précédente, en utilisant pour cela la fonction \texttt{linprog} de la bibliothèque d'optimisation \texttt{optimize} de \emph{SciPy}, et ne fait que renvoyer cette même solution à chaque appel. Nous avons aussi implémenté une version de la stratégie aléatoire qui retourne une loi uniforme sur $\{1, \dotsc, D\}$.
+Pour l'implémentation du jeu simultané, on considère qu'une stratégie retourne toujours la quantité de dés à jouer tiré de façon aléatoire selon le vecteur $p = \bigl(p(1), \dotsc, p(D)\bigr)$ des probabilités de choisir chaque quantité de dés possible. La stratégie optimale calcule au début la résolution du programme linéaire de la question précédente, en utilisant pour cela la fonction \texttt{linprog} de la bibliothèque d'optimisation \texttt{optimize} de \emph{SciPy}, et ne fait que utiliser cette même solution à chaque appel. 
 
 \begin{table}[ht]
 \begin{tabular}{|c|cccccc|}

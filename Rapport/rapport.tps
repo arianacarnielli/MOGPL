@@ -17,7 +17,7 @@ Class=LaTeXView
 Document=Figures\VictoiresSimultaneTourFonctionDPourc.pgf
 
 [Frame0_View0,0]
-TopLine=907
+TopLine=906
 Cursor=35153
 
 [Frame1]
@@ -35,8 +35,8 @@ Class=LaTeXView
 Document=rapport.tex
 
 [Frame1_View0,0]
-TopLine=0
-Cursor=0
+TopLine=233
+Cursor=13622
 
 [Frame2]
 Flags=0
@@ -71,10 +71,28 @@ Class=LaTeXView
 Document=Figures\VictoiresSimultaneTourFonctionD.pgf
 
 [Frame3_View0,0]
-TopLine=755
+TopLine=756
 Cursor=29101
 
+[Frame4]
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-1
+MaxPos.y=-1
+NormalPos.left=4
+NormalPos.top=26
+NormalPos.right=1181
+NormalPos.bottom=581
+Class=LaTeXView
+Document=Figures\EGSimultanee.pgf
+
+[Frame4_View0,0]
+TopLine=524
+Cursor=19960
+
 [SessionInfo]
-FrameCount=4
+FrameCount=5
 ActiveFrame=1
 
