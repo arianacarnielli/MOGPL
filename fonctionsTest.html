@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module fonctionsTest</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>fonctionsTest</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cariana%5Cdocumentos%5Cfaculdade%5Cmogpl%5Cfonctionstest.py">d:\ariana\documentos\faculdade\mogpl\fonctionstest.py</a></font></td></tr></table>
+    <p><tt>Created&nbsp;on&nbsp;Thu&nbsp;Nov&nbsp;22&nbsp;19:40:25&nbsp;2019<br>
+&nbsp;<br>
+@author:Ariana&nbsp;Carnielli&nbsp;\&nbsp;Ivan&nbsp;Kachaikin<br>
+Fonctions&nbsp;de&nbsp;test&nbsp;pour&nbsp;le&nbsp;projet&nbsp;de&nbsp;MOGPL&nbsp;2019-2020</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-EvaluationGainSequentiel"><strong>EvaluationGainSequentiel</strong></a>(listeStrat, D, N, nbFois)</dt><dd><tt>Calcule&nbsp;les&nbsp;gains&nbsp;moyens&nbsp;en&nbsp;nbFois&nbsp;jeux&nbsp;séquentiels&nbsp;entre&nbsp;les&nbsp;stratégies&nbsp;<br>
+listées&nbsp;dans&nbsp;listeStrat.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;listeStrat&nbsp;:&nbsp;tableau&nbsp;avec&nbsp;les&nbsp;stratégies&nbsp;(pas&nbsp;encore&nbsp;initialisées)&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qu'on&nbsp;veut&nbsp;tester.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;:&nbsp;Nombre&nbsp;maximum&nbsp;de&nbsp;dés&nbsp;qu'un&nbsp;joueur&nbsp;peut&nbsp;lancer&nbsp;dans&nbsp;1&nbsp;tour&nbsp;du&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jeu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;:&nbsp;Nombre&nbsp;de&nbsp;points&nbsp;à&nbsp;atteindre&nbsp;pour&nbsp;gagner&nbsp;une&nbsp;partie.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nbFois&nbsp;:&nbsp;Quantité&nbsp;de&nbsp;jeux&nbsp;joués&nbsp;pour&nbsp;remplir&nbsp;chaque&nbsp;case.<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Un&nbsp;tableau&nbsp;de&nbsp;taille&nbsp;listeStrat**2&nbsp;où&nbsp;chaque&nbsp;case&nbsp;(i,&nbsp;j)&nbsp;représente&nbsp;le<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gain&nbsp;moyen&nbsp;en&nbsp;nbFois&nbsp;jeux&nbsp;de&nbsp;la&nbsp;stratégie&nbsp;listeStrat[i]&nbsp;contre&nbsp;la&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stratégie&nbsp;listeStrat[j].</tt></dd></dl>
+ <dl><dt><a name="-EvaluationGainSimultane"><strong>EvaluationGainSimultane</strong></a>(listeStrat, D, N, nbFois)</dt><dd><tt>Calcule&nbsp;les&nbsp;gains&nbsp;moyens&nbsp;en&nbsp;nbFois&nbsp;jeux&nbsp;simultanés&nbsp;entre&nbsp;les&nbsp;stratégies&nbsp;<br>
+listées&nbsp;dans&nbsp;listeStrat.<br>
+&nbsp;<br>
+Args&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;listeStrat&nbsp;:&nbsp;tableau&nbsp;avec&nbsp;les&nbsp;stratégies&nbsp;(pas&nbsp;encore&nbsp;initialisées)&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qu'on&nbsp;veut&nbsp;tester.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;:&nbsp;Nombre&nbsp;maximum&nbsp;de&nbsp;dés&nbsp;qu'un&nbsp;joueur&nbsp;peut&nbsp;lancer&nbsp;dans&nbsp;1&nbsp;tour&nbsp;du&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jeu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;:&nbsp;Nombre&nbsp;de&nbsp;points&nbsp;à&nbsp;atteindre&nbsp;pour&nbsp;gagner&nbsp;une&nbsp;partie.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nbFois&nbsp;:&nbsp;Quantité&nbsp;de&nbsp;jeux&nbsp;joués&nbsp;pour&nbsp;remplir&nbsp;chaque&nbsp;case.<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Un&nbsp;tableau&nbsp;de&nbsp;taille&nbsp;listeStrat**2&nbsp;où&nbsp;chaque&nbsp;case&nbsp;(i,&nbsp;j)&nbsp;représente&nbsp;le<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gain&nbsp;moyen&nbsp;en&nbsp;nbFois&nbsp;jeux&nbsp;de&nbsp;la&nbsp;stratégie&nbsp;listeStrat[i]&nbsp;contre&nbsp;la&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stratégie&nbsp;listeStrat[j].</tt></dd></dl>
+ <dl><dt><a name="-EvaluationVictoiresFonctionD"><strong>EvaluationVictoiresFonctionD</strong></a>(TypeJeu, S1, S2, Dvect, N, nbFois)</dt><dd><tt>Calcule&nbsp;deux&nbsp;tableaux&nbsp;avec&nbsp;le&nbsp;nombre&nbsp;de&nbsp;victoires&nbsp;du&nbsp;joueur&nbsp;1&nbsp;et&nbsp;du&nbsp;<br>
+joueur&nbsp;2&nbsp;avec&nbsp;des&nbsp;stratégies&nbsp;fixes&nbsp;et&nbsp;en&nbsp;variant&nbsp;D,&nbsp;le&nbsp;nombre&nbsp;maximum&nbsp;de&nbsp;<br>
+dés.&nbsp;On&nbsp;joue&nbsp;nbFois&nbsp;pour&nbsp;chaque&nbsp;case.<br>
+&nbsp;<br>
+&nbsp;Args&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TypeJeu&nbsp;:&nbsp;le&nbsp;type&nbsp;de&nbsp;Jeu&nbsp;qu'on&nbsp;veut&nbsp;jouer&nbsp;(Simultané&nbsp;ou&nbsp;Séquentiel).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pas&nbsp;initialisé.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;S1&nbsp;:&nbsp;Une&nbsp;stratégie.&nbsp;Pas&nbsp;initialisé.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;S2&nbsp;:&nbsp;Une&nbsp;stratégie.&nbsp;Pas&nbsp;initialisé.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dvect&nbsp;:&nbsp;Tableau&nbsp;avec&nbsp;les&nbsp;nombres&nbsp;maximums&nbsp;de&nbsp;dés&nbsp;qu'un&nbsp;joueur&nbsp;peut&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lancer&nbsp;dans&nbsp;1&nbsp;tour&nbsp;du&nbsp;jeu.&nbsp;Pour&nbsp;chaque&nbsp;case&nbsp;de&nbsp;Dvect,&nbsp;la&nbsp;fonction&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;joue&nbsp;nbFois&nbsp;fois.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;:&nbsp;Nombre&nbsp;de&nbsp;points&nbsp;à&nbsp;atteindre&nbsp;pour&nbsp;gagner&nbsp;une&nbsp;partie.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nbFois&nbsp;:&nbsp;Quantité&nbsp;de&nbsp;jeux&nbsp;joués&nbsp;pour&nbsp;remplir&nbsp;chaque&nbsp;case.<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Un&nbsp;couple&nbsp;de&nbsp;tableaux&nbsp;de&nbsp;même&nbsp;taille&nbsp;que&nbsp;Dvect&nbsp;où&nbsp;chaque&nbsp;case&nbsp;i&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;représente&nbsp;la&nbsp;quantité&nbsp;de&nbsp;victoires&nbsp;en&nbsp;nbFois&nbsp;jeux&nbsp;de&nbsp;la&nbsp;stratégie&nbsp;S1&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;contre&nbsp;la&nbsp;stratégie&nbsp;S2.</tt></dd></dl>
+ <dl><dt><a name="-EvaluationVictoiresFonctionN"><strong>EvaluationVictoiresFonctionN</strong></a>(TypeJeu, S1, S2, D, Nvect, nbFois)</dt><dd><tt>Calcule&nbsp;deux&nbsp;tableaux&nbsp;avec&nbsp;le&nbsp;nombre&nbsp;de&nbsp;victoires&nbsp;du&nbsp;joueur&nbsp;1&nbsp;et&nbsp;du&nbsp;<br>
+joueur&nbsp;2&nbsp;avec&nbsp;des&nbsp;stratégies&nbsp;fixes&nbsp;et&nbsp;en&nbsp;variant&nbsp;N,&nbsp;le&nbsp;nombre&nbsp;de&nbsp;points&nbsp;à&nbsp;<br>
+atteindre&nbsp;pour&nbsp;gagner&nbsp;une&nbsp;partie.&nbsp;On&nbsp;joue&nbsp;nbFois&nbsp;pour&nbsp;chaque&nbsp;case.<br>
+&nbsp;<br>
+&nbsp;Args&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TypeJeu&nbsp;:&nbsp;le&nbsp;type&nbsp;de&nbsp;Jeu&nbsp;qu'on&nbsp;veut&nbsp;jouer&nbsp;(Simultané&nbsp;ou&nbsp;Séquentiel).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pas&nbsp;initialisé.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;S1&nbsp;:&nbsp;Une&nbsp;stratégie.&nbsp;Pas&nbsp;initialisé.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;S2&nbsp;:&nbsp;Une&nbsp;stratégie.&nbsp;Pas&nbsp;initialisé.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;:&nbsp;Nombre&nbsp;maximum&nbsp;de&nbsp;dés&nbsp;qu'un&nbsp;joueur&nbsp;peut&nbsp;lancer&nbsp;dans&nbsp;1&nbsp;tour&nbsp;du&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jeu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nvect&nbsp;:&nbsp;Tableau&nbsp;avec&nbsp;les&nbsp;nombres&nbsp;de&nbsp;points&nbsp;à&nbsp;atteindre&nbsp;pour&nbsp;gagner&nbsp;une&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partie.&nbsp;Pour&nbsp;chaque&nbsp;case&nbsp;de&nbsp;Nvect,&nbsp;la&nbsp;fonction&nbsp;joue&nbsp;nbFois&nbsp;fois.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nbFois&nbsp;:&nbsp;Quantité&nbsp;de&nbsp;jeux&nbsp;joués&nbsp;pour&nbsp;remplir&nbsp;chaque&nbsp;case.<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Un&nbsp;couple&nbsp;de&nbsp;tableaux&nbsp;de&nbsp;même&nbsp;taille&nbsp;que&nbsp;Nvect&nbsp;où&nbsp;chaque&nbsp;case&nbsp;i&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;représente&nbsp;la&nbsp;quantité&nbsp;de&nbsp;victoires&nbsp;en&nbsp;nbFois&nbsp;jeux&nbsp;de&nbsp;la&nbsp;stratégie&nbsp;S1&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;contre&nbsp;la&nbsp;stratégie&nbsp;S2.</tt></dd></dl>
+</td></tr></table>
+</body></html>

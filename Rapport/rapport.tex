@@ -227,6 +227,8 @@
 
 \pagestyle{plain}
 
+\vspace*{-15pt}
+
 \title{Projet UE MOGPL --- MU4IN200 \\ Dice Battle}
 \author{Ariana Carnielli \\ Ivan Kachaikin}
 \date{}
@@ -239,6 +241,14 @@
 \section{Introduction}
 
 Ce rapport présente les résultats théoriques et quelques résultats de simulations numériques pour le projet de MOGPL concernant le jeu «~Dice Battle~». On suit la division en questions de l'énoncé du projet.
+
+Les fichiers annexes à ce document sont~:
+\begin{itemize}[label=\textbullet, nosep]
+\item \texttt{jeu.py} et \texttt{strategie.py}~: contiennent les classes pour représenter les jeux séquentiel et simultané et les différentes stratégies implémentées.
+\item \texttt{fonctionsTest.py} et \texttt{tests.ipynb}~: contiennent des fonctions pour tester les implémentations et la série de tests qui a produit les résultats et les figures présentés dans ce rapport.
+\item \texttt{interface.py}~: une interface graphique pour l'exécution du jeu (le jeu peut être aussi exécuté au terminal par le fichier \texttt{fonctionsTest.py}).
+\item \texttt{jeu.html}, \texttt{strategie.html} et \texttt{fonctionsTest.html}~: documentation des fichiers de même nom.
+\end{itemize}
 
 \section{Probabilités}
 
@@ -503,7 +513,7 @@ z^\prime \geq 0,\; z^{\prime\prime}\geq 0,\; p_1(i) & \geq 0 & & \forall i \in \
 \end{equation}
 Donc, en résolvant le problème \eqref{ProblemeLineaire} on peut obtenir un vecteur $p_1^\ast$ qui sera aussi une solution du problème \eqref{OptimalJ1}. Finalement, le joueur 1 prend donc $p_1^\ast$ comme sa stratégie optimale.
 
-On remarque que, comme ce jeu est à somme nulle, la stratégie $p_1^\ast$ est aussi la stratégie optimale du joueur 2.
+On remarque que, comme la matrice $EG_1$ est anti-symétrique, la stratégie $p_1^\ast$ est aussi la stratégie optimale du joueur 2.
 
 \subsection{Mise en \oe{}uvre~: questions 13 et 14}
 

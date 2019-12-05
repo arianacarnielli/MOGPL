@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module strategie</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>strategie</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cariana%5Cdocumentos%5Cfaculdade%5Cmogpl%5Cstrategie.py">d:\ariana\documentos\faculdade\mogpl\strategie.py</a></font></td></tr></table>
+    <p><tt>Created&nbsp;on&nbsp;Thu&nbsp;Nov&nbsp;21&nbsp;00:19:27&nbsp;2019<br>
+&nbsp;<br>
+@author:Ariana&nbsp;Carnielli&nbsp;\&nbsp;Ivan&nbsp;Kachaikin<br>
+Méthodes&nbsp;pour&nbsp;le&nbsp;projet&nbsp;de&nbsp;MOGPL&nbsp;2019-2020</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="strategie.html#ResolutionPL">ResolutionPL</a>
+</font></dt><dt><font face="helvetica, arial"><a href="strategie.html#Strategie">Strategie</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="strategie.html#StrategieAleatoire">StrategieAleatoire</a>
+</font></dt><dt><font face="helvetica, arial"><a href="strategie.html#StrategieAveugle">StrategieAveugle</a>
+</font></dt><dt><font face="helvetica, arial"><a href="strategie.html#StrategieHumaine">StrategieHumaine</a>
+</font></dt><dt><font face="helvetica, arial"><a href="strategie.html#StrategieOptimaleSequentielle">StrategieOptimaleSequentielle</a>
+</font></dt><dt><font face="helvetica, arial"><a href="strategie.html#StrategieOptimaleSimultanee">StrategieOptimaleSimultanee</a>
+</font></dt><dt><font face="helvetica, arial"><a href="strategie.html#StrategieOptimaleSimultaneeTour">StrategieOptimaleSimultaneeTour</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ResolutionPL">class <strong>ResolutionPL</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Classe&nbsp;utilisée&nbsp;pour&nbsp;la&nbsp;résolution&nbsp;des&nbsp;programmes&nbsp;linéaires&nbsp;présents&nbsp;dans&nbsp;<br>
+les&nbsp;stratégies&nbsp;pour&nbsp;le&nbsp;jeu&nbsp;Dice&nbsp;Battle.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Class methods defined here:<br>
+<dl><dt><a name="ResolutionPL-resoudrePL"><strong>resoudrePL</strong></a>(EG)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Résoudre&nbsp;le&nbsp;programme&nbsp;linéaire&nbsp;crée&nbsp;d’après&nbsp;la&nbsp;matrice&nbsp;EG&nbsp;passée&nbsp;en&nbsp;<br>
+argument.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp; <br>
+ &nbsp; &nbsp;EG&nbsp;:&nbsp;Matrice&nbsp;2D&nbsp;avec&nbsp;les&nbsp;valeurs&nbsp;d'une&nbsp;partie&nbsp;de&nbsp;la&nbsp;matrice&nbsp;de&nbsp;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;contraintes.<br>
+ &nbsp; &nbsp;<br>
+Returns&nbsp;:<br>
+ &nbsp; &nbsp;la&nbsp;valeur&nbsp;optimale&nbsp;du&nbsp;programme&nbsp;linéaire&nbsp;crée&nbsp;et&nbsp;les&nbsp;valeurs&nbsp;<br>
+ &nbsp; &nbsp;optimales&nbsp;pour&nbsp;les&nbsp;variables&nbsp;concernées.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Strategie">class <strong>Strategie</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Classe&nbsp;générale&nbsp;pour&nbsp;les&nbsp;différentes&nbsp;stratégies&nbsp;du&nbsp;jeu&nbsp;Dice&nbsp;Battle.&nbsp;<br>
+Sert&nbsp;a&nbsp;initialiser&nbsp;l'attribut&nbsp;jeu&nbsp;qui&nbsp;est&nbsp;utilisé&nbsp;dans&nbsp;les&nbsp;stratégies&nbsp;<br>
+spécifiques.<br>
+Toutes&nbsp;les&nbsp;stratégies&nbsp;implémentées&nbsp;peuvent&nbsp;être&nbsp;utilisées&nbsp;pour&nbsp;les&nbsp;deux<br>
+variantes&nbsp;du&nbsp;jeu&nbsp;(séquentielle&nbsp;et&nbsp;simultanée).<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Strategie-__init__"><strong>__init__</strong></a>(self, jeu)</dt><dd><tt>Crée&nbsp;une&nbsp;stratégie&nbsp;avec&nbsp;le&nbsp;jeu&nbsp;passé&nbsp;en&nbsp;argument.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.</tt></dd></dl>
+
+<dl><dt><a name="Strategie-jouerTour"><strong>jouerTour</strong></a>(self, moi, autre)</dt><dd><tt>Spécifié&nbsp;dans&nbsp;les&nbsp;classes&nbsp;filles.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StrategieAleatoire">class <strong>StrategieAleatoire</strong></a>(<a href="strategie.html#Strategie">Strategie</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Stratégie&nbsp;aléatoire&nbsp;pour&nbsp;le&nbsp;jeu&nbsp;Dice&nbsp;Battle.<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="strategie.html#StrategieAleatoire">StrategieAleatoire</a></dd>
+<dd><a href="strategie.html#Strategie">Strategie</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StrategieAleatoire-jouerTour"><strong>jouerTour</strong></a>(self, moi, autre)</dt><dd><tt>Rendre&nbsp;une&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;entre&nbsp;1&nbsp;et&nbsp;D&nbsp;(la&nbsp;quantité&nbsp;maximale&nbsp;de&nbsp;dés)&nbsp;<br>
+selon&nbsp;une&nbsp;loi&nbsp;uniforme.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;moi&nbsp;:&nbsp;Score&nbsp;du&nbsp;joueur&nbsp;avec&nbsp;la&nbsp;stratégie&nbsp;courante.  &nbsp;<br>
+ &nbsp; &nbsp;autre&nbsp;:&nbsp;Score&nbsp;de&nbsp;l'autre&nbsp;joueur.<br>
+ &nbsp; &nbsp;(Ces&nbsp;arguments&nbsp;ne&nbsp;sont&nbsp;pas&nbsp;utilisés&nbsp;dans&nbsp;cette&nbsp;classe&nbsp;mais&nbsp;sont&nbsp;<br>
+ &nbsp; &nbsp;nécessaires&nbsp;pour&nbsp;maintenir&nbsp;la&nbsp;signature&nbsp;de&nbsp;la&nbsp;méthode)<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;<br>
+Returns&nbsp;:<br>
+ &nbsp; &nbsp;La&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><a name="StrategieAleatoire-__init__"><strong>__init__</strong></a>(self, jeu)</dt><dd><tt>Crée&nbsp;une&nbsp;stratégie&nbsp;avec&nbsp;le&nbsp;jeu&nbsp;passé&nbsp;en&nbsp;argument.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StrategieAveugle">class <strong>StrategieAveugle</strong></a>(<a href="strategie.html#Strategie">Strategie</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Stratégie&nbsp;dite&nbsp;aveugle&nbsp;pour&nbsp;le&nbsp;jeu&nbsp;Dice&nbsp;Battle.<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="strategie.html#StrategieAveugle">StrategieAveugle</a></dd>
+<dd><a href="strategie.html#Strategie">Strategie</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StrategieAveugle-jouerTour"><strong>jouerTour</strong></a>(self, moi, autre)</dt><dd><tt>Retourne&nbsp;le&nbsp;nombre&nbsp;de&nbsp;dés&nbsp;qui&nbsp;assure&nbsp;en&nbsp;moyenne&nbsp;un&nbsp;nombre&nbsp;de&nbsp;points<br>
+maximum.&nbsp;Comme&nbsp;montré&nbsp;au&nbsp;rapport,&nbsp;cela&nbsp;revient&nbsp;a&nbsp;retourne&nbsp;le&nbsp;minimum&nbsp;<br>
+entre&nbsp;6&nbsp;et&nbsp;D&nbsp;(la&nbsp;quantité&nbsp;maximale&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer).<br>
+Ancienne&nbsp;EsperanceDes(D).<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;moi&nbsp;:&nbsp;Score&nbsp;du&nbsp;joueur&nbsp;avec&nbsp;la&nbsp;stratégie&nbsp;courante.  &nbsp;<br>
+ &nbsp; &nbsp;autre&nbsp;:&nbsp;Score&nbsp;de&nbsp;l'autre&nbsp;joueur.<br>
+ &nbsp; &nbsp;(Ces&nbsp;arguments&nbsp;ne&nbsp;sont&nbsp;pas&nbsp;utilisés&nbsp;dans&nbsp;cette&nbsp;classe&nbsp;mais&nbsp;sont&nbsp;<br>
+ &nbsp; &nbsp;nécessaires&nbsp;pour&nbsp;maintenir&nbsp;la&nbsp;signature&nbsp;de&nbsp;la&nbsp;méthode)<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;<br>
+Returns&nbsp;:<br>
+ &nbsp; &nbsp;La&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><a name="StrategieAveugle-__init__"><strong>__init__</strong></a>(self, jeu)</dt><dd><tt>Crée&nbsp;une&nbsp;stratégie&nbsp;avec&nbsp;le&nbsp;jeu&nbsp;passé&nbsp;en&nbsp;argument.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StrategieHumaine">class <strong>StrategieHumaine</strong></a>(<a href="strategie.html#Strategie">Strategie</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Stratégie&nbsp;qui&nbsp;permet&nbsp;à&nbsp;un&nbsp;humain&nbsp;de&nbsp;jouer&nbsp;au&nbsp;jeu&nbsp;Dice&nbsp;Battle.<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="strategie.html#StrategieHumaine">StrategieHumaine</a></dd>
+<dd><a href="strategie.html#Strategie">Strategie</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StrategieHumaine-jouerTour"><strong>jouerTour</strong></a>(self, moi, autre)</dt><dd><tt>Retourne&nbsp;le&nbsp;nombre&nbsp;de&nbsp;dés&nbsp;choisi&nbsp;par&nbsp;le&nbsp;joueur.<br>
+&nbsp;<br>
+&nbsp;Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;moi&nbsp;:&nbsp;Score&nbsp;du&nbsp;joueur&nbsp;avec&nbsp;la&nbsp;stratégie&nbsp;courante.  &nbsp;<br>
+ &nbsp; &nbsp;autre&nbsp;:&nbsp;Score&nbsp;de&nbsp;l'autre&nbsp;joueur.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(Ces&nbsp;arguments&nbsp;ne&nbsp;sont&nbsp;pas&nbsp;utilisés&nbsp;dans&nbsp;cette&nbsp;classe&nbsp;mais&nbsp;sont&nbsp;<br>
+ &nbsp; &nbsp;nécessaires&nbsp;pour&nbsp;maintenir&nbsp;la&nbsp;signature&nbsp;de&nbsp;la&nbsp;méthode)<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+ &nbsp; &nbsp;La&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><a name="StrategieHumaine-__init__"><strong>__init__</strong></a>(self, jeu)</dt><dd><tt>Crée&nbsp;une&nbsp;stratégie&nbsp;avec&nbsp;le&nbsp;jeu&nbsp;passé&nbsp;en&nbsp;argument.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StrategieOptimaleSequentielle">class <strong>StrategieOptimaleSequentielle</strong></a>(<a href="strategie.html#Strategie">Strategie</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Stratégie&nbsp;optimale&nbsp;pour&nbsp;la&nbsp;variante&nbsp;séquentielle&nbsp;du&nbsp;jeu&nbsp;Dice&nbsp;Battle.<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;OPT&nbsp;:&nbsp;Tableau&nbsp;contenant&nbsp;les&nbsp;choix&nbsp;optimaux&nbsp;de&nbsp;dés&nbsp;pour&nbsp;toute&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantité&nbsp;de&nbsp;points&nbsp;possible.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="strategie.html#StrategieOptimaleSequentielle">StrategieOptimaleSequentielle</a></dd>
+<dd><a href="strategie.html#Strategie">Strategie</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StrategieOptimaleSequentielle-__init__"><strong>__init__</strong></a>(self, jeu)</dt><dd><tt>Crée&nbsp;une&nbsp;stratégie&nbsp;avec&nbsp;le&nbsp;jeu&nbsp;passé&nbsp;en&nbsp;argument.<br>
+Initialise&nbsp;le&nbsp;tableau&nbsp;OPT&nbsp;qui&nbsp;garde&nbsp;la&nbsp;quantité&nbsp;optimale&nbsp;de&nbsp;dés&nbsp;à&nbsp;<br>
+jouer&nbsp;pour&nbsp;chaque&nbsp;quantité&nbsp;possible&nbsp;de&nbsp;points&nbsp;des&nbsp;joueurs&nbsp;1&nbsp;et&nbsp;2,&nbsp;<br>
+en&nbsp;considérant&nbsp;que&nbsp;la&nbsp;stratégie&nbsp;est&nbsp;le&nbsp;joueur&nbsp;1&nbsp;et&nbsp;que&nbsp;le&nbsp;joueur&nbsp;2&nbsp;joue<br>
+aussi&nbsp;de&nbsp;façon&nbsp;optimale.&nbsp;<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.</tt></dd></dl>
+
+<dl><dt><a name="StrategieOptimaleSequentielle-jouerTour"><strong>jouerTour</strong></a>(self, moi, autre)</dt><dd><tt>Retourne&nbsp;le&nbsp;nombre&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer&nbsp;optimaux&nbsp;considérant&nbsp;les&nbsp;scores&nbsp;des<br>
+joueurs.&nbsp;La&nbsp;méthode&nbsp;ne&nbsp;fait&nbsp;que&nbsp;consulter&nbsp;le&nbsp;tableau&nbsp;OPT&nbsp;dans&nbsp;la&nbsp;case&nbsp;<br>
+correspondante&nbsp;aux&nbsp;nombres&nbsp;des&nbsp;points&nbsp;des&nbsp;deux&nbsp;joueurs&nbsp;et&nbsp;retourne&nbsp;le&nbsp;<br>
+nombre&nbsp;de&nbsp;dés&nbsp;correspondant.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;moi&nbsp;:&nbsp;Score&nbsp;du&nbsp;joueur&nbsp;avec&nbsp;la&nbsp;stratégie&nbsp;courante.  &nbsp;<br>
+ &nbsp; &nbsp;autre&nbsp;:&nbsp;Score&nbsp;de&nbsp;l'autre&nbsp;joueur.<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+ &nbsp; &nbsp;La&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StrategieOptimaleSimultanee">class <strong>StrategieOptimaleSimultanee</strong></a>(<a href="strategie.html#Strategie">Strategie</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Stratégie&nbsp;optimale&nbsp;pour&nbsp;la&nbsp;variante&nbsp;simultanée&nbsp;du&nbsp;jeu&nbsp;Dice&nbsp;Battle.<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;OPT&nbsp;:&nbsp;Un&nbsp;tableau&nbsp;numpy&nbsp;3D&nbsp;qui&nbsp;stocke&nbsp;les&nbsp;vecteurs&nbsp;de&nbsp;probabilités&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;optimales&nbsp;pour&nbsp;toute&nbsp;quantité&nbsp;de&nbsp;points&nbsp;possible.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="strategie.html#StrategieOptimaleSimultanee">StrategieOptimaleSimultanee</a></dd>
+<dd><a href="strategie.html#Strategie">Strategie</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StrategieOptimaleSimultanee-__init__"><strong>__init__</strong></a>(self, jeu)</dt><dd><tt>Crée&nbsp;une&nbsp;stratégie&nbsp;avec&nbsp;le&nbsp;jeu&nbsp;passé&nbsp;en&nbsp;argument.<br>
+Initialise&nbsp;le&nbsp;tableau&nbsp;OPT&nbsp;qui&nbsp;garde&nbsp;les&nbsp;vecteurs&nbsp;de&nbsp;probabilités<br>
+optimales&nbsp;pour&nbsp;toute&nbsp;quantité&nbsp;de&nbsp;points&nbsp;possible.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.</tt></dd></dl>
+
+<dl><dt><a name="StrategieOptimaleSimultanee-jouerTour"><strong>jouerTour</strong></a>(self, moi, autre)</dt><dd><tt>Retourne&nbsp;le&nbsp;nombre&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer&nbsp;selon&nbsp;le&nbsp;vecteur&nbsp;de&nbsp;probabilités&nbsp;<br>
+optimal&nbsp;calculé&nbsp;à&nbsp;partir&nbsp;des&nbsp;espérances&nbsp;en&nbsp;considérant&nbsp;que&nbsp;l'autre&nbsp;<br>
+joueur&nbsp;joue&nbsp;de&nbsp;façon&nbsp;optimale&nbsp;aussi&nbsp;et&nbsp;que&nbsp;leu&nbsp;jeu&nbsp;est&nbsp;a&nbsp;une&nbsp;quantité&nbsp;<br>
+(i,&nbsp;j)&nbsp;de&nbsp;points.&nbsp;La&nbsp;méthode&nbsp;ne&nbsp;fait&nbsp;que&nbsp;tirer&nbsp;une&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;de&nbsp;<br>
+façon&nbsp;aléatoire&nbsp;en&nbsp;utilisant&nbsp;le&nbsp;vecteur.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;moi&nbsp;:&nbsp;Score&nbsp;du&nbsp;joueur&nbsp;avec&nbsp;la&nbsp;stratégie&nbsp;courante.  &nbsp;<br>
+ &nbsp; &nbsp;autre&nbsp;:&nbsp;Score&nbsp;de&nbsp;l'autre&nbsp;joueur.<br>
+Returns&nbsp;:<br>
+ &nbsp; &nbsp;La&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StrategieOptimaleSimultaneeTour">class <strong>StrategieOptimaleSimultaneeTour</strong></a>(<a href="strategie.html#Strategie">Strategie</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Stratégie&nbsp;optimale&nbsp;pour&nbsp;la&nbsp;variante&nbsp;simultanée&nbsp;du&nbsp;jeu&nbsp;Dice&nbsp;Battle&nbsp;avec&nbsp;un<br>
+seul&nbsp;tour.<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;_EG1&nbsp;:&nbsp;Tableau&nbsp;avec&nbsp;l'espérance&nbsp;de&nbsp;gain&nbsp;du&nbsp;joueur&nbsp;1&nbsp;lorsqu’il&nbsp;a&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jeté&nbsp;d1&nbsp;dés&nbsp;et&nbsp;le&nbsp;joueur&nbsp;2&nbsp;a&nbsp;jeté&nbsp;d2&nbsp;dés.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;_strategie&nbsp;:&nbsp;Le&nbsp;vecteur&nbsp;de&nbsp;probabilités&nbsp;optimales&nbsp;pour&nbsp;toutes&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possibilités&nbsp;de&nbsp;dés&nbsp;entre&nbsp;1&nbsp;et&nbsp;D&nbsp;(quantité&nbsp;maximale&nbsp;de&nbsp;dés).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="strategie.html#StrategieOptimaleSimultaneeTour">StrategieOptimaleSimultaneeTour</a></dd>
+<dd><a href="strategie.html#Strategie">Strategie</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StrategieOptimaleSimultaneeTour-__init__"><strong>__init__</strong></a>(self, jeu)</dt><dd><tt>Crée&nbsp;une&nbsp;stratégie&nbsp;avec&nbsp;le&nbsp;jeu&nbsp;passé&nbsp;en&nbsp;argument.<br>
+Initialise&nbsp;le&nbsp;tableau&nbsp;_EG1&nbsp;qui&nbsp;garde&nbsp;l'espérance&nbsp;de&nbsp;gain&nbsp;du&nbsp;joueur&nbsp;1&nbsp;<br>
+lorsqu’il&nbsp;a&nbsp;jeté&nbsp;d1&nbsp;dés&nbsp;et&nbsp;le&nbsp;joueur&nbsp;2&nbsp;a&nbsp;jeté&nbsp;d2&nbsp;dés.<br>
+Initialise&nbsp;le&nbsp;tableau&nbsp;_strategie&nbsp;qui&nbsp;garde&nbsp;le&nbsp;vecteur&nbsp;de&nbsp;probabilités<br>
+optimales&nbsp;pour&nbsp;toutes&nbsp;possibilités&nbsp;de&nbsp;dés&nbsp;entre&nbsp;1&nbsp;et&nbsp;D&nbsp;(quantité&nbsp;<br>
+maximale&nbsp;de&nbsp;dés).<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+ &nbsp; &nbsp;jeu&nbsp;:&nbsp;Un&nbsp;objet&nbsp;du&nbsp;type&nbsp;Jeu.</tt></dd></dl>
+
+<dl><dt><a name="StrategieOptimaleSimultaneeTour-jouerTour"><strong>jouerTour</strong></a>(self, moi, autre)</dt><dd><tt>Retourne&nbsp;le&nbsp;nombre&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer&nbsp;selon&nbsp;le&nbsp;vecteur&nbsp;de&nbsp;probabilités&nbsp;<br>
+optimal&nbsp;calculé&nbsp;à&nbsp;partir&nbsp;des&nbsp;espérances&nbsp;en&nbsp;considérant&nbsp;que&nbsp;l'autre&nbsp;<br>
+joueur&nbsp;joue&nbsp;de&nbsp;façon&nbsp;optimale&nbsp;aussi.&nbsp;La&nbsp;méthode&nbsp;ne&nbsp;fait&nbsp;que&nbsp;tirer&nbsp;une&nbsp;<br>
+quantité&nbsp;de&nbsp;dés&nbsp;de&nbsp;façon&nbsp;aléatoire&nbsp;en&nbsp;utilisant&nbsp;le&nbsp;vecteur.<br>
+&nbsp;<br>
+Args&nbsp;:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;moi&nbsp;:&nbsp;Score&nbsp;du&nbsp;joueur&nbsp;avec&nbsp;la&nbsp;stratégie&nbsp;courante.  &nbsp;<br>
+ &nbsp; &nbsp;autre&nbsp;:&nbsp;Score&nbsp;de&nbsp;l'autre&nbsp;joueur.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(Ces&nbsp;arguments&nbsp;ne&nbsp;sont&nbsp;pas&nbsp;utilisés&nbsp;dans&nbsp;cette&nbsp;classe&nbsp;mais&nbsp;sont&nbsp;<br>
+ &nbsp; &nbsp;nécessaires&nbsp;pour&nbsp;maintenir&nbsp;la&nbsp;signature&nbsp;de&nbsp;la&nbsp;méthode)<br>
+&nbsp;<br>
+Returns&nbsp;:<br>
+ &nbsp; &nbsp;La&nbsp;quantité&nbsp;de&nbsp;dés&nbsp;à&nbsp;jouer.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="strategie.html#Strategie">Strategie</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  5 DEC 2019 16:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.8)  6 DEC 2019 00:41
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -1705,32 +1705,36 @@ LaTeX Info: Redefining \nameref on input line 224.
 \@outlinefile=\write4
 \openout4 = `rapport.out'.
 
- [1{C:/Users/arian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] (Figures/VictoiresSequentielFonctionD.pgf
+LaTeX Font Info:    Try loading font information for TS1+jkp on input line 247.
+
+(C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\ts1jkp.fd
+File: ts1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for TS1/jkp.
 )
-(Figures/VictoiresSequentielFonctionN.pgf) (Figures/EGSequentielle.pgf) (Figures/OPTSequentielle.pgf) [4] [5 <./Figures/
-EGSequentielle-img0.png> <./Figures/EGSequentielle-img1.png> <./Figures/OPTSequentielle-img0.png> <./Figures/OPTSequenti
-elle-img1.png>] [6]
-LaTeX Font Info:    Try loading font information for T1+jkptt on input line 510.
- (C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\t1jkptt.fd
+LaTeX Font Info:    Try loading font information for T1+jkptt on input line 247.
+
+(C:\Users\arian\AppData\Roaming\MiKTeX\2.9\tex\latex\kpfonts\t1jkptt.fd
 File: t1jkptt.fd 2007/01/26 Fontinst v1.928 font definitions for T1/jkptt.
-) [7]
+) [1{C:/Users/arian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] (Figures/VictoiresSequentielFonctionD.pg
+f) (Figures/VictoiresSequentielFonctionN.pgf)
+(Figures/EGSequentielle.pgf) (Figures/OPTSequentielle.pgf) [4] [5 <./Figures/EGSequentielle-img0.png> <./Figures/EGSeque
+ntielle-img1.png> <./Figures/OPTSequentielle-img0.png> <./Figures/OPTSequentielle-img1.png>] [6] [7]
 (Figures/VictoiresSimultaneTourFonctionD.pgf) (Figures/VictoiresSimultaneTourFonctionDPourc.pgf) [8] [9]
 (Figures/EGSimultanee.pgf) [10 <./Figures/EGSimultanee-img0.png> <./Figures/EGSimultanee-img1.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 634.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 634.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 644.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 644.
  (rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 634.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 634.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 644.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 644.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
 (rerunfilecheck)             Checksum: 74611612EB83FBEC0E80E54B9123EBF7;1277.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 634.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 644.
  ) 
 Here is how much of TeX's memory you used:
- 24754 strings out of 493323
- 464955 string characters out of 3139066
- 605258 words of memory out of 3000000
- 27570 multiletter control sequences out of 15000+200000
- 83624 words of font info for 121 fonts, out of 3000000 for 9000
+ 24795 strings out of 493323
+ 465557 string characters out of 3139066
+ 605481 words of memory out of 3000000
+ 27606 multiletter control sequences out of 15000+200000
+ 84356 words of font info for 123 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
  55i,15n,69p,1178b,500s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}{C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kp
@@ -1742,7 +1746,7 @@ arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpmn8a.pfb><C:/User
 Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsy.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/f
 onts/type1/public/kpfonts/jkpsyb.pfb><C:/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpsyc.pfb><C
 :/Users/arian/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on rapport.pdf (10 pages, 191421 bytes).
+Output written on rapport.pdf (10 pages, 193616 bytes).
 PDF statistics:
  254 PDF objects out of 1000 (max. 8388607)
  50 named destinations out of 1000 (max. 500000)
